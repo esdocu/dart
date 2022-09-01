@@ -1,7 +1,7 @@
 _asset_bundler_cache
 _bookhtml
 _cache/
-_site/
+# _site/
 .*-cache
 .*-metadata
 .buildlog

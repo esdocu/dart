@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="Learn how to write a good package page.">
+  <title>Writing package pages | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="Writing package pages" />
+  <meta name="twitter:description" content="Learn how to write a good package page." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Writing package pages" />
+  <meta property="og:description" content="Learn how to write a good package page." />
+  <meta property="og:url" content="https://dart.esdocu.com/guides/libraries/writing-package-pages" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+         active">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link active">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="false" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="false" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="true" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="false" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#writing-a-good-readme-is-important">Writing a good README is important</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#seven-tips-for-good-readme">Seven tips for good README</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#tip1">1. Put a short description at the top</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#tip2">2. Include visual content</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#tip3">3. Use lists to present important information</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#tip4">4. Include usage examples</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#tip5">5. Use Dart code formatting</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#tip6">6. Mention related terms</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#tip7">7. Tell users where to go next</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#learn-more-about-good-readme-authoring">Learn more about good README authoring</a></li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/_guides/libraries/writing-package-pages.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Writing package pages'&page-url=https://dart.esdocu.com/guides/libraries/writing-package-pages&page-source=https://github.com/dart-lang/site-www/tree/main/src/_guides/libraries/writing-package-pages.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>Writing package pages</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc toc-collapsible toc-collapsed">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+      <span class="site-toc--inline__toggle toc-toggle-down"><i class="material-icons">keyboard_arrow_down</i></span>
+      <span class="site-toc--inline__toggle toc-toggle-up"><i class="material-icons">keyboard_arrow_up</i></span>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#writing-a-good-readme-is-important">Writing a good README is important</a></li>
+<li class="toc-entry toc-h2"><a href="#seven-tips-for-good-readme">Seven tips for good README</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#tip1">1. Put a short description at the top</a></li>
+<li class="toc-entry toc-h3"><a href="#tip2">2. Include visual content</a></li>
+<li class="toc-entry toc-h3"><a href="#tip3">3. Use lists to present important information</a></li>
+<li class="toc-entry toc-h3"><a href="#tip4">4. Include usage examples</a></li>
+<li class="toc-entry toc-h3"><a href="#tip5">5. Use Dart code formatting</a></li>
+<li class="toc-entry toc-h3"><a href="#tip6">6. Mention related terms</a></li>
+<li class="toc-entry toc-h3"><a href="#tip7">7. Tell users where to go next</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#learn-more-about-good-readme-authoring">Learn more about good README authoring</a></li>
+</ul>
+</div>
+
+
+          <style>
+  .screenshot, .screenshot-narrow {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    margin: 0px 20px;
+    padding: 10px;
+    width: 90%;
+  }
+
+  .screenshot-narrow {
+    max-width: 400px;
+  }
+</style>
+
+<p>The guidelines on this page can help you create good package pages on pub.dev.
+Specifically, this page has tips for
+writing a better package README,
+which provides the content marked <strong>README (this document)</strong>
+in the following screenshot:</p>
+
+<p><img src="/assets/img/libraries/package-page-sections.png" alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" class="screenshot"></p>
+
+<p>For details about other parts of the package page,
+follow these links:</p>
+
+<ol>
+  <li><a href="https://dart.dev/tools/pub/package-layout">Package layout </a></li>
+  <li><a href="https://flutter.dev/docs/development/packages-and-plugins/favorites">Flutter Favorite</a></li>
+  <li><a href="https://pub.dev/help/scoring">Package scoring</a></li>
+  <li><a href="https://dart.dev/tools/pub/verified-publishers">Verified publishers</a></li>
+  <li><a href="https://dart.dev/tools/pub/pubspec">Pubspec file</a></li>
+</ol>
+
+<h2 id="writing-a-good-readme-is-important">
+<a class="anchor" href="#writing-a-good-readme-is-important" aria-hidden="true"><span class="octicon octicon-link"></span></a>Writing a good README is important</h2>
+
+<p>People who find your package on pub.dev are likely to
+quickly scan the README when deciding whether to try your package.
+A good README catches the reader’s attention and
+shows that your package is worth trying.</p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  The package README is used in multiple ways.
+  For example, its content appears not only in the package page on pub.dev,
+  but also in <a href="/tools/dart-doc"><code class="language-plaintext highlighter-rouge">dart doc</code></a>-produced API reference documentation.</p>
+</aside>
+
+<p>Although this page features the <a href="https://pub.dev/packages/in_app_purchase"><code class="language-plaintext highlighter-rouge">in_app_purchase</code></a> package README,
+yours might not need to be as large or detailed.
+If your package is simple and has no associated UI,
+its README might look more like the one for the <a href="https://pub.dev/packages/yaml"><code class="language-plaintext highlighter-rouge">yaml</code></a> package.</p>
+
+<h2 id="seven-tips-for-good-readme">
+<a class="anchor" href="#seven-tips-for-good-readme" aria-hidden="true"><span class="octicon octicon-link"></span></a>Seven tips for good README</h2>
+
+<p>Here are some suggestions for creating a README
+that works well on pub.dev:</p>
+
+<ol>
+  <li><a href="#tip1">Put a short description at the top</a></li>
+  <li><a href="#tip2">Include visual content</a></li>
+  <li><a href="#tip3">Use lists to present important information</a></li>
+  <li><a href="#tip4">Include usage examples</a></li>
+  <li><a href="#tip5">Use Dart code formatting</a></li>
+  <li><a href="#tip6">Mention related terms</a></li>
+  <li><a href="#tip7">Tell users where to go next</a></li>
+</ol>
+
+<h3 id="tip1">
+<a class="anchor" href="#tip1" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Put a short description at the top</h3>
+
+<p>According to our user research,
+package users spend only a few seconds to
+read the package description and decide whether to
+read the rest of the README.
+Thus, you should concisely describe what the package does or achieves,
+at a glance.
+Spend some time to craft a short and sweet description and
+help the user to make decisions.</p>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  Don’t write the package name again at the top.
+  It’s already visible in the pub.dev UI.</p>
+</aside>
+
+<p>Here are some examples of good descriptions:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">A Flutter plugin for showing rainbows.</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Use machine learning to categorize bird sounds.</code></li>
+</ul>
+
+<p>Important information such as project status or constraints
+should also be near the top.
+For example:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Does not work on iOS versions below 10.3.</code></li>
+</ul>
+
+<p>Here’s a screenshot of the <a href="https://pub.dev/packages/in_app_purchase"><code class="language-plaintext highlighter-rouge">in_app_purchase</code></a> package page,
+which starts with a brief explanation of the package and a caution:</p>
+
+<p><img src="/assets/img/libraries/package-page-description.png" alt="description of the package in_app_purchase" class="screenshot"></p>
+
+<p><a href="https://github.com/badges/shields#readme">Badges</a> are often near the top of the README,
+either above or under the short description.</p>
+
+<h3 id="tip2">
+<a class="anchor" href="#tip2" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Include visual content</h3>
+
+<p>If your package page is a wall of text with no visual content,
+users might find it intimidating and stop reading.
+Images are especially important if your package supports UI,
+but they’re also useful for explaining important concepts.
+Either way, visual content can help users
+feel confident about using the package.</p>
+
+<p>Place visual content such as static images, animated GIFs, and
+videos (such as MOV or MP4 files)
+close to the beginning of the README,
+where users are likely to see them.</p>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  Prefer animated GIFs and videos for UI-related content,
+  because most UIs aren’t static,
+  and animation conveys more information about the UI’s behavior.</p>
+</aside>
+
+<p>The screenshots below show how
+adding visual content made the <code class="language-plaintext highlighter-rouge">in_app_purchase</code> package page look informative at first glance.
+(The <em>before</em> picture is on the left; <em>after</em> is on the right.)</p>
+
+<p><img src="/assets/img/libraries/package-page-example-iap.png" alt="in_app_purchase readme without and with images" class="screenshot"></p>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  When adding visual content,
+  use absolute URLs for the files
+  to make the images reliably appear,
+  no matter where the README is published.
+  One place to host your images is in the repository itself,
+  like <code class="language-plaintext highlighter-rouge">in_app_purchase</code> does.</p>
+</aside>
+
+<h3 id="tip3">
+<a class="anchor" href="#tip3" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Use lists to present important information</h3>
+
+<p>Lists can draw attention to important information on your README.
+You might use lists for the following:</p>
+
+<ul>
+  <li><a href="#list1">Key features of the package</a></li>
+  <li><a href="#list2">Parameters, attributes, or properties</a></li>
+  <li><a href="#list3">Unusual requirements</a></li>
+  <li><a href="#list4">Functionality that’s out of scope of your package</a></li>
+  <li><a href="#list5">A summary of the contents of a page or a section within a page
+(like this list)</a></li>
+</ul>
+
+<p>Usually, lists are bulleted, like the list above.
+Another option is using a table,
+like the table of platform support in the next section.</p>
+
+<h4 id="list1">Key features of the package</h4>
+
+<p>First, clearly list what your package can do.
+Some users might be looking for a very specific feature.
+Help those users find out whether your package supports their needs.</p>
+
+<p>The following screenshot shows how the <code class="language-plaintext highlighter-rouge">in_app_purchase</code> README
+presents the package’s features:</p>
+
+<p><img src="/assets/img/libraries/package-page-features-list.png" alt="list of features of the package in_app_purchase" class="screenshot"></p>
+
+<p>The next screenshot shows a table from the <code class="language-plaintext highlighter-rouge">just_audio</code> README
+that lists the package’s features and platform support:</p>
+
+<p><img src="/assets/img/libraries/package-page-features-table.png" alt="list of features of the package just_audio in a table format" class="screenshot-narrow"></p>
+
+<h4 id="list2">Parameters, attributes, or properties</h4>
+
+<p>Consider listing parameters, attributes, or properties for quick reference.
+(Remember, the content of the package README appears in the
+API reference documentation, as well as in the package page.)</p>
+
+<p>For example, the <code class="language-plaintext highlighter-rouge">url_launcher</code> package has a table of supported URL schemes:</p>
+
+<p><img src="/assets/img/libraries/package-page-list-property.png" alt="list of supported schemes of the package url_launcher" class="screenshot"></p>
+
+<p>Linking to specific functions or classes
+in the API reference documentation can also be useful.
+See the <a href="https://pub.dev/packages/async">async</a> package for an example.</p>
+
+<h4 id="list3">Unusual requirements</h4>
+
+<p>If your package needs a specific setup, beyond what all packages require,
+list setup instructions in the README.</p>
+
+<p>For example, the following screenshot for the <code class="language-plaintext highlighter-rouge">google_maps_flutter</code> package
+shows instructions on getting started with Google Maps Platform:</p>
+
+<p><img src="/assets/img/libraries/package-page-list-requirements.png" alt="additional instructions to use google_maps_flutter" class="screenshot"></p>
+
+<h4 id="list4">Functionality that’s out of scope of your package</h4>
+
+<p>To help users know whether your package can help them,
+list the features that users might expect,
+but that your package <em>doesn’t</em> support.</p>
+
+<p>Here are some examples of when
+you might want to list out-of-scope functionality:</p>
+
+<ul>
+  <li>If your button package is focused only on text buttons
+and not on icon buttons,
+make that clear in the README.</li>
+  <li>If your package supports only certain versions of Android,
+say that in the README.</li>
+</ul>
+
+<h4 id="list5">Contents</h4>
+
+<p>Users find it easier to navigate a page or section
+when it has a table of contents.
+If a section in your README is very long,
+consider listing the subsections clearly at the beginning of the section.</p>
+
+<p>For example, the “Usage” section of the <code class="language-plaintext highlighter-rouge">in_app_purchase</code> README
+has a lot of examples.
+The following table of contents helps users understand which examples exist,
+and go to the code that interests them:</p>
+
+<p><img src="/assets/img/libraries/package-page-list-subsections.png" alt="content of the usage section of the package in_app_purchase" class="screenshot"></p>
+
+<h3 id="tip4">
+<a class="anchor" href="#tip4" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Include usage examples</h3>
+
+<p>If your package looks promising, users might want to test your package.
+Include a “Get started” or “Usage” section that has
+at least one code sample that users can easily understand—and, 
+ideally, that they can copy and paste into their project.
+It’s even better if you can provide more examples with more details
+to help users to understand your package.</p>
+
+<p>Remember that not all users speak English, but they all speak Dart!
+Good code samples can go a long way.
+Consider adding more complete examples
+under your package’s <code class="language-plaintext highlighter-rouge">example</code> directory,
+which pub.dev can use to populate an <strong>Examples</strong> tab.
+For details, see <a href="/tools/pub/package-layout#examples">Examples</a> in
+the <a href="/tools/pub/package-layout">package layout conventions</a>.</p>
+
+<p>The following screenshot shows one of several examples in the README for
+the <code class="language-plaintext highlighter-rouge">in_app_purchase</code> package:</p>
+
+<p><img src="/assets/img/libraries/package-page-usage-example.png" alt="sample code of the package in_app_purchase" class="screenshot"></p>
+
+<h3 id="tip5">
+<a class="anchor" href="#tip5" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Use Dart code formatting</h3>
+
+<p>When adding code examples,
+use three backticks plus <code class="language-plaintext highlighter-rouge">dart</code> (<code>```dart</code>) instead of
+three backticks (<code>```</code>).
+As the following examples show,
+adding <code class="language-plaintext highlighter-rouge">dart</code> tells pub.dev to use Dart syntax highlighting:</p>
+
+<table width="100%">
+<tr>
+<th> <b>Formatted with just <code>```</code></b> </th>
+<th> <b>Formatted with <code>```dart</code></b> </th>
+</tr>
+<tr>
+<td>
+      <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>final like = 'this';
+</code></pre></div>      </div>
+    </td>
+<td>
+      <div class="language-dart highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="kd">final</span> <span class="n">like</span> <span class="o">=</span> <span class="s">'this'</span><span class="o">;</span>
+</code></pre></div>      </div>
+    </td>
+</tr>
+</table>
+
+<h3 id="tip6">
+<a class="anchor" href="#tip6" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Mention related terms</h3>
+
+<p>A recent UX study found that
+many users use the within-page search feature
+(<code class="language-plaintext highlighter-rouge">Control+F</code> or <code class="language-plaintext highlighter-rouge">Command+F</code>)
+to search for the feature they are looking for.
+Thus, be sure to mention important terms in the README,
+so that users can find them.</p>
+
+<p>For example, users might want to know whether the <code class="language-plaintext highlighter-rouge">in_app_purchase</code> package
+supports in-app subscription.
+A user who searches for the keyword <em>subscription</em>
+might abandon the page if the page doesn’t use that term.</p>
+
+<p><img src="/assets/img/libraries/package-page-terms.png" alt="the keyword is highlighted when users search for it within the page" class="screenshot"></p>
+
+<p>After mentioning all the terms that people might search for,
+be consistent about the terms you use.
+If needed, clearly define the terms.</p>
+
+<p>For example, the <a href="https://pub.dev/packages/in_app_purchase"><code class="language-plaintext highlighter-rouge">in_app_purchase</code></a> package defines
+<em>underlying store</em> at the beginning:</p>
+
+<p><img src="/assets/img/libraries/package-page-terms-definition.png" alt="the meaning of underlying store" class="screenshot"></p>
+
+<p>The rest of the page consistently uses that term:</p>
+
+<p><img src="/assets/img/libraries/package-page-terms-consistent.png" alt="The term underlying store is used consistently across the page" class="screenshot"></p>
+
+<h3 id="tip7">
+<a class="anchor" href="#tip7" aria-hidden="true"><span class="octicon octicon-link"></span></a>7. Tell users where to go next</h3>
+
+<p>Help your users find out more about the package.
+Here are some suggestions for what to tell potential users:</p>
+
+<ul>
+  <li>Where to learn more about the package.
+You might link to an article on Medium, or to a video on YouTube.</li>
+  <li>Where to get help on using the package.
+Possibilities include an issue tracker, a chat room, or an email address.</li>
+  <li>What you’re planning to do with the package.
+A roadmap—either in the README or in an external page—can 
+help users know whether the feature they need is coming soon.</li>
+  <li>How to contribute code to the package.</li>
+</ul>
+
+<p>The following screenshot shows the part of the <code class="language-plaintext highlighter-rouge">in_app_purchase</code> README
+that has information for potential contributors:</p>
+
+<p><img src="/assets/img/libraries/package-page-contribute.png" alt="how to contribute to in_app_purchase" class="screenshot"></p>
+
+<h2 id="learn-more-about-good-readme-authoring">
+<a class="anchor" href="#learn-more-about-good-readme-authoring" aria-hidden="true"><span class="octicon octicon-link"></span></a>Learn more about good README authoring</h2>
+
+<p>We’ve suggested seven tips for good README in this documentation.
+You can learn more about common recommendations for developer documentation
+from the <a href="https://developers.google.com/style/highlights">Google Developer Documentation Style Guide</a>.
+Some additional tips include:</p>
+
+<ul>
+  <li>Supply alt text for images.</li>
+  <li>Be succinct. Don’t say please.</li>
+  <li>Keep the line length &lt;= 80 chars.</li>
+  <li>Format code correctly (as <code class="language-plaintext highlighter-rouge">dart format</code> or <code class="language-plaintext highlighter-rouge">flutter format</code> would).</li>
+</ul>
+
+<p>To learn more about good README practices,
+see these resources:</p>
+
+<dl>
+  <dt><a href="https://github.com/ddbeck/readme-checklist/blob/main/checklist.md">README Checklist</a></dt>
+  <dd>A checklist for writing a README that
+helps readers feel confident about your project.</dd>
+  <dt><a href="https://github.com/matiassingers/awesome-readme">Awesome README</a></dt>
+  <dd>A curated, annotated list of great READMEs.</dd>
+  <dt><a href="https://www.makeareadme.com">Make a README</a></dt>
+  <dd>An introduction to READMEs,
+with a template and suggestions for a good README.</dd>
+  <dt><a href="https://dbader.org/blog/write-a-great-readme-for-your-github-project">How to write a great README for your GitHub project</a></dt>
+  <dd>Key elements of a good README, and a template.</dd>
+</dl>
+
+<p>The suggestions in this page and others might not work for all packages.
+Be creative!
+Put yourself into users’ shoes and
+imagine what the reader might want to read and know.
+You’re the only person who can provide the information that the reader needs.</p>
+
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>

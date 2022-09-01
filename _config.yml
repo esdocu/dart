@@ -1,7 +1,7 @@
 # Site settings
-title: Dart
-description: Dart is a client-optimized language for developing fast apps on any platform.
-url: https://dart.dev
+title: Dart es Español
+description: Dart es un lenguaje optimizado para el cliente para aplicaciones rápidas en cualquier plataforma.
+url: https://dart.esdocu.com
 dev-url: https://dartlang-org-dev.firebaseapp.com
 repo:
   this: https://github.com/dart-lang/site-www

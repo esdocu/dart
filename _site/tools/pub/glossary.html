@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="A glossary of terms relating to Dart's package management tool, pub.">
+  <title>Glossary of package terms | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="Glossary of package terms" />
+  <meta name="twitter:description" content="A glossary of terms relating to Dart's package management tool, pub." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Glossary of package terms" />
+  <meta property="og:description" content="A glossary of terms relating to Dart's package management tool, pub." />
+  <meta property="og:url" content="https://dart.esdocu.com/tools/pub/glossary.html" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+         active">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link active">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="false" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="false" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="true" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link active collapsable"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="true" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="false" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#application-package">Application package</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#dependency">Dependency</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#entrypoint">Entrypoint</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#entrypoint-directory">Entrypoint directory</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#immediate-dependency">Immediate dependency</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#library-package">Library package</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#lockfile">Lockfile</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#sdk-constraint">SDK constraint</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#source">Source</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#system-cache">System cache</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#transitive-dependency">Transitive dependency</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#uploader">Uploader</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#verified-publisher">Verified publisher</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#version-constraint">Version constraint</a></li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/tools/pub/glossary.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Glossary of package terms'&page-url=https://dart.esdocu.com/tools/pub/glossary.html&page-source=https://github.com/dart-lang/site-www/tree/main/src/tools/pub/glossary.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>Glossary of package terms</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc toc-collapsible toc-collapsed">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+      <span class="site-toc--inline__toggle toc-toggle-down"><i class="material-icons">keyboard_arrow_down</i></span>
+      <span class="site-toc--inline__toggle toc-toggle-up"><i class="material-icons">keyboard_arrow_up</i></span>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#application-package">Application package</a></li>
+<li class="toc-entry toc-h2"><a href="#dependency">Dependency</a></li>
+<li class="toc-entry toc-h2"><a href="#entrypoint">Entrypoint</a></li>
+<li class="toc-entry toc-h2"><a href="#entrypoint-directory">Entrypoint directory</a></li>
+<li class="toc-entry toc-h2"><a href="#immediate-dependency">Immediate dependency</a></li>
+<li class="toc-entry toc-h2"><a href="#library-package">Library package</a></li>
+<li class="toc-entry toc-h2"><a href="#lockfile">Lockfile</a></li>
+<li class="toc-entry toc-h2"><a href="#sdk-constraint">SDK constraint</a></li>
+<li class="toc-entry toc-h2"><a href="#source">Source</a></li>
+<li class="toc-entry toc-h2"><a href="#system-cache">System cache</a></li>
+<li class="toc-entry toc-h2"><a href="#transitive-dependency">Transitive dependency</a></li>
+<li class="toc-entry toc-h2"><a href="#uploader">Uploader</a></li>
+<li class="toc-entry toc-h2"><a href="#verified-publisher">Verified publisher</a></li>
+<li class="toc-entry toc-h2"><a href="#version-constraint">Version constraint</a></li>
+</ul>
+</div>
+
+
+          <p>The following terms are used in the documentation for
+<a href="/guides/packages">package management</a> and
+the <a href="/tools/pub/cmd">pub tool</a>.</p>
+
+<h2 id="application-package">
+<a class="anchor" href="#application-package" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application package</h2>
+
+<p>A package that is not intended to be used as a library. Application packages may
+have <a href="#dependency">dependencies</a> on other packages, but are never depended on
+themselves. They are usually meant to be run directly, either on the command
+line or in a browser. The opposite of an application package is a
+<a href="#library-package">library package</a>.</p>
+
+<p>Application packages should check their <a href="#lockfile">lockfiles</a> into source
+control, so that everyone working on the application and every location the
+application is deployed has a consistent set of dependencies. Because their
+dependencies are constrained by the lockfile, application packages usually
+specify <code class="language-plaintext highlighter-rouge">any</code> for their dependencies’ <a href="#version-constraint">version constraints</a>.</p>
+
+<h2 id="dependency">
+<a class="anchor" href="#dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependency</h2>
+
+<p>Another package that your package relies on. If your package wants to import
+code from some other package, that package must be a dependency. Dependencies
+are specified in your package’s <a href="/tools/pub/pubspec">pubspec</a> and described in
+<a href="/tools/pub/dependencies">Package dependencies</a>.</p>
+
+<p>To see the dependencies used by a package, use <a href="/tools/pub/cmd/pub-deps"><code class="language-plaintext highlighter-rouge">pub deps</code></a>.</p>
+
+<h2 id="entrypoint">
+<a class="anchor" href="#entrypoint" aria-hidden="true"><span class="octicon octicon-link"></span></a>Entrypoint</h2>
+
+<p>In the general context of Dart, an <em>entrypoint</em> is
+a Dart library that is directly invoked by a Dart implementation. When you
+reference a Dart library in a <code class="language-plaintext highlighter-rouge">&lt;script&gt;</code> tag or pass it as a command-line
+argument to the standalone Dart VM, that library is the entrypoint. In other
+words, it’s usually the <code class="language-plaintext highlighter-rouge">.dart</code> file that contains <code class="language-plaintext highlighter-rouge">main()</code>.</p>
+
+<p>In the context of pub, an <em>entrypoint package</em> or <em>root package</em> is the root
+of a dependency graph. It will usually be an application. When you run your app,
+it’s the entrypoint package. Every other package it depends on will not be an
+entrypoint in that context.</p>
+
+<p>A package can be an entrypoint in some contexts and not in others. Say your
+app uses a library package A. When you run your app, A is not the entrypoint
+package. However, if you go over to A and execute its tests, in that
+context, it <em>is</em> the entrypoint since your app isn’t involved.</p>
+
+<h2 id="entrypoint-directory">
+<a class="anchor" href="#entrypoint-directory" aria-hidden="true"><span class="octicon octicon-link"></span></a>Entrypoint directory</h2>
+
+<p>A directory inside your package that is allowed to contain
+<a href="#entrypoint">Dart entrypoints</a>.</p>
+
+<p>Pub has a list of these directories: <code class="language-plaintext highlighter-rouge">benchmark</code>, <code class="language-plaintext highlighter-rouge">bin</code>, <code class="language-plaintext highlighter-rouge">example</code>,
+<code class="language-plaintext highlighter-rouge">test</code>, <code class="language-plaintext highlighter-rouge">tool</code>, and <code class="language-plaintext highlighter-rouge">web</code>. Any subdirectories of those (except <code class="language-plaintext highlighter-rouge">bin</code>) may also
+contain entrypoints.</p>
+
+<h2 id="immediate-dependency">
+<a class="anchor" href="#immediate-dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Immediate dependency</h2>
+
+<p>A <a href="#dependency">dependency</a> that your package directly uses itself. The
+dependencies you list in your pubspec are your package’s immediate dependencies.
+All other dependencies are <a href="#transitive-dependency">transitive dependencies</a>.</p>
+
+<h2 id="library-package">
+<a class="anchor" href="#library-package" aria-hidden="true"><span class="octicon octicon-link"></span></a>Library package</h2>
+
+<p>A package that other packages can depend on. Library packages can have
+<a href="#dependency">dependencies</a> on other packages <em>and</em> can be dependencies
+themselves. They can also include scripts to be run directly. The
+opposite of a library package is an <a href="#application-package">application package</a>.</p>
+
+<p>Don’t check the <a href="#lockfile">lockfile</a> of a library package into source
+control, since libraries should support a range of dependency versions. The
+<a href="#version-constraint">version constraints</a> of a library package’s
+<a href="#immediate-dependency">immediate dependencies</a> should be as wide as possible while still
+ensuring that the dependencies will be compatible with the versions that were
+tested against.</p>
+
+<p>Since <a href="https://semver.org/spec/v2.0.0-rc.1.html">semantic versioning</a> requires
+that libraries increment their major version numbers for any backwards
+incompatible changes, library packages will usually require their dependencies’
+versions to be greater than or equal to the versions that were tested and less
+than the next major version. So if your library depended on the (fictional)
+<code class="language-plaintext highlighter-rouge">transmogrify</code> package and you tested it at version 1.2.1, your version
+constraint would be <a href="/tools/pub/dependencies#caret-syntax"><code class="language-plaintext highlighter-rouge">^1.2.1</code></a>.</p>
+
+<h2 id="lockfile">
+<a class="anchor" href="#lockfile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Lockfile</h2>
+
+<p>A file named <code class="language-plaintext highlighter-rouge">pubspec.lock</code> that specifies the concrete versions and other
+identifying information for every immediate and transitive dependency a package
+relies on.</p>
+
+<p>Unlike the pubspec, which only lists immediate dependencies and allows version
+ranges, the lock file comprehensively pins down the entire dependency graph to
+specific versions of packages. A lockfile ensures that you can recreate the
+exact configuration of packages used by an application.</p>
+
+<p>The lockfile is generated automatically for you by pub when you run
+<a href="/tools/pub/cmd/pub-get"><code class="language-plaintext highlighter-rouge">pub get</code></a>, <a href="/tools/pub/cmd/pub-upgrade"><code class="language-plaintext highlighter-rouge">pub upgrade</code></a>,
+or <a href="/tools/pub/cmd/pub-downgrade"><code class="language-plaintext highlighter-rouge">pub downgrade</code></a>.
+If your package is an application package, you will typically check this into
+source control. For library packages, you usually won’t.</p>
+
+<h2 id="sdk-constraint">
+<a class="anchor" href="#sdk-constraint" aria-hidden="true"><span class="octicon octicon-link"></span></a>SDK constraint</h2>
+
+<p>The declared versions of the Dart SDK itself that a package declares that it
+supports. An SDK constraint is specified using normal
+<a href="#version-constraint">version constraint</a> syntax, but in a special <em>environment</em>
+section <a href="/tools/pub/pubspec#sdk-constraints">in the pubspec</a>.</p>
+
+<h2 id="source">
+<a class="anchor" href="#source" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source</h2>
+
+<p>A kind of place that pub can get packages from. A source isn’t a specific place
+like the pub.dev site or some specific Git URL. Each source describes a general
+procedure for accessing a package in some way. For example, <em>git</em> is one source.
+The git source knows how to download packages given a Git URL. Several
+different <a href="/tools/pub/dependencies#dependency-sources">supported sources</a> are available.</p>
+
+<h2 id="system-cache">
+<a class="anchor" href="#system-cache" aria-hidden="true"><span class="octicon octicon-link"></span></a>System cache</h2>
+
+<p>When pub gets a remote package,
+it downloads it into a single <em>system cache</em> directory maintained by
+pub. On Mac and Linux, this directory defaults to <code class="language-plaintext highlighter-rouge">~/.pub-cache</code>.
+On Windows, the directory defaults to <code class="language-plaintext highlighter-rouge">%LOCALAPPDATA%\Pub\Cache</code>,
+though its exact location may vary depending on the Windows version.
+You can specify a different location using the
+<a href="/tools/pub/environment-variables">PUB_CACHE</a> environment variable.</p>
+
+<p>Once packages are in the system cache,
+pub creates a <code class="language-plaintext highlighter-rouge">package_config.json</code> file that maps each package
+used by your application to the corresponding package in the cache.</p>
+
+<p>You only have to download a given version of a package once
+and can then reuse it in as many packages as you would like.
+If you specify the <code class="language-plaintext highlighter-rouge">--offline</code> flag to use cached packages,
+you can delete and regenerate your <code class="language-plaintext highlighter-rouge">package_config.json</code>
+files without having to access the network.</p>
+
+<h2 id="transitive-dependency">
+<a class="anchor" href="#transitive-dependency" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transitive dependency</h2>
+
+<p>A dependency that your package indirectly uses because one of its dependencies
+requires it. If your package depends on A, which in turn depends on B which
+depends on C, then A is an <a href="#immediate-dependency">immediate dependency</a> and B
+and C are transitive ones.</p>
+
+<h2 id="uploader">
+<a class="anchor" href="#uploader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uploader</h2>
+
+<p>Someone who has administrative permissions for a package.
+A package uploader can upload new versions of the package, 
+and they can also 
+<a href="/tools/pub/publishing#uploaders">add and remove other uploaders</a>
+for that package.</p>
+
+<p>If a package has a verified publisher,
+then all members of the publisher can upload the package.</p>
+
+<h2 id="verified-publisher">
+<a class="anchor" href="#verified-publisher" aria-hidden="true"><span class="octicon octicon-link"></span></a>Verified publisher</h2>
+
+<p>One or more users who own a set of packages.
+Each verified publisher is identified by a verified domain name, such as
+<strong>dart.dev</strong>.
+For general information about verified publishers,
+see the <a href="/tools/pub/verified-publishers">verified publishers page</a>.
+For details on creating a verified publisher
+and transferring packages to it,
+see the documentation for <a href="/tools/pub/publishing#verified-publisher">publishing packages</a>.</p>
+
+<h2 id="version-constraint">
+<a class="anchor" href="#version-constraint" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version constraint</h2>
+
+<p>A constraint placed on each <a href="#dependency">dependency</a> of a package that
+specifies which versions of that dependency the package is expected to work
+with. This can be a single version (<code class="language-plaintext highlighter-rouge">0.3.0</code>) or a range of versions (<code class="language-plaintext highlighter-rouge">^1.2.1</code>).
+While <code class="language-plaintext highlighter-rouge">any</code> is also allowed, for performance reasons we don’t recommend it.</p>
+
+<p>For more information, see
+<a href="/tools/pub/dependencies#version-constraints">Version constraints</a>.</p>
+
+<p><a href="#library-package">Library packages</a> should always specify version constraints
+for all of their dependencies, but <a href="#application-package">application packages</a>
+should usually allow any version of their dependencies, since they use the
+<a href="#lockfile">lockfile</a> to manage their dependency versions.</p>
+
+<p>For more information, see
+<a href="/tools/pub/versioning">Pub Versioning Philosophy</a>.</p>
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>

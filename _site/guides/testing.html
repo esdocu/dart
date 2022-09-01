@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="How to test Flutter, web, and VM applications.">
+  <title>Dart testing | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="Dart testing" />
+  <meta name="twitter:description" content="How to test Flutter, web, and VM applications." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dart testing" />
+  <meta property="og:description" content="How to test Flutter, web, and VM applications." />
+  <meta property="og:url" content="https://dart.esdocu.com/guides/testing" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+         active">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link active">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="false" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="false" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="false" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="true" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link active collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link active" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#kinds-of-testing">Kinds of testing</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#generally-useful-libraries">Generally useful libraries</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#flutter-testing">Flutter testing</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#other-tools-and-resources">Other tools and resources</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#ide">IDE</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#dart-devtools">Dart DevTools</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/_guides/testing.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Dart testing'&page-url=https://dart.esdocu.com/guides/testing&page-source=https://github.com/dart-lang/site-www/tree/main/src/_guides/testing.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>Dart testing</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#kinds-of-testing">Kinds of testing</a></li>
+<li class="toc-entry toc-h2"><a href="#generally-useful-libraries">Generally useful libraries</a></li>
+<li class="toc-entry toc-h2"><a href="#flutter-testing">Flutter testing</a></li>
+<li class="toc-entry toc-h2"><a href="#other-tools-and-resources">Other tools and resources</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#ide">IDE</a></li>
+<li class="toc-entry toc-h3"><a href="#dart-devtools">Dart DevTools</a></li>
+<li class="toc-entry toc-h3"><a href="#continuous-integration">Continuous integration</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+          <p>Software testing, an important part of app development, helps verify that
+your app is working correctly before you release it.
+This Dart testing guide outlines several types of testing, and points
+you to where you can learn how to test your
+<a href="https://flutter.dev">Flutter</a>, <a href="/web">web</a>,
+and <a href="/server">server-side apps and scripts</a>.</p>
+
+<p>You can run tests on the command line
+using the <a href="/tools/dart-test"><code class="language-plaintext highlighter-rouge">dart test</code></a> command
+(or, for Flutter apps, <a href="https://docs.flutter.dev/reference/flutter-cli"><code class="language-plaintext highlighter-rouge">flutter test</code></a>).</p>
+
+<h2 id="kinds-of-testing">
+<a class="anchor" href="#kinds-of-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kinds of testing</h2>
+
+<p>The Dart testing docs focus on three kinds of testing, out of the
+<a href="https://en.wikipedia.org/wiki/Software_testing">many kinds of testing</a>
+that you may be familiar with: unit, component, and end-to-end
+(a form of integration testing). Testing terminology varies,
+but these are the terms and concepts that you are likely to
+encounter when using Dart technologies:</p>
+
+<ul>
+  <li>
+    <p><em>Unit</em> tests focus on verifying the smallest piece of testable
+software, such as a function, method, or class. Your test suites
+should have more unit tests than other kinds of tests.</p>
+  </li>
+  <li>
+    <p><em>Component</em> tests (called <em>widget</em> tests in Flutter)
+verify that a component (which usually consists of multiple classes)
+behaves as expected.
+A component test often requires the use of mock objects
+that can mimic user actions, events, perform layout,
+and instantiate child components.</p>
+  </li>
+  <li>
+    <p><em>Integration</em> and <em>end-to-end</em> tests verify the behavior of
+an entire app, or a large chunk of an app. An integration test
+generally runs on a simulated or real device
+or on a browser (for the web) and consists of two pieces:
+the app itself, and the test app that puts
+the app through its paces. An integration test often measures performance,
+so the test app generally runs on a different device or OS
+than the app being tested.</p>
+  </li>
+</ul>
+
+<h2 id="generally-useful-libraries">
+<a class="anchor" href="#generally-useful-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Generally useful libraries</h2>
+
+<p>Although your tests partly depend on the platform your code is intended
+for—Flutter, the web, or server-side, for example—the
+following packages are useful across Dart platforms:</p>
+
+<ul>
+  <li>
+<a href="https://pub.dev/packages/test">package:test</a><br>
+Provides a standard way of writing tests in Dart. You can use the test
+package to:
+    <ul>
+      <li>Write single tests, or groups of tests.</li>
+      <li>Use the <code class="language-plaintext highlighter-rouge">@TestOn</code> annotation to restrict tests to run on
+specific environments.</li>
+      <li>Write asynchronous tests just as you would write synchronous
+tests.</li>
+      <li>Tag tests using the <code class="language-plaintext highlighter-rouge">@Tag</code> annotation. For example, define a tag to
+create a custom configuration for some tests, or to identify some tests
+as needing more time to complete.</li>
+      <li>Create a <code class="language-plaintext highlighter-rouge">dart_test.yaml</code> file to configure tagged tests across
+multiple files or an entire package.</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://pub.dev/packages/mockito">package:mockito</a><br>
+Provides a way to create
+<a href="https://en.wikipedia.org/wiki/Mock_object">mock objects,</a>
+easily configured for use in fixed scenarios, and to verify
+that the system under test interacts with the mock object in
+expected ways.
+For an example that uses both package:test and package:mockito,
+see the <a href="https://github.com/dart-lang/mockito/tree/master/example/iss">International Space Station API library and its unit
+tests</a>
+in the <a href="https://github.com/dart-lang/mockito">mockito package</a>.</li>
+</ul>
+
+<h2 id="flutter-testing">
+<a class="anchor" href="#flutter-testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Flutter testing</h2>
+
+<p>Use the following resources to learn more about testing Flutter apps:</p>
+
+<ul>
+  <li>
+<a href="https://docs.flutter.dev/testing">Testing Flutter Apps</a><br>
+How to perform unit, widget, or integration tests on a Flutter app.</li>
+  <li>
+<a href="https://api.flutter.dev/flutter/flutter_test/flutter_test-library.html">flutter_test</a><br>
+A testing library for Flutter built on top of package:test.</li>
+  <li>
+<a href="https://api.flutter.dev/flutter/flutter_driver/flutter_driver-library.html">flutter_driver</a><br>
+A testing library for testing Flutter applications on real devices and
+emulators (in a separate process).</li>
+  <li>
+<a href="https://github.com/flutter/gallery">flutter_gallery</a><br>
+Source code and tests for the Flutter gallery example.</li>
+  <li>
+<a href="https://github.com/flutter/flutter/tree/master/dev/manual_tests">flutter/dev/manual_tests</a><br>
+Many examples of tests in the Flutter SDK.</li>
+</ul>
+
+<h2 id="other-tools-and-resources">
+<a class="anchor" href="#other-tools-and-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other tools and resources</h2>
+
+<p>You may also find the following resources useful for developing and
+debugging Dart applications.</p>
+
+<h3 id="ide">
+<a class="anchor" href="#ide" aria-hidden="true"><span class="octicon octicon-link"></span></a>IDE</h3>
+
+<p>When it comes to debugging, your first line of defense is your IDE.
+Dart plugins exist for many <a href="/tools/#ides-and-editors">commonly used IDEs</a>.</p>
+
+<h3 id="dart-devtools">
+<a class="anchor" href="#dart-devtools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dart DevTools</h3>
+
+<p>Dart DevTools is a suite of performance tools for Dart and Flutter.
+For details, see the
+<a href="/tools/dart-devtools/">Dart DevTools documentation.</a></p>
+
+<h3 id="continuous-integration">
+<a class="anchor" href="#continuous-integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Continuous integration</h3>
+
+<p>Consider using continuous integration (CI) to build your project
+and run its tests after every commit. Two CI services for GitHub are
+<a href="https://github.com/features/actions">GitHub Actions</a> and
+<a href="https://www.appveyor.com/">AppVeyor</a>.</p>
+
+<p>Learn more about GitHub Actions:</p>
+
+<ul>
+  <li>
+<a href="https://poetryincode.dev/testing-dart-packages-with-github-actions">Testing Dart packages with GitHub Actions</a>
+demonstrates a simple workflow for using GitHub Actions to test
+a Flutter app or Dart package.</li>
+  <li>Many packages provided by the Dart team use GitHub Actions.
+For an example, see
+<a href="https://github.com/dart-lang/markdown/blob/master/.github/workflows/test-package.yml"><code class="language-plaintext highlighter-rouge">test-package.yml</code></a> in the markdown package’s repo.
+To see how that repo migrated from Travis CI to GitHub Actions,
+look at <a href="https://github.com/dart-lang/markdown/pull/353">PR #353</a>.</li>
+</ul>
+
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>

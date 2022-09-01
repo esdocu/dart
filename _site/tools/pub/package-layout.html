@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="Learn more about the directory structure used by Dart's package management tool, pub.">
+  <title>Package layout conventions | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="Package layout conventions" />
+  <meta name="twitter:description" content="Learn more about the directory structure used by Dart's package management tool, pub." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Package layout conventions" />
+  <meta property="og:description" content="Learn more about the directory structure used by Dart's package management tool, pub." />
+  <meta property="og:url" content="https://dart.esdocu.com/tools/pub/package-layout.html" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+         active">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link active">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="false" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="false" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="true" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link active collapsable"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="true" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="false" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#the-pubspec">The pubspec</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#license">LICENSE</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#readmemd">README.md</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#changelogmd">CHANGELOG.md</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#public-directories">Public directories</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#public-libraries">Public libraries</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#public-tools">Public tools</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#public-assets">Public assets</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#implementation-files">Implementation files</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#web-files">Web files</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#command-line-apps">Command-line apps</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#tests-and-benchmarks">Tests and benchmarks</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#examples">Examples</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#internal-tools-and-scripts">Internal tools and scripts</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#project-specific-caching-for-tools">Project-specific caching for tools</a></li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/tools/pub/package-layout.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Package layout conventions'&page-url=https://dart.esdocu.com/tools/pub/package-layout.html&page-source=https://github.com/dart-lang/site-www/tree/main/src/tools/pub/package-layout.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>Package layout conventions</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc toc-collapsible toc-collapsed">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+      <span class="site-toc--inline__toggle toc-toggle-down"><i class="material-icons">keyboard_arrow_down</i></span>
+      <span class="site-toc--inline__toggle toc-toggle-up"><i class="material-icons">keyboard_arrow_up</i></span>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#the-pubspec">The pubspec</a></li>
+<li class="toc-entry toc-h2"><a href="#license">LICENSE</a></li>
+<li class="toc-entry toc-h2"><a href="#readmemd">README.md</a></li>
+<li class="toc-entry toc-h2"><a href="#changelogmd">CHANGELOG.md</a></li>
+<li class="toc-entry toc-h2"><a href="#public-directories">Public directories</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#public-libraries">Public libraries</a></li>
+<li class="toc-entry toc-h3"><a href="#public-tools">Public tools</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#public-assets">Public assets</a></li>
+<li class="toc-entry toc-h2"><a href="#implementation-files">Implementation files</a></li>
+<li class="toc-entry toc-h2"><a href="#web-files">Web files</a></li>
+<li class="toc-entry toc-h2"><a href="#command-line-apps">Command-line apps</a></li>
+<li class="toc-entry toc-h2"><a href="#tests-and-benchmarks">Tests and benchmarks</a></li>
+<li class="toc-entry toc-h2"><a href="#documentation">Documentation</a></li>
+<li class="toc-entry toc-h2"><a href="#examples">Examples</a></li>
+<li class="toc-entry toc-h2"><a href="#internal-tools-and-scripts">Internal tools and scripts</a></li>
+<li class="toc-entry toc-h2"><a href="#project-specific-caching-for-tools">Project-specific caching for tools</a></li>
+</ul>
+</div>
+
+
+          <p>When you build a <a href="/guides/packages">pub package</a>,
+we encourage you to follow the conventions that this page describes.
+They describe how you organize the files and directories within your
+package, and how to name things.</p>
+
+<aside class="alert alert-info"><div class="alert-with-image">
+  <img src="/assets/img/shared/flutter/logo/default.svg" alt="Flutter">
+  <div>
+      <p><strong>Note:</strong>
+  Flutter apps can use custom directories for their assets.
+  For details, see
+  <a href="https://docs.flutter.dev/development/ui/assets-and-images">Adding assets and images</a>
+  on the <a href="https://flutter.dev">Flutter website.</a></p>
+    </div>
+</div></aside>
+
+<p>Here’s what a complete package (named <code class="language-plaintext highlighter-rouge">enchilada</code>)
+that uses every corner of these guidelines
+might look like:</p>
+
+<pre><code>enchilada/
+  .dart_tool/ *
+  pubspec.yaml
+  pubspec.lock **
+  LICENSE
+  README.md
+  CHANGELOG.md
+  benchmark/
+    make_lunch.dart
+  bin/
+    enchilada
+  doc/
+    api/ ***
+    getting_started.md
+  example/
+    main.dart
+  lib/
+    enchilada.dart
+    tortilla.dart
+    guacamole.css
+    src/
+      beans.dart
+      queso.dart
+  test/
+    enchilada_test.dart
+    tortilla_test.dart
+  tool/
+    generate_docs.dart
+  web/
+    index.html
+    main.dart
+    style.css</code></pre>
+
+<p>* The <code class="language-plaintext highlighter-rouge">.dart_tool/</code> directory exists after you’ve run <code class="language-plaintext highlighter-rouge">dart pub get</code>.
+   Don’t check it into source control.
+   To learn more, see 
+   <a href="#project-specific-caching-for-tools">Project specific caching for tools</a>.</p>
+
+<p>** The <code class="language-plaintext highlighter-rouge">pubspec.lock</code> file exists after you’ve run <code class="language-plaintext highlighter-rouge">dart pub get</code>.
+    Leave it out of source control unless your package is an
+    <a href="/tools/pub/glossary#application-package">application package</a>.</p>
+
+<p>*** The <code class="language-plaintext highlighter-rouge">doc/api</code> directory exists locally after you’ve run
+     <a href="/tools/dart-doc"><code class="language-plaintext highlighter-rouge">dart doc</code></a>.
+     Don’t check the <code class="language-plaintext highlighter-rouge">api</code> directory into source control.</p>
+
+<h2 id="the-pubspec">
+<a class="anchor" href="#the-pubspec" aria-hidden="true"><span class="octicon octicon-link"></span></a>The pubspec</h2>
+
+<pre><code>enchilada/
+  pubspec.yaml
+  pubspec.lock</code></pre>
+
+<p>Every package has a <a href="/tools/pub/pubspec"><em>pubspec</em></a>, a file named
+<code class="language-plaintext highlighter-rouge">pubspec.yaml</code>, in the root directory of the package. That’s what <em>makes</em> it a
+package.</p>
+
+<p>Running <a href="/tools/pub/cmd/pub-get"><code class="language-plaintext highlighter-rouge">dart pub get</code></a>,
+<a href="/tools/pub/cmd/pub-upgrade"><code class="language-plaintext highlighter-rouge">dart pub upgrade</code></a>, or
+<a href="/tools/pub/cmd/pub-downgrade"><code class="language-plaintext highlighter-rouge">dart pub downgrade</code></a> on the package
+creates a <strong>lockfile</strong>, named <code class="language-plaintext highlighter-rouge">pubspec.lock</code>. 
+If your package is an 
+<a href="/tools/pub/glossary#application-package">application package</a>, 
+check the lockfile into source control. Otherwise, don’t.</p>
+
+<p>For more information, see the <a href="/tools/pub/pubspec">pubspec page</a>.</p>
+
+<h2 id="license">
+<a class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+
+<pre><code>enchilada/
+  LICENSE</code></pre>
+
+<p>If you’re publishing your package, include a license file named <code class="language-plaintext highlighter-rouge">LICENSE</code>.
+We recommend using an <a href="https://opensource.org/licenses">OSI-approved license</a>
+such as <a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause,</a>
+so that others can reuse your work.</p>
+
+<h2 id="readmemd">
+<a class="anchor" href="#readmemd" aria-hidden="true"><span class="octicon octicon-link"></span></a>README.md</h2>
+
+<pre><code>enchilada/
+  README.md</code></pre>
+
+<p>One file that’s very common in open source is a <em>README</em> file that
+describes the project. This is especially important in pub. When you upload
+to the <a href="https://pub.dev">pub.dev site,</a> your <code class="language-plaintext highlighter-rouge">README.md</code> file
+is shown—rendered as <a href="https://pub.dev/packages/markdown">Markdown</a>—on the page for your package. 
+This is the perfect place to introduce people to your code.</p>
+
+<p>For guidance on how to write a great README, see
+<a href="/guides/libraries/writing-package-pages">Writing package pages</a>.</p>
+
+<h2 id="changelogmd">
+<a class="anchor" href="#changelogmd" aria-hidden="true"><span class="octicon octicon-link"></span></a>CHANGELOG.md</h2>
+
+<pre><code>enchilada/
+  CHANGELOG.md</code></pre>
+
+<p>Include a <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code> file that has a section for
+each release of your package,
+with notes to help users of your package upgrade.
+Users of your package often review the changelog
+to discover bug fixes and new features,
+or to determine how much effort it will take to upgrade
+to the latest version of your package.</p>
+
+<p>To support tools that parse <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code>,
+use the following format:</p>
+
+<ul>
+  <li>Each version has its own section with a heading.</li>
+  <li>The version headings are either all level 1 or all level 2.</li>
+  <li>The version heading text contains a package version number,
+optionally prefixed with “v”.</li>
+</ul>
+
+<p>When you upload your package to the <a href="https://pub.dev">pub.dev site,</a>
+your package’s <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code> file (if any)
+appears in the <strong>Changelog</strong> tab, rendered as <a href="https://pub.dev/packages/markdown">Markdown.</a></p>
+
+<p>Here’s an example of a <code class="language-plaintext highlighter-rouge">CHANGELOG.md</code> file.
+As the example shows, you can add subsections.</p>
+
+<pre class="prettyprint lang-markdown"><code># 1.0.1
+
+* Fixed missing exclamation mark in `sayHi()` method.
+
+# 1.0.0
+
+* **Breaking change:** Removed deprecated `sayHello()` method.
+* Initial stable release.
+
+## Upgrading from 0.1.x
+
+Change all calls to `sayHello()` to instead be to `sayHi()`.
+
+# 0.1.1
+
+* Deprecated the `sayHello()` method; use `sayHi()` instead.
+
+# 0.1.0
+
+* Initial development release.</code></pre>
+
+<h2 id="public-directories">
+<a class="anchor" href="#public-directories" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public directories</h2>
+
+<p>Two directories in your package are public to other packages: <code class="language-plaintext highlighter-rouge">lib</code> and
+<code class="language-plaintext highlighter-rouge">bin</code>. You place <a href="#public-libraries">public libraries</a> in <code class="language-plaintext highlighter-rouge">lib</code> and
+<a href="#public-tools">public tools</a> in <code class="language-plaintext highlighter-rouge">bin</code>.</p>
+
+<h3 id="public-libraries">
+<a class="anchor" href="#public-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public libraries</h3>
+
+<p>The following directory structure shows the <code class="language-plaintext highlighter-rouge">lib</code> portion of enchilada:</p>
+
+<pre><code>enchilada/
+  lib/
+    enchilada.dart
+    tortilla.dart</code></pre>
+
+<p>Many packages are <a href="/tools/pub/glossary#library-package"><em>library
+packages</em></a>: they
+define Dart libraries that other packages can import and use.
+These public Dart library files go inside a directory called <code class="language-plaintext highlighter-rouge">lib</code>.</p>
+
+<p>Most packages define a single library that users can import. In that case,
+its name should usually be the same as the name of the package, like
+<code class="language-plaintext highlighter-rouge">enchilada.dart</code> in the example here. But you can also define other
+libraries with whatever names make sense for your package.</p>
+
+<p>When you do, users can import these libraries using the name of the
+package and the library file, like so:</p>
+
+<pre class="prettyprint lang-dart"><code>import 'package:enchilada/enchilada.dart';
+import 'package:enchilada/tortilla.dart';</code></pre>
+
+<p>If you want to organize your public libraries, you can also create
+subdirectories inside <code class="language-plaintext highlighter-rouge">lib</code>. If you do that, users will specify that path
+when they import it. Say you have the following file hierarchy:</p>
+
+<pre><code>enchilada/
+  lib/
+    some/
+      path/
+        olives.dart</code></pre>
+
+<p>Users import <code class="language-plaintext highlighter-rouge">olives.dart</code> as follows:</p>
+
+<pre class="prettyprint lang-dart"><code>import 'package:enchilada/some/path/olives.dart';</code></pre>
+
+<p>Note that only <em>libraries</em> should be in <code class="language-plaintext highlighter-rouge">lib</code>.
+<em>Entrypoints</em>—Dart scripts with a <code class="language-plaintext highlighter-rouge">main()</code> function—cannot
+go in <code class="language-plaintext highlighter-rouge">lib</code>. If you place a Dart script inside <code class="language-plaintext highlighter-rouge">lib</code>,
+you will discover that any <code class="language-plaintext highlighter-rouge">package:</code> imports it contains don’t
+resolve. Instead, your entrypoints should go in the appropriate
+<a href="/tools/pub/glossary#entrypoint-directory">entrypoint directory</a>.</p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i>
+  <strong>Tip for web apps:</strong>
+  For the best performance when developing with
+  <a href="/tools/dartdevc">dartdevc,</a>
+  put <a href="#implementation-files">implementation files</a> under <code class="language-plaintext highlighter-rouge">/lib/src</code>,
+  instead of elsewhere under <code class="language-plaintext highlighter-rouge">/lib</code>.
+  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.</p>
+</aside>
+
+<p>For more information on library packages, see
+<a href="/guides/libraries/create-library-packages">Creating packages</a>.</p>
+
+<h3 id="public-tools">
+<a class="anchor" href="#public-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public tools</h3>
+
+<p>Dart scripts placed inside of the <code class="language-plaintext highlighter-rouge">bin</code> directory are public. If you’re
+inside the directory of a package, you can use
+<a href="/tools/dart-run"><code class="language-plaintext highlighter-rouge">dart run</code></a> to run scripts from the <code class="language-plaintext highlighter-rouge">bin</code>
+directories of any other package the package depends on. From <em>any</em>
+directory, you can <a href="/tools/pub/cmd/pub-global#running-a-script">run scripts</a>
+from packages that you have activated using
+<a href="/tools/pub/cmd/pub-global#activating-a-package"><code class="language-plaintext highlighter-rouge">dart pub global activate</code></a>.</p>
+
+<p>If you intend for your package to be depended on,
+and you want your scripts to be private to your package, place them
+in the top-level <code class="language-plaintext highlighter-rouge">tool</code> directory.
+If you don’t intend for your package to be depended on, you can leave your
+scripts in <code class="language-plaintext highlighter-rouge">bin</code>.</p>
+
+<h2 id="public-assets">
+<a class="anchor" href="#public-assets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Public assets</h2>
+
+<pre><code>enchilada/
+  lib/
+    guacamole.css</code></pre>
+
+<p>While most library packages exist to let you reuse Dart code, you can also
+reuse other kinds of content. For example, a package for
+<a href="https://getbootstrap.com/">Bootstrap</a> might include a number of CSS files
+for consumers of the package to use.</p>
+
+<p>These go in the top-level <code class="language-plaintext highlighter-rouge">lib</code> directory. You can put any kind of file
+in there and organize it with subdirectories however you like.</p>
+
+<aside class="alert alert-warning" role="alert">
+  <p><i class="fas fa-exclamation-triangle"></i> <strong>Warning:</strong>
+  Old code might refer to assets using <code class="language-plaintext highlighter-rouge">/packages/&lt;package&gt;/&lt;path&gt;</code> URLs.</p>
+</aside>
+
+<h2 id="implementation-files">
+<a class="anchor" href="#implementation-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation files</h2>
+
+<pre><code>enchilada/
+  lib/
+    src/
+      beans.dart
+      queso.dart</code></pre>
+
+<p>The libraries inside <code class="language-plaintext highlighter-rouge">lib</code> are publicly visible: other packages are free to
+import them. But much of a package’s code is internal implementation libraries
+that should only be imported and used by the package itself. Those go inside a
+subdirectory of <code class="language-plaintext highlighter-rouge">lib</code> called <code class="language-plaintext highlighter-rouge">src</code>. You can create subdirectories in there if
+it helps you organize things.</p>
+
+<p>You are free to import libraries that live in <code class="language-plaintext highlighter-rouge">lib/src</code> from within other Dart
+code in the <em>same</em> package (like other libraries in <code class="language-plaintext highlighter-rouge">lib</code>, scripts in <code class="language-plaintext highlighter-rouge">bin</code>, and
+tests) but you should never import from another package’s <code class="language-plaintext highlighter-rouge">lib/src</code> directory.
+Those files are not part of the package’s public API, and they might change in
+ways that could break your code.</p>
+
+<p>How you import libraries from within your own package
+depends on the locations of the libraries:</p>
+
+<ul>
+  <li>When <a href="/guides/language/effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib">reaching inside or outside <code class="language-plaintext highlighter-rouge">lib/</code></a>
+(lint: <a href="/tools/linter-rules#avoid_relative_lib_imports"><em>avoid_relative_lib_imports</em></a>),
+use <code class="language-plaintext highlighter-rouge">package:</code>.</li>
+  <li>Otherwise, <a href="/guides/language/effective-dart/usage#prefer-relative-import-paths">prefer relative imports</a>.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre class="prettyprint lang-dart"><code>// When importing from lib/beans.dart
+import 'src/beans.dart';
+
+// When importing from test/beans_test.dart
+import 'package:enchilada/src/beans.dart';</code></pre>
+
+<p>The name you use here (in this case <code class="language-plaintext highlighter-rouge">enchilada</code>) is the name you specify for
+your package in its <a href="/tools/pub/pubspec">pubspec</a>.</p>
+
+<h2 id="web-files">
+<a class="anchor" href="#web-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web files</h2>
+
+<pre><code>enchilada/
+  web/
+    index.html
+    main.dart
+    style.css</code></pre>
+
+<p>For web packages, place entrypoint code—Dart scripts that include
+<code class="language-plaintext highlighter-rouge">main()</code> and supporting files, such as CSS or HTML—under <code class="language-plaintext highlighter-rouge">web</code>.
+You can organize the <code class="language-plaintext highlighter-rouge">web</code> directory into subdirectories if you like.</p>
+
+<p>Put <a href="#public-libraries">library code</a> under <code class="language-plaintext highlighter-rouge">lib</code>.
+If the library isn’t imported directly by code under <code class="language-plaintext highlighter-rouge">web</code>, or by
+another package, put it under <code class="language-plaintext highlighter-rouge">lib/src</code>.
+Put <a href="#examples">web-based examples</a> under <code class="language-plaintext highlighter-rouge">example</code>. See
+<a href="#public-assets">Public assets</a> for tips on where to put assets,
+such as images.</p>
+
+<h2 id="command-line-apps">
+<a class="anchor" href="#command-line-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Command-line apps</h2>
+
+<pre><code>enchilada/
+  bin/
+    enchilada</code></pre>
+
+<p>Some packages define programs that can be run directly from the command
+line. These can be shell scripts or any other scripting language,
+including Dart.</p>
+
+<p>If your package defines code like this, put it in a directory named <code class="language-plaintext highlighter-rouge">bin</code>.
+You can run that script from anywhere on the command line, if you set it up
+using
+<a href="/tools/pub/cmd/pub-global#running-a-script-from-your-path"><code class="language-plaintext highlighter-rouge">dart pub global</code></a>.</p>
+
+<h2 id="tests-and-benchmarks">
+<a class="anchor" href="#tests-and-benchmarks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tests and benchmarks</h2>
+
+<pre><code>enchilada/
+  test/
+    enchilada_test.dart
+    tortilla_test.dart</code></pre>
+
+<p>Every package should have tests. With pub, the convention is
+that these go in a <code class="language-plaintext highlighter-rouge">test</code> directory (or some directory inside it if you like)
+and have <code class="language-plaintext highlighter-rouge">_test</code> at the end of their file names.</p>
+
+<p>Typically, these use the <a href="https://pub.dev/packages/test">test</a>
+package.</p>
+
+<pre><code>enchilada/
+  benchmark/
+    make_lunch.dart</code></pre>
+
+<p>Packages that have performance critical code may also include <em>benchmarks</em>.
+These test the API not for correctness but for speed (or memory use, or maybe
+other empirical metrics).</p>
+
+<h2 id="documentation">
+<a class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+
+<pre><code>enchilada/
+  doc/
+    api/
+    getting_started.md</code></pre>
+
+<p>If you’ve got code and tests, the next piece you might want
+is good documentation. That goes inside a directory named <code class="language-plaintext highlighter-rouge">doc</code>.</p>
+
+<p>When you run the <a href="/tools/dart-doc"><code class="language-plaintext highlighter-rouge">dart doc</code></a>
+tool, it places the API documentation, by default, under <code class="language-plaintext highlighter-rouge">doc/api</code>.
+Since the API documentation is generated from the source code,
+you should not place it under source control.</p>
+
+<p>Other than the generated <code class="language-plaintext highlighter-rouge">api</code>, we don’t
+have any guidelines about format or organization of the documentation
+that you author.  Use whatever markup format that you prefer.</p>
+
+<h2 id="examples">
+<a class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<pre><code>enchilada/
+  example/
+    main.dart</code></pre>
+
+<p>Code, tests, docs, what else
+could your users want? Standalone example programs that use your package, of
+course! Those go inside the <code class="language-plaintext highlighter-rouge">example</code> directory. If the examples are complex
+and use multiple files, consider making a directory for each example. Otherwise,
+you can place each one right inside <code class="language-plaintext highlighter-rouge">example</code>.</p>
+
+<p>In your examples, use <code class="language-plaintext highlighter-rouge">package:</code> to import files from your own package.
+That ensures that the example code in your package looks exactly
+like code outside of your package would look.</p>
+
+<p>If you might publish your package,
+consider creating an example file with one of the following names
+(case insensitive):</p>
+
+<ul>
+  <li><code>example/example[.md]</code></li>
+  <li><code>example[/lib]/main.dart</code></li>
+  <li><code>example[/lib]/<em>package_name</em>.dart</code></li>
+  <li><code>example[/lib]/<em>package_name</em>_example.dart</code></li>
+  <li><code>example[/lib]/example.dart</code></li>
+  <li><code>example/readme[.md]</code></li>
+</ul>
+
+<p>When you publish a package that contains one or more of the above files,
+the pub.dev site creates an <strong>Example</strong> tab to display the first file it finds
+(searching in the order shown in the list above).
+For example, if your package has many files under its <code class="language-plaintext highlighter-rouge">example</code> directory,
+including a file named <code class="language-plaintext highlighter-rouge">README.md</code>,
+then your package’s Example tab displays the contents of <code class="language-plaintext highlighter-rouge">example/README.md</code>
+(parsed as <a href="https://pub.dev/packages/markdown">Markdown.)</a></p>
+
+<h2 id="internal-tools-and-scripts">
+<a class="anchor" href="#internal-tools-and-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internal tools and scripts</h2>
+
+<pre><code>enchilada/
+  tool/
+    generate_docs.dart</code></pre>
+
+<p>Mature packages often have little helper scripts and programs that people
+run while developing the package itself. Think things like test runners,
+documentation generators, or other bits of automation.</p>
+
+<p>Unlike the scripts in <code class="language-plaintext highlighter-rouge">bin</code>, these are <em>not</em> for external users of the package.
+If you have any of these, place them in a directory called <code class="language-plaintext highlighter-rouge">tool</code>.</p>
+
+<h2 id="project-specific-caching-for-tools">
+<a class="anchor" href="#project-specific-caching-for-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project-specific caching for tools</h2>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i>
+  Do not check the <code class="language-plaintext highlighter-rouge">.dart_tool/</code> directory into source control.
+  Instead, keep <code class="language-plaintext highlighter-rouge">.dart_tool/</code> in <code class="language-plaintext highlighter-rouge">.gitignore</code>.</p>
+</aside>
+
+<p>The <code class="language-plaintext highlighter-rouge">.dart_tool/</code> directory is created when you run <code class="language-plaintext highlighter-rouge">dart pub get</code>
+and might be deleted at any time. Various tools use this directory
+for caching files specific to your project and/or local machine.
+The <code class="language-plaintext highlighter-rouge">.dart_tool/</code> directory should never be checked into
+source control, or copied between machines.</p>
+
+<p>It is also generally safe to delete the <code class="language-plaintext highlighter-rouge">.dart_tool/</code> directory,
+though some tools might need recompute the cached information.</p>
+
+<p><strong>Example:</strong> The <a href="https://dart.dev/tools/pub/cmd/pub-get">dart pub get</a> tool
+will dowload and extract dependencies to a global <code class="language-plaintext highlighter-rouge">$PUB_CACHE</code> directory,
+and then write a <code class="language-plaintext highlighter-rouge">.dart_tool/package_config.json</code> file mapping <em>package names</em>
+to directories in the global <code class="language-plaintext highlighter-rouge">$PUB_CACHE</code> directory.
+The <code class="language-plaintext highlighter-rouge">.dart_tool/package_config.json</code> file is used by other tools,
+such as analyzer, compiler, etc, when they need to resolve statments
+such as <code class="language-plaintext highlighter-rouge">import "package:foo/foo.dart"</code>.</p>
+
+<p>When developing a tool that needs project-specific caching, 
+you might consider using the <code class="language-plaintext highlighter-rouge">.dart_tool/</code> directory 
+because most users already ignore it with <code class="language-plaintext highlighter-rouge">.gitignore</code>.
+When caching files for your tool in a user’s <code class="language-plaintext highlighter-rouge">.dart_tool/</code> directory,
+you should use a unique subdirectory. To avoid collisions,
+subdirectories of the form <code class="language-plaintext highlighter-rouge">.dart_tool/&lt;tool_package_name&gt;/</code>
+are reserved for the package named <code class="language-plaintext highlighter-rouge">&lt;tool_package_name&gt;</code>.
+If your tool isn’t distributed through the <a href="https://pub.dev">pub.dev site,</a>
+you might consider publishing a placeholder package in order to 
+reserve the unique name.</p>
+
+<p><strong>Example:</strong> <a href="https://pub.dev/packages/build"><code class="language-plaintext highlighter-rouge">package:build</code></a> provides a
+framework for writing code generation steps.
+When running these build steps, files are cached in <code class="language-plaintext highlighter-rouge">.dart_tool/build/</code>.
+This helps speed-up future re-runs of the build steps.</p>
+
+<aside class="alert alert-warning" role="alert">
+  <p><i class="fas fa-exclamation-triangle"></i> <strong>Warning:</strong>
+  When developing a tool that wants to cache files in <code class="language-plaintext highlighter-rouge">.dart_tool/</code>,
+  ensure the following:</p>
+
+  <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>* You are using a subdirectory named after a package you own
+   (`.dart_tool/&lt;my_tool_package_name&gt;/`)
+* Your files don't belong under source control, 
+   as `.dart_tools` is generally listed in `.gitignore`
+</code></pre></div>  </div>
+</aside>
+
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>

@@ -1,0 +1,2944 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="Interactively learn (or relearn) some of Dart's unique features.">
+  <title>Dart cheatsheet codelab | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="Dart cheatsheet codelab" />
+  <meta name="twitter:description" content="Interactively learn (or relearn) some of Dart's unique features." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dart cheatsheet codelab" />
+  <meta property="og:description" content="Interactively learn (or relearn) some of Dart's unique features." />
+  <meta property="og:url" content="https://dart.esdocu.com/codelabs/dart-cheatsheet.html" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script defer src="https://dartpad.dev/inject_embed.dart.js"></script>
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+         active">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link active">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="true" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link active collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="false" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="false" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="false" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#string-interpolation">String interpolation</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#nullable-variables">Nullable variables</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#null-aware-operators">Null-aware operators</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#conditional-property-access">Conditional property access</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#collection-literals">Collection literals</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#arrow-syntax">Arrow syntax</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#cascades">Cascades</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#getters-and-setters">Getters and setters</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#optional-positional-parameters">Optional positional parameters</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#named-parameters">Named parameters</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#using-this-in-a-constructor">Using this in a constructor</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#initializer-lists">Initializer lists</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#named-constructors">Named constructors</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#factory-constructors">Factory constructors</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#redirecting-constructors">Redirecting constructors</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#const-constructors">Const constructors</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#what-next">What next?</a></li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/codelabs/dart-cheatsheet.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Dart cheatsheet codelab'&page-url=https://dart.esdocu.com/codelabs/dart-cheatsheet.html&page-source=https://github.com/dart-lang/site-www/tree/main/src/codelabs/dart-cheatsheet.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>Dart cheatsheet codelab</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc toc-collapsible toc-collapsed">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+      <span class="site-toc--inline__toggle toc-toggle-down"><i class="material-icons">keyboard_arrow_down</i></span>
+      <span class="site-toc--inline__toggle toc-toggle-up"><i class="material-icons">keyboard_arrow_up</i></span>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#string-interpolation">String interpolation</a></li>
+<li class="toc-entry toc-h2"><a href="#nullable-variables">Nullable variables</a></li>
+<li class="toc-entry toc-h2"><a href="#null-aware-operators">Null-aware operators</a></li>
+<li class="toc-entry toc-h2"><a href="#conditional-property-access">Conditional property access</a></li>
+<li class="toc-entry toc-h2"><a href="#collection-literals">Collection literals</a></li>
+<li class="toc-entry toc-h2"><a href="#arrow-syntax">Arrow syntax</a></li>
+<li class="toc-entry toc-h2"><a href="#cascades">Cascades</a></li>
+<li class="toc-entry toc-h2"><a href="#getters-and-setters">Getters and setters</a></li>
+<li class="toc-entry toc-h2"><a href="#optional-positional-parameters">Optional positional parameters</a></li>
+<li class="toc-entry toc-h2"><a href="#named-parameters">Named parameters</a></li>
+<li class="toc-entry toc-h2"><a href="#exceptions">Exceptions</a></li>
+<li class="toc-entry toc-h2"><a href="#using-this-in-a-constructor">Using this in a constructor</a></li>
+<li class="toc-entry toc-h2"><a href="#initializer-lists">Initializer lists</a></li>
+<li class="toc-entry toc-h2"><a href="#named-constructors">Named constructors</a></li>
+<li class="toc-entry toc-h2"><a href="#factory-constructors">Factory constructors</a></li>
+<li class="toc-entry toc-h2"><a href="#redirecting-constructors">Redirecting constructors</a></li>
+<li class="toc-entry toc-h2"><a href="#const-constructors">Const constructors</a></li>
+<li class="toc-entry toc-h2"><a href="#what-next">What next?</a></li>
+</ul>
+</div>
+
+
+          
+<p>The Dart language is designed to be easy to learn for
+coders coming from other languages,
+but it has a few unique features.
+This codelab—which is based on a
+<a href="/guides/language/cheatsheet">Dart language cheatsheet</a>
+written by and for Google engineers—walks you through
+the most important of these language features.</p>
+
+<p>The embedded editors in this codelab have partially completed code snippets.
+You can use these editors to test your knowledge by completing the code and
+clicking the <strong>Run</strong> button.
+If you need help, click the <strong>Hint</strong> button.
+To run the code formatter (<a href="/tools/dart-format">dart format</a>), click <strong>Format</strong>.
+The <strong>Reset</strong> button erases your work and
+restores the editor to its original state.</p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  This page uses embedded DartPads to display runnable examples.
+  If you see empty boxes instead of DartPads, go to the
+<a href="/tools/dartpad/troubleshoot">DartPad troubleshooting page</a>.</p>
+
+</aside>
+
+<h2 id="string-interpolation">
+<a class="anchor" href="#string-interpolation" aria-hidden="true"><span class="octicon octicon-link"></span></a>String interpolation</h2>
+
+<p>To put the value of an expression inside a string, use <code class="language-plaintext highlighter-rouge">${expression}</code>.
+If the expression is an identifier, you can omit the <code class="language-plaintext highlighter-rouge">{}</code>.</p>
+
+<p>Here are some examples of using string interpolation:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>String</th>
+      <th> </th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">'${3 + 2}'</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">'5'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">'${"word".toUpperCase()}'</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">'WORD'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">'$myObject'</code></td>
+      <td> </td>
+      <td>The value of <code class="language-plaintext highlighter-rouge">myObject.toString()</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="no_toc" id="code-example">Code example</h3>
+
+<p>The following function takes two integers as parameters.
+Make it return a string containing both integers separated by a space.
+For example, <code class="language-plaintext highlighter-rouge">stringify(2, 3)</code> should return <code class="language-plaintext highlighter-rouge">'2 3'</code>.</p>
+
+<pre><code class="language-dart:run-dartpad:ga_id-string_interpolation">{$ begin main.dart $}
+String stringify(int x, int y) {
+  TODO('Return a formatted string here');
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String stringify(int x, int y) {
+  return '$x $y';
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+
+void main() {
+  try {
+    final str = stringify(2, 3); 
+
+    if (str == '2 3') {
+      _result(true);
+    } else if (str == '23') {
+      _result(false, ['Test failed. It looks like you forgot the space!']);
+    } else {
+      _result(false, ['That\'s not quite right. Keep trying!']);
+    }
+  } on UnimplementedError {
+    _result(false, ['Test failed. Did you implement the method?']);
+  } catch (e) {
+    _result(false, ['Tried calling stringify(2, 3), but received an exception: ${e.runtimeType}']);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Both x and y are simple values,
+and Dart's string interpolation will handle
+converting them to string representations.
+All you need to do is use the $ operator to
+reference them inside single quotes, with a space in between.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="nullable-variables">
+<a class="anchor" href="#nullable-variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nullable variables</h2>
+
+<p>Dart 2.12 introduced sound null safety,
+meaning that (when you <a href="/null-safety#enable-null-safety">enable null safety</a>)
+values can’t be null unless you say they can be.
+In other words, types are non-nullable by default.</p>
+
+<p>For example, consider the following code,
+which is <strong>invalid</strong> because (with null safety)
+a variable of type <code class="language-plaintext highlighter-rouge">int</code> can’t have the value <code class="language-plaintext highlighter-rouge">null</code>:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">int a = <span class="highlight">null</span>; // INVALID in null-safe Dart.</pre></div>
+</div>
+
+<p>When creating a variable in Dart 2.12 or higher,
+you can add <code class="language-plaintext highlighter-rouge">?</code> to the type to indicate
+that the variable can be <code class="language-plaintext highlighter-rouge">null</code>:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart"><span class="highlight">int?</span> a = null; // Valid in null-safe Dart.</pre></div>
+</div>
+
+<p>You can simplify that code a bit because, in all versions of Dart,
+<code class="language-plaintext highlighter-rouge">null</code> is the default value for uninitialized variables:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">int? a; // The initial value of a is null.</pre></div>
+</div>
+
+<p>For more information about null safety in Dart,
+read the <a href="/null-safety">sound null safety guide</a>.</p>
+
+<h3 class="no_toc" id="code-example-1">Code example</h3>
+
+<p>Try to declare two variables below:</p>
+<ul>
+  <li>A nullable <code class="language-plaintext highlighter-rouge">String</code> named <code class="language-plaintext highlighter-rouge">name</code> with the value <code class="language-plaintext highlighter-rouge">'Jane'</code>.</li>
+  <li>A nullable <code class="language-plaintext highlighter-rouge">String</code> named <code class="language-plaintext highlighter-rouge">address</code> with the value <code class="language-plaintext highlighter-rouge">null</code>.</li>
+</ul>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:ga_id-nullable_variables">{$ begin main.dart $}
+// Declare the two variables here
+{$ end main.dart $}
+{$ begin solution.dart $}
+String? name = 'Jane';
+String? address;
+{$ end solution.dart $}
+{$ begin test.dart $}
+
+void main() {
+  try {
+    if (name == 'Jane' &amp;&amp; address == null) {
+      // verify that "name" is nullable
+      name = null;
+      _result(true);
+    } else {
+      _result(false, ['That\'s not quite right. Keep trying!']);
+    }
+  } catch (e) {
+    _result(false, ['Tried calling stringify(2, 3), but received an exception: ${e.runtimeType}']);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Declare the two variables as "String" followed by "?".
+Then, assign "Jane" to "name"
+and leave "address" uninitialized.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="null-aware-operators">
+<a class="anchor" href="#null-aware-operators" aria-hidden="true"><span class="octicon octicon-link"></span></a>Null-aware operators</h2>
+
+<p>Dart offers some handy operators for dealing with values that might be null. One is the
+<code class="language-plaintext highlighter-rouge">??=</code> assignment operator, which assigns a value to a variable only if that
+variable is currently null:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">int? a; // = null
+a ??= 3;
+print(a); // &lt;-- Prints 3.
+
+a ??= 5;
+print(a); // &lt;-- Still prints 3.</pre></div>
+</div>
+
+<p>Another null-aware operator is <code class="language-plaintext highlighter-rouge">??</code>,
+which returns the expression on its left unless
+that expression’s value is null,
+in which case it evaluates and returns the expression on its right:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">print(1 ?? 3); // &lt;-- Prints 1.
+print(null ?? 12); // &lt;-- Prints 12.</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-2">Code example</h3>
+
+<p>Try substituting in the <code class="language-plaintext highlighter-rouge">??=</code> and <code class="language-plaintext highlighter-rouge">??</code> operators
+to implement the described behavior in the following snippet.</p>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:height-255px:ga_id-null_aware">{$ begin main.dart $}
+String? foo = 'a string';
+String? bar; // = null
+
+// Substitute an operator that makes 'a string' be assigned to baz.
+String? baz = foo /* TODO */ bar;
+
+void updateSomeVars() {
+  // Substitute an operator that makes 'a string' be assigned to bar.
+  bar /* TODO */ 'a string';
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String? foo = 'a string';
+String? bar; // = null
+
+// Substitute an operator that makes 'a string' be assigned to baz.
+String? baz = foo ?? bar;
+
+void updateSomeVars() {
+  // Substitute an operator that makes 'a string' be assigned to bar.
+  bar ??= 'a string';
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+  
+  try {
+    updateSomeVars();
+    
+    if (foo != 'a string') {
+      errs.add('Looks like foo somehow ended up with the wrong value.');
+    } else if (bar != 'a string') {
+      errs.add('Looks like bar ended up with the wrong value.');
+    } else if (baz != 'a string') {
+      errs.add('Looks like baz ended up with the wrong value.');
+    }
+  } catch (e) {
+    errs.add('Tried calling updateSomeVars and received an exception: ${e.runtimeType}.');
+  }
+  
+  if (errs.isEmpty) {
+   _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+All you need to do in this exercise is
+replace the TODO comments with either ?? or ??=.
+Read the codelab text to make sure you understand both,
+and then give it a try.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="conditional-property-access">
+<a class="anchor" href="#conditional-property-access" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conditional property access</h2>
+
+<p>To guard access to a property or method of an object that might be null,
+put a question mark (<code class="language-plaintext highlighter-rouge">?</code>) before the dot (<code class="language-plaintext highlighter-rouge">.</code>):</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">myObject?.someProperty</pre></div>
+</div>
+
+<p>The preceding code is equivalent to the following:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">(myObject != null) ? myObject.someProperty : null</pre></div>
+</div>
+
+<p>You can chain multiple uses of <code class="language-plaintext highlighter-rouge">?.</code> together in a single expression:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">myObject?.someProperty?.someMethod()</pre></div>
+</div>
+
+<p>The preceding code returns null (and never calls <code class="language-plaintext highlighter-rouge">someMethod()</code>) if either
+<code class="language-plaintext highlighter-rouge">myObject</code> or <code class="language-plaintext highlighter-rouge">myObject.someProperty</code> is
+null.</p>
+
+<h3 class="no_toc" id="code-example-3">Code example</h3>
+
+<p>Try using conditional property access to finish the code snippet below.</p>
+
+<pre><code class="language-dart:run-dartpad:ga_id-conditional-property_access">{$ begin main.dart $}
+// This method should return the uppercase version of `str`
+// or null if `str` is null.
+String? upperCaseIt(String? str) {
+  // Try conditionally accessing the `toUpperCase` method here.
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+// This method should return the uppercase version of `str`
+// or null if `str` is null.
+String? upperCaseIt(String? str) {
+  return str?.toUpperCase();
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+  
+  try {
+    String? one = upperCaseIt(null);
+
+    if (one != null) {
+      errs.add('Looks like you\'re not returning null for null inputs.');
+    }
+  } catch (e) {
+    errs.add('Tried calling upperCaseIt(null) and got an exception: ${e.runtimeType}.');
+  }
+  
+  try {
+    String? two = upperCaseIt('asdf');
+
+    if (two == null) {
+      errs.add('Looks like you\'re returning null even when str has a value.');
+    } else if (two != 'ASDF') {
+      errs.add('Tried upperCaseIt(\'asdf\'), but didn\'t get \'ASDF\' in response.');
+    }
+  } catch (e) {
+    errs.add('Tried calling upperCaseIt(\'asdf\') and got an exception: ${e.runtimeType}.');
+  }
+  
+  if (errs.isEmpty) {
+   _result(true);
+  } else {
+   _result(false, errs);
+  }  
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+If this exercise wanted you to conditionally lowercase a string,
+you could do it like this: str?.toLowerCase()
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="collection-literals">
+<a class="anchor" href="#collection-literals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collection literals</h2>
+
+<p>Dart has built-in support for lists, maps, and sets.
+You can create them using literals:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">final aListOfStrings = ['one', 'two', 'three'];
+final aSetOfStrings = {'one', 'two', 'three'};
+final aMapOfStringsToInts = {
+  'one': 1,
+  'two': 2,
+  'three': 3,
+};</pre></div>
+</div>
+
+<p>Dart’s type inference can assign types to these variables for you.
+In this case, the inferred types are <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code>,
+<code class="language-plaintext highlighter-rouge">Set&lt;String&gt;</code>, and <code class="language-plaintext highlighter-rouge">Map&lt;String, int&gt;</code>.</p>
+
+<p>Or you can specify the type yourself:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">final aListOfInts = &lt;int&gt;[];
+final aSetOfInts = &lt;int&gt;{};
+final aMapOfIntToDouble = &lt;int, double&gt;{};</pre></div>
+</div>
+
+<p>Specifying types is handy when you initialize a list with contents of a subtype,
+but still want the list to be <code class="language-plaintext highlighter-rouge">List&lt;BaseType&gt;</code>:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">final aListOfBaseType = &lt;BaseType&gt;[SubType(), SubType()];</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-4">Code example</h3>
+
+<p>Try setting the following variables to the indicated values. Replace the existing null values.</p>
+
+<pre><code class="language-dart:run-dartpad:height-400px:ga_id-collection_literals">{$ begin main.dart $}
+// Assign this a list containing 'a', 'b', and 'c' in that order:
+final aListOfStrings = null;
+
+// Assign this a set containing 3, 4, and 5:
+final aSetOfInts = null;
+
+// Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
+final aMapOfStringsToInts = null;
+
+// Assign this an empty List&lt;double&gt;:
+final anEmptyListOfDouble = null;
+
+// Assign this an empty Set&lt;String&gt;:
+final anEmptySetOfString = null;
+
+// Assign this an empty Map of double to int:
+final anEmptyMapOfDoublesToInts = null;
+{$ end main.dart $}
+{$ begin solution.dart $}
+// Assign this a list containing 'a', 'b', and 'c' in that order:
+final aListOfStrings = ['a', 'b', 'c'];
+
+// Assign this a set containing 3, 4, and 5:
+final aSetOfInts = {3, 4, 5};
+
+// Assign this a map of String to int so that aMapOfStringsToInts['myKey'] returns 12:
+final aMapOfStringsToInts = {'myKey': 12};
+
+// Assign this an empty List&lt;double&gt;:
+final anEmptyListOfDouble = &lt;double&gt;[];
+
+// Assign this an empty Set&lt;String&gt;:
+final anEmptySetOfString = &lt;String&gt;{};
+
+// Assign this an empty Map of double to int:
+final anEmptyMapOfDoublesToInts = &lt;double, int&gt;{};
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+  
+  if (aListOfStrings is! List&lt;String&gt;) {
+    errs.add('aListOfStrings should have the type List&lt;String&gt;.');
+  } else if (aListOfStrings.length != 3) {
+    errs.add('aListOfStrings has ${aListOfStrings.length} items in it, rather than the expected 3.');
+  } else if (aListOfStrings[0] != 'a' || aListOfStrings[1] != 'b' || aListOfStrings[2] != 'c') {
+    errs.add('aListOfStrings doesn\'t contain the correct values (\'a\', \'b\', \'c\').');
+  }
+
+  if (aSetOfInts is! Set&lt;int&gt;) {
+    errs.add('aSetOfInts should have the type Set&lt;int&gt;.');
+  } else if (aSetOfInts.length != 3) {
+    errs.add('aSetOfInts has ${aSetOfInts.length} items in it, rather than the expected 3.');
+  } else if (!aSetOfInts.contains(3) || !aSetOfInts.contains(4) || !aSetOfInts.contains(5)) {
+    errs.add('aSetOfInts doesn\'t contain the correct values (3, 4, 5).');
+  }
+
+  if (aMapOfStringsToInts is! Map&lt;String, int&gt;) {
+    errs.add('aMapOfStringsToInts should have the type Map&lt;String, int&gt;.');
+  } else if (aMapOfStringsToInts['myKey'] != 12) {
+    errs.add('aMapOfStringsToInts doesn\'t contain the correct values (\'myKey\': 12).');
+  }
+
+  if (anEmptyListOfDouble is! List&lt;double&gt;) {
+    errs.add('anEmptyListOfDouble should have the type List&lt;double&gt;.');
+  } else if (anEmptyListOfDouble.isNotEmpty) {
+    errs.add('anEmptyListOfDouble should be empty.');
+  }
+
+  if (anEmptySetOfString is! Set&lt;String&gt;) {
+    errs.add('anEmptySetOfString should have the type Set&lt;String&gt;.');
+  } else if (anEmptySetOfString.isNotEmpty) {
+    errs.add('anEmptySetOfString should be empty.');
+  }
+
+  if (anEmptyMapOfDoublesToInts is! Map&lt;double, int&gt;) {
+    errs.add('anEmptyMapOfDoublesToInts should have the type Map&lt;double, int&gt;.');
+  } else if (anEmptyMapOfDoublesToInts.isNotEmpty) {
+    errs.add('anEmptyMapOfDoublesToInts should be empty.');
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+This exercise is fairly straightforward.
+Just add a list, set, or map literal after each equals sign.
+See the codelab text for the correct syntax to use.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="arrow-syntax">
+<a class="anchor" href="#arrow-syntax" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrow syntax</h2>
+
+<p>You might have seen the <code class="language-plaintext highlighter-rouge">=&gt;</code> symbol in Dart code.
+This arrow syntax is a way to define a function that executes the
+expression to its right and returns its value.</p>
+
+<p>For example, consider this call to the <code class="language-plaintext highlighter-rouge">List</code> class’s
+<code class="language-plaintext highlighter-rouge">any()</code> method:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">bool hasEmpty = aListOfStrings.any((s) {
+  return s.isEmpty;
+});</pre></div>
+</div>
+
+<p>Here’s a simpler way to write that code:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">bool hasEmpty = aListOfStrings.any((s) =&gt; s.isEmpty);</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-5">Code example</h3>
+
+<p>Try finishing the following statements, which use arrow syntax.</p>
+
+<pre><code class="language-dart:run-dartpad:height-345px:ga_id-arrow_syntax">{$ begin main.dart $}
+class MyClass {
+  int value1 = 2;
+  int value2 = 3;
+  int value3 = 5;
+  
+  // Returns the product of the above values:
+  int get product =&gt; TODO();
+  
+  // Adds 1 to value1:
+  void incrementValue1() =&gt; TODO();
+  
+  // Returns a string containing each item in the
+  // list, separated by commas (e.g. 'a,b,c'): 
+  String joinWithCommas(List&lt;String&gt; strings) =&gt; TODO();
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class MyClass {
+  int value1 = 2;
+  int value2 = 3;
+  int value3 = 5;
+
+  // Returns the product of the above values:
+  int get product =&gt; value1 * value2 * value3;
+  
+  // Adds 1 to value1:
+  void incrementValue1() =&gt; value1++; 
+  
+  // Returns a string containing each item in the
+  // list, separated by commas (e.g. 'a,b,c'): 
+  String joinWithCommas(List&lt;String&gt; strings) =&gt; strings.join(',');
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final obj = MyClass();
+  final errs = &lt;String&gt;[];
+  
+  try {
+    final product = obj.product;
+    
+    if (product != 30) {
+      errs.add('The product property returned $product instead of the expected value (30).'); 
+    } 
+  } on UnimplementedError {
+    _result(false, ['Tried to use MyClass.product but failed. Did you implement the method?']);
+    return;
+  } catch (e) {
+    _result(false, ['Tried to use MyClass.product, but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    obj.incrementValue1();
+    
+    if (obj.value1 != 3) {
+      errs.add('After calling incrementValue, value1 was ${obj.value1} instead of the expected value (3).'); 
+    } 
+  } on UnimplementedError {
+    _result(false, ['Tried to use MyClass.incrementValue1 but failed. Did you implement the method?']);
+    return;
+  } catch (e) {
+    _result(false, ['Tried to use MyClass.incrementValue1, but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final joined = obj.joinWithCommas(['one', 'two', 'three']);
+    
+    if (joined != 'one,two,three') {
+      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) and received $joined instead of the expected value (\'one,two,three\').'); 
+    } 
+  } on UnimplementedError {
+    _result(false, ['Tried to use MyClass.joinWithCommas but failed. Did you implement the method?']);
+    return;
+  } catch (e) {
+    _result(false, ['Tried to use MyClass.joinWithCommas, but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+For the product, you can just multiply the three values together.
+For incrementValue1, you can use the increment operator (++).
+For joinWithCommas, try using the join method found in the List class.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="cascades">
+<a class="anchor" href="#cascades" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cascades</h2>
+
+<p>To perform a sequence of operations on the same object, use cascades (<code class="language-plaintext highlighter-rouge">..</code>).
+We’ve all seen an expression like this:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">myObject.someMethod()</pre></div>
+</div>
+
+<p>It invokes <code class="language-plaintext highlighter-rouge">someMethod()</code> on <code class="language-plaintext highlighter-rouge">myObject</code>, and the result of
+the expression is the return value of <code class="language-plaintext highlighter-rouge">someMethod()</code>.</p>
+
+<p>Here’s the same expression with a cascade:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">myObject..someMethod()</pre></div>
+</div>
+
+<p>Although it still invokes <code class="language-plaintext highlighter-rouge">someMethod()</code> on <code class="language-plaintext highlighter-rouge">myObject</code>, the result
+of the expression <strong>isn’t</strong> the return value—it’s a reference to <code class="language-plaintext highlighter-rouge">myObject</code>!</p>
+
+<p>Using cascades, you can chain together operations that
+would otherwise require separate statements.
+For example, consider the following code,
+which uses the conditional member access operator (<code class="language-plaintext highlighter-rouge">?.</code>)
+to read properties of <code class="language-plaintext highlighter-rouge">button</code> if it isn’t <code class="language-plaintext highlighter-rouge">null</code>:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">var button = querySelector('#confirm');
+button?.text = 'Confirm';
+button?.classes.add('important');
+button?.onClick.listen((e) =&gt; window.alert('Confirmed!'));
+button?.scrollIntoView();</pre></div>
+</div>
+
+<p>To instead use cascades, 
+you can start with the <em>null-shorting</em> cascade (<code class="language-plaintext highlighter-rouge">?..</code>), 
+which guarantees that none of the cascade operations
+are attempted on a <code class="language-plaintext highlighter-rouge">null</code> object.
+Using cascades shortens the code
+and makes the <code class="language-plaintext highlighter-rouge">button</code> variable unnecessary:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">querySelector('#confirm')
+  ?..text = 'Confirm'
+  ..classes.add('important')
+  ..onClick.listen((e) =&gt; window.alert('Confirmed!'))
+  ..scrollIntoView();</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-6">Code example</h3>
+
+<p>Use cascades to create a single statement that
+sets the <code class="language-plaintext highlighter-rouge">anInt</code>, <code class="language-plaintext highlighter-rouge">aString</code>, and <code class="language-plaintext highlighter-rouge">aList</code> properties of a <code class="language-plaintext highlighter-rouge">BigObject</code>
+to <code class="language-plaintext highlighter-rouge">1</code>, <code class="language-plaintext highlighter-rouge">'String!'</code>, and <code class="language-plaintext highlighter-rouge">[3.0]</code> (respectively)
+and then calls <code class="language-plaintext highlighter-rouge">allDone()</code>.</p>
+
+<pre><code class="language-dart:run-dartpad:height-345px:ga_id-cascades">{$ begin main.dart $}
+class BigObject {
+  int anInt = 0;
+  String aString = '';
+  List&lt;double&gt; aList = [];
+  bool _done = false;
+  
+  void allDone() {
+    _done = true;
+  }
+}
+
+BigObject fillBigObject(BigObject obj) {
+  // Create a single statement that will update and return obj:
+  return TODO('obj..');
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class BigObject {
+  int anInt = 0;
+  String aString = '';
+  List&lt;double&gt; aList = [];
+  bool _done = false;
+  
+  void allDone() {
+    _done = true;
+  }
+}
+
+BigObject fillBigObject(BigObject obj) {
+  return obj
+    ..anInt = 1
+    ..aString = 'String!'
+    ..aList.add(3)
+    ..allDone();
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  BigObject obj;
+
+  try {
+    obj = fillBigObject(BigObject());
+  } on UnimplementedError {
+    _result(false, ['Tried to call fillBigObject but failed. Did you implement the method?']);
+    return;
+  } catch (e) {
+    _result(false, [
+      'Caught an exception of type ${e.runtimeType} while running fillBigObject'
+    ]);
+    return;
+  }
+
+  final errs = &lt;String&gt;[];
+
+  if (obj.anInt != 1) {
+    errs.add(
+        'The value of anInt was ${obj.anInt} rather than the expected (1).');
+  }
+
+  if (obj.aString != 'String!') {
+    errs.add(
+        'The value of aString was \'${obj.aString}\' rather than the expected (\'String!\').');
+  }
+
+  if (obj.aList.length != 1) {
+    errs.add(
+        'The length of aList was ${obj.aList.length} rather than the expected value (1).');
+  } else {
+    if (obj.aList[0] != 3.0) {
+      errs.add(
+          'The value found in aList was ${obj.aList[0]} rather than the expected (3.0).');
+    }
+  }
+  
+  if (!obj._done) {
+    errs.add('It looks like allDone() wasn\'t called.');
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The best solution for this exercise starts with obj.. and
+has four assignment operations chained together.
+Try starting with `return obj..anInt = 1`,
+then add another cascade (..) and start the next assignment.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="getters-and-setters">
+<a class="anchor" href="#getters-and-setters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getters and setters</h2>
+
+<p>You can define getters and setters
+whenever you need more control over a property
+than a simple field allows.</p>
+
+<p>For example, you can make sure a property’s value is valid:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class MyClass {
+  int _aProperty = 0;
+
+  int get aProperty =&gt; _aProperty;
+
+  set aProperty(int value) {
+    if (value &gt;= 0) {
+      _aProperty = value;
+    }
+  }
+}</pre></div>
+</div>
+
+<p>You can also use a getter to define a computed property:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class MyClass {
+  final List&lt;int&gt; _values = [];
+
+  void addValue(int value) {
+    _values.add(value);
+  }
+
+  // A computed property.
+  int get count {
+    return _values.length;
+  }
+}</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-7">Code example</h3>
+
+<p>Imagine you have a shopping cart class that keeps a private <code class="language-plaintext highlighter-rouge">List&lt;double&gt;</code>
+of prices.
+Add the following:</p>
+
+<ul>
+  <li>A getter called <code class="language-plaintext highlighter-rouge">total</code> that returns the sum of the prices</li>
+  <li>A setter that replaces the list with a new one,
+as long as the new list doesn’t contain any negative prices
+(in which case the setter should throw an <code class="language-plaintext highlighter-rouge">InvalidPriceException</code>).</li>
+</ul>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:height-240px:ga_id-getters_setters">{$ begin main.dart $}
+class InvalidPriceException {}
+
+class ShoppingCart {
+  List&lt;double&gt; _prices = [];
+  
+  // Add a "total" getter here:
+
+  // Add a "prices" setter here:
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class InvalidPriceException {}
+
+class ShoppingCart {
+  List&lt;double&gt; _prices = [];
+  
+  double get total =&gt; _prices.fold(0, (e, t) =&gt; e + t);
+  
+  set prices(List&lt;double&gt; value) {
+    if (value.any((p) =&gt; p &lt; 0)) {
+      throw InvalidPriceException();
+    }
+    
+    _prices = value;
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  var foundException = false;
+  
+  try {
+    final cart = ShoppingCart();
+    cart.prices = [12.0, 12.0, -23.0];
+  } on InvalidPriceException {
+    foundException = true;
+  } catch (e) {
+    _result(false, ['Tried setting a negative price and received a ${e.runtimeType} instead of an InvalidPriceException.']);
+    return;
+  }
+  
+  if (!foundException) {
+    _result(false, ['Tried setting a negative price and didn\'t get an InvalidPriceException.']);
+    return;
+  }
+  
+  final secondCart = ShoppingCart();
+  
+  try {
+    secondCart.prices = [1.0, 2.0, 3.0];
+  } catch(e) {
+    _result(false, ['Tried setting prices with a valid list, but received an exception: ${e.runtimeType}.']);
+    return;
+  }
+  
+  if (secondCart._prices.length != 3) {
+    _result(false, ['Tried setting prices with a list of three values, but _prices ended up having length ${secondCart._prices.length}.']);
+    return;
+  }
+
+  if (secondCart._prices[0] != 1.0 || secondCart._prices[1] != 2.0 || secondCart._prices[2] != 3.0) {
+    final vals = secondCart._prices.map((p) =&gt; p.toString()).join(', ');
+    _result(false, ['Tried setting prices with a list of three values (1, 2, 3), but incorrect ones ended up in the price list ($vals) .']);
+    return;
+  }
+  
+  var sum = 0.0;
+  
+  try {
+    sum = secondCart.total;
+  } catch (e) {
+    _result(false, ['Tried to get total, but received an exception: ${e.runtimeType}.']);
+    return;
+  }
+  
+  if (sum != 6.0) {
+    _result(false, ['After setting prices to (1, 2, 3), total returned $sum instead of 6.']);
+    return;
+  }
+  
+  _result(true);
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Two functions are handy for this exercise. 
+One is `fold`, which can reduce a list to a single value
+(try it to calculate the total).
+The other is `any`, which can check each item in a list
+with a function you give it
+(try using it to check if there are any negative prices in the prices setter).
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="optional-positional-parameters">
+<a class="anchor" href="#optional-positional-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Optional positional parameters</h2>
+
+<p>Dart has two kinds of function parameters: positional and named. 
+Positional parameters are the kind you’re likely familiar with:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">int sumUp(int a, int b, int c) {
+  return a + b + c;
+}
+// ···
+  int total = sumUp(1, 2, 3);</pre></div>
+</div>
+
+<p>With Dart, you can make these positional parameters optional by wrapping them in brackets:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
+  int sum = a;
+  if (b != null) sum += b;
+  if (c != null) sum += c;
+  if (d != null) sum += d;
+  if (e != null) sum += e;
+  return sum;
+}
+// ···
+  int total = sumUpToFive(1, 2);
+  int otherTotal = sumUpToFive(1, 2, 3, 4, 5);</pre></div>
+</div>
+
+<p>Optional positional parameters are always last
+in a function’s parameter list.
+Their default value is null unless you provide another default value:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
+// ···
+}
+// ···
+  int newTotal = sumUpToFive(1);
+  print(newTotal); // &lt;-- prints 15</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-8">Code example</h3>
+
+<p>Implement a function called <code class="language-plaintext highlighter-rouge">joinWithCommas()</code> that accepts one to
+five integers, then returns a string of those numbers separated by commas.
+Here are some examples of function calls and returned values:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function call</th>
+      <th> </th>
+      <th>Returned value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">joinWithCommas(1)</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">'1'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">joinWithCommas(1, 2, 3)</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">'1,2,3'</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">joinWithCommas(1, 1, 1, 1, 1)</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">'1,1,1,1,1'</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br></p>
+
+<pre><code class="language-dart:run-dartpad:ga_id-optional_positional_parameters">{$ begin main.dart $}
+String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
+  return TODO();
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
+  var total = '$a';
+  if (b != null) total = '$total,$b';
+  if (c != null) total = '$total,$c';
+  if (d != null) total = '$total,$d';
+  if (e != null) total = '$total,$e';
+  return total;
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+  
+  try {
+    final value = joinWithCommas(1);
+    
+    if (value != '1') {
+      errs.add('Tried calling joinWithCommas(1) and got $value instead of the expected (\'1\').'); 
+    } 
+  } on UnimplementedError {
+    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    return;
+  } catch (e) {
+    _result(false, ['Tried calling joinWithCommas(1), but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final value = joinWithCommas(1, 2, 3);
+    
+    if (value != '1,2,3') {
+      errs.add('Tried calling joinWithCommas(1, 2, 3) and got $value instead of the expected (\'1,2,3\').'); 
+    } 
+  } on UnimplementedError {
+    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    return;
+  } catch (e) {
+    _result(false, ['Tried calling joinWithCommas(1, 2 ,3), but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final value = joinWithCommas(1, 2, 3, 4, 5);
+    
+    if (value != '1,2,3,4,5') {
+      errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) and got $value instead of the expected (\'1,2,3,4,5\').'); 
+    } 
+  } on UnimplementedError {
+    _result(false, ['Tried to call joinWithCommas but failed. Did you implement the method?']);
+    return;
+  } catch (e) {
+    _result(false, ['Tried calling stringify(1, 2, 3, 4 ,5), but encountered an exception: ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The b, c, d, and e parameters are null if they aren't provided by caller.
+The important thing, then, is to check whether those arguments are null
+before you add them to the final string.
+{$ end hint.txt $}
+</code></pre>
+
+<p><a id="optional-named-parameters"></a></p>
+<h2 id="named-parameters">
+<a class="anchor" href="#named-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Named parameters</h2>
+
+<p>Using a curly brace syntax at the end of the parameter list,
+you can define parameters that have names.</p>
+
+<p>Named parameters are optional
+unless they’re explicitly marked as <code class="language-plaintext highlighter-rouge">required</code>.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">void printName(String firstName, String lastName, {String? middleName}) {
+  print('$firstName ${middleName ?? ''} $lastName');
+}
+// ···
+  printName('Dash', 'Dartisan');
+  printName('John', 'Smith', middleName: 'Who');
+  // Named arguments can be placed anywhere in the argument list
+  printName('John', middleName: 'Who', 'Smith');</pre></div>
+</div>
+
+<p>As you might expect,
+the default value of a nullable named parameter is <code class="language-plaintext highlighter-rouge">null</code>,
+but you can provide a custom default value.</p>
+
+<p>If the type of a parameter is non-nullable,
+then you must either provide a default value
+(as shown in the following code)
+or mark the parameter as <code class="language-plaintext highlighter-rouge">required</code>
+(as shown in the
+<a href="#using-this-in-a-constructor">constructor section</a>).</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">void printName(String firstName, String lastName, {String middleName<span class="highlight"> = ''</span>}) {
+  print('$firstName $middleName $lastName');
+}</pre></div>
+</div>
+
+<p>A function can’t have both optional positional and named parameters.</p>
+
+<h3 class="no_toc" id="code-example-9">Code example</h3>
+
+<p>Add a <code class="language-plaintext highlighter-rouge">copyWith()</code> instance method to the <code class="language-plaintext highlighter-rouge">MyDataObject</code>
+class. It should take three named, nullable parameters:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">int? newInt</code></li>
+  <li><code class="language-plaintext highlighter-rouge">String? newString</code></li>
+  <li><code class="language-plaintext highlighter-rouge">double? newDouble</code></li>
+</ul>
+
+<p>Your <code class="language-plaintext highlighter-rouge">copyWith()</code> method should return a new <code class="language-plaintext highlighter-rouge">MyDataObject</code>
+based on the current instance,
+with data from the preceding parameters (if any)
+copied into the object’s properties.
+For example, if <code class="language-plaintext highlighter-rouge">newInt</code> is non-null,
+then copy its value into <code class="language-plaintext highlighter-rouge">anInt</code>.</p>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:height-310px:ga_id-optional_named_parameters">{$ begin main.dart $}
+class MyDataObject {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+
+  MyDataObject({
+     this.anInt = 1,
+     this.aString = 'Old!',
+     this.aDouble = 2.0,
+  });
+
+  // Add your copyWith method here:
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class MyDataObject {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+
+  MyDataObject({
+     this.anInt = 1,
+     this.aString = 'Old!',
+     this.aDouble = 2.0,
+  });
+
+  MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
+    return MyDataObject(
+      anInt: newInt ?? this.anInt,
+      aString: newString ?? this.aString,
+      aDouble: newDouble ?? this.aDouble,
+    );
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final source = MyDataObject();
+  final errs = &lt;String&gt;[];
+  
+  try {
+    final copy = source.copyWith(newInt: 12, newString: 'New!', newDouble: 3.0);
+    
+    if (copy.anInt != 12) {
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s anInt was ${copy.anInt} rather than the expected value (12).');
+    }
+    
+    if (copy.aString != 'New!') {
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aString was ${copy.aString} rather than the expected value (\'New!\').');
+    }
+    
+    if (copy.aDouble != 3) {
+      errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
+    }
+  } catch (e) {
+    _result(false, ['Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) and got an exception: ${e.runtimeType}']);
+  }
+  
+  try {
+    final copy = source.copyWith();
+    
+    if (copy.anInt != 1) {
+      errs.add('Called copyWith(), and the new object\'s anInt was ${copy.anInt} rather than the expected value (1).');
+    }
+    
+    if (copy.aString != 'Old!') {
+      errs.add('Called copyWith(), and the new object\'s aString was ${copy.aString} rather than the expected value (\'Old!\').');
+    }
+    
+    if (copy.aDouble != 2) {
+      errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (2).');
+    }
+  } catch (e) {
+    _result(false, ['Called copyWith() and got an exception: ${e.runtimeType}']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The copyWith method shows up in a lot of classes and libraries.
+Yours should do a few things:
+use optional named parameters,
+create a new instance of MyDataObject,
+and use the data from the parameters to fill it
+(or the data from the current instance if the parameters are null).
+This is a chance to get more practice with the ?? operator!
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="exceptions">
+<a class="anchor" href="#exceptions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exceptions</h2>
+
+<p>Dart code can throw and catch exceptions. In contrast to Java, all of Dart’s exceptions are unchecked
+exceptions. Methods don’t declare which exceptions they might throw, and you aren’t required to catch
+any exceptions.</p>
+
+<p>Dart provides <code class="language-plaintext highlighter-rouge">Exception</code> and <code class="language-plaintext highlighter-rouge">Error</code> types, but you’re
+allowed to throw any non-null object:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">throw Exception('Something bad happened.');
+throw 'Waaaaaaah!';</pre></div>
+</div>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">try</code>, <code class="language-plaintext highlighter-rouge">on</code>, and <code class="language-plaintext highlighter-rouge">catch</code> keywords when handling exceptions:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">try {
+  breedMoreLlamas();
+} on OutOfLlamasException {
+  // A specific exception
+  buyMoreLlamas();
+} on Exception catch (e) {
+  // Anything else that is an exception
+  print('Unknown exception: $e');
+} catch (e) {
+  // No specified type, handles all
+  print('Something really unknown: $e');
+}</pre></div>
+</div>
+
+<p>The <code class="language-plaintext highlighter-rouge">try</code> keyword works as it does in most other languages.
+Use the <code class="language-plaintext highlighter-rouge">on</code> keyword to filter for specific exceptions by type,
+and the <code class="language-plaintext highlighter-rouge">catch</code> keyword to get a reference to the exception object.</p>
+
+<p>If you can’t completely handle the exception, use the <code class="language-plaintext highlighter-rouge">rethrow</code> keyword
+to propagate the exception:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">try {
+  breedMoreLlamas();
+} catch (e) {
+  print('I was just trying to breed llamas!');
+  rethrow;
+}</pre></div>
+</div>
+
+<p>To execute code whether or not an exception is thrown,
+use <code class="language-plaintext highlighter-rouge">finally</code>:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">try {
+  breedMoreLlamas();
+} catch (e) {
+  // ... handle exception ...
+} finally {
+  // Always clean up, even if an exception is thrown.
+  cleanLlamaStalls();
+}</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-10">Code example</h3>
+
+<p>Implement <code class="language-plaintext highlighter-rouge">tryFunction()</code> below. It should execute an untrustworthy method and
+then do the following:</p>
+
+<ul>
+  <li>If <code class="language-plaintext highlighter-rouge">untrustworthy()</code> throws an <code class="language-plaintext highlighter-rouge">ExceptionWithMessage</code>,
+call <code class="language-plaintext highlighter-rouge">logger.logException</code> with the exception type and message
+(try using <code class="language-plaintext highlighter-rouge">on</code> and <code class="language-plaintext highlighter-rouge">catch</code>).</li>
+  <li>If <code class="language-plaintext highlighter-rouge">untrustworthy()</code> throws an <code class="language-plaintext highlighter-rouge">Exception</code>,
+call <code class="language-plaintext highlighter-rouge">logger.logException</code> with the exception type
+(try using <code class="language-plaintext highlighter-rouge">on</code> for this one).</li>
+  <li>If <code class="language-plaintext highlighter-rouge">untrustworthy()</code> throws any other object, don’t catch the exception.</li>
+  <li>After everything’s caught and handled, call <code class="language-plaintext highlighter-rouge">logger.doneLogging</code>
+(try using <code class="language-plaintext highlighter-rouge">finally</code>).</li>
+</ul>
+
+<pre><code class="language-dart:run-dartpad:height-420px:ga_id-exceptions">{$ begin main.dart $}
+typedef VoidFunction = void Function();
+
+class ExceptionWithMessage {
+  final String message;
+  const ExceptionWithMessage(this.message);
+}
+
+// Call logException to log an exception, and doneLogging when finished.
+abstract class Logger {
+  void logException(Type t, [String? msg]);
+  void doneLogging();
+}
+
+void tryFunction(VoidFunction untrustworthy, Logger logger) {
+  // Invoking this method might cause an exception. Catch and handle
+  // them using try-on-catch-finally.
+  untrustworthy();
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+typedef VoidFunction = void Function();
+
+class ExceptionWithMessage {
+  final String message;
+  const ExceptionWithMessage(this.message);
+}
+
+abstract class Logger {
+  void logException(Type t, [String? msg]);
+  void doneLogging();
+}
+
+void tryFunction(VoidFunction untrustworthy, Logger logger) {
+  try {
+    untrustworthy();
+  } on ExceptionWithMessage catch (e) {
+    logger.logException(e.runtimeType, e.message);
+  } on Exception {
+    logger.logException(Exception);
+  } finally {
+    logger.doneLogging();
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+class MyLogger extends Logger {
+  Type? lastType;
+  String lastMessage = '';
+  bool done = false;
+  
+  void logException(Type t, [String? message]) {
+    lastType = t;
+    lastMessage = message ?? lastMessage;
+  }
+  
+  void doneLogging() =&gt; done = true;  
+}
+
+void main() {
+  final errs = &lt;String&gt;[];
+  var logger = MyLogger();
+  
+  try {
+    tryFunction(() =&gt; throw Exception(), logger);
+  
+    if ('${logger.lastType}' != 'Exception' &amp;&amp; '${logger.lastType}' != '_Exception') {
+      errs.add('Untrustworthy threw an Exception, but a different type was logged: ${logger.lastType}.');
+    }
+    
+    if (logger.lastMessage != '') {
+      errs.add('Untrustworthy threw an Exception with no message, but a message was logged anyway: \'${logger.lastMessage}\'.');
+    }
+    
+    if (!logger.done) {
+      errs.add('Untrustworthy threw an Exception, and doneLogging() wasn\'t called afterward.');
+    }
+  } catch (e) {
+    _result(false, ['Untrustworthy threw an exception, and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
+  }
+  
+  logger = MyLogger();
+  
+  try {
+    tryFunction(() =&gt; throw ExceptionWithMessage('Hey!'), logger);
+  
+    if (logger.lastType != ExceptionWithMessage) {
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a different type was logged: ${logger.lastType}.');
+    }
+    
+    if (logger.lastMessage != 'Hey!') {
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a different message was logged: \'${logger.lastMessage}\'.');
+    }
+    
+    if (!logger.done) {
+      errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), and doneLogging() wasn\'t called afterward.');
+    }
+  } catch (e) {
+    _result(false, ['Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), and an exception of type ${e.runtimeType} was unhandled by tryFunction.']);
+  }
+  
+  logger = MyLogger();
+  bool caughtStringException = false;
+
+  try {
+    tryFunction(() =&gt; throw 'A String', logger);
+  } on String {
+    caughtStringException = true;
+  }
+
+  if (!caughtStringException) {
+    errs.add('Untrustworthy threw a string, and it was incorrectly handled inside tryFunction().');
+  }
+  
+  logger = MyLogger();
+  
+  try {
+    tryFunction(() {}, logger);
+  
+    if (logger.lastType != null) {
+      errs.add('Untrustworthy didn\'t throw an Exception, but one was logged anyway: ${logger.lastType}.');
+    }
+    
+    if (logger.lastMessage != '') {
+      errs.add('Untrustworthy didn\'t throw an Exception with no message, but a message was logged anyway: \'${logger.lastMessage}\'.');
+    }
+    
+    if (!logger.done) {
+      errs.add('Untrustworthy didn\'t throw an Exception, but doneLogging() wasn\'t called afterward.');
+    }
+  } catch (e) {
+    _result(false, ['Untrustworthy didn\'t throw an exception, but an exception of type ${e.runtimeType} was unhandled by tryFunction anyway.']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+This exercise looks tricky, but it's really one big `try` statement.
+Just call `untrustworthy` inside the `try`, and
+then use `on`, `catch`, and `finally` to catch exceptions and
+call methods on the logger.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="using-this-in-a-constructor">
+<a class="anchor" href="#using-this-in-a-constructor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using <code class="language-plaintext highlighter-rouge">this</code> in a constructor</h2>
+
+<p>Dart provides a handy shortcut for assigning
+values to properties in a constructor:
+use <code class="language-plaintext highlighter-rouge">this.propertyName</code> when declaring the constructor:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class MyColor {
+  int red;
+  int green;
+  int blue;
+
+  MyColor(this.red, this.green, this.blue);
+}
+
+final color = MyColor(80, 80, 128);</pre></div>
+</div>
+
+<p>This technique works for named parameters, too.
+Property names become the names of the parameters:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class MyColor {
+  ...
+
+  MyColor({required this.red, required this.green, required this.blue});
+}
+
+final color = MyColor(red: 80, green: 80, blue: 80);</pre></div>
+</div>
+
+<p>In the preceding code, <code class="language-plaintext highlighter-rouge">red</code>, <code class="language-plaintext highlighter-rouge">green</code>, and <code class="language-plaintext highlighter-rouge">blue</code> are marked as <code class="language-plaintext highlighter-rouge">required</code>
+because these <code class="language-plaintext highlighter-rouge">int</code> values can’t be null.
+If you add default values, you can omit <code class="language-plaintext highlighter-rouge">required</code>:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">MyColor([this.red = 0, this.green = 0, this.blue = 0]);
+// or
+MyColor({this.red = 0, this.green = 0, this.blue = 0});</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-11">Code example</h3>
+
+<p>Add a one-line constructor to <code class="language-plaintext highlighter-rouge">MyClass</code> that uses
+<code class="language-plaintext highlighter-rouge">this.</code> syntax to receive and assign values for
+all three properties of the class.</p>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:ga_id-this_constructor">{$ begin main.dart $}
+class MyClass {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+  
+  // Create a constructor here.
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class MyClass {
+  final int anInt;
+  final String aString;
+  final double aDouble;
+  
+  MyClass(this.anInt, this.aString, this.aDouble);
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+  
+  try {
+    final obj = MyClass(1, 'two', 3);
+    
+    if (obj.anInt != 1) {
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with anInt of ${obj.anInt} instead of the expected value (1).');
+    }
+
+    if (obj.anInt != 1) {
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with aString of \'${obj.aString}\' instead of the expected value (\'two\').');
+    }
+
+    if (obj.anInt != 1) {
+      errs.add('Called MyClass(1, \'two\', 3) and got an object with aDouble of ${obj.aDouble} instead of the expected value (3).');
+    }
+  } catch (e) {
+    _result(false, ['Called MyClass(1, \'two\', 3) and got an exception of type ${e.runtimeType}.']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+This exercise has a one-line solution.
+Just declare the constructor with
+`this.anInt`, `this.aString`, and `this.aDouble`
+as its parameters in that order.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="initializer-lists">
+<a class="anchor" href="#initializer-lists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initializer lists</h2>
+
+<p>Sometimes when you implement a constructor,
+you need to do some setup before the constructor body executes.
+For example, final fields must have values
+before the constructor body executes.
+Do this work in an initializer list,
+which goes between the constructor’s signature and its body:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">Point.fromJson(Map&lt;String, double&gt; json)
+    : x = json['x']!,
+      y = json['y']! {
+  print('In Point.fromJson(): ($x, $y)');
+}</pre></div>
+</div>
+
+<p>The initializer list is also a handy place to put asserts,
+which run only during development:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">NonNegativePoint(this.x, this.y)
+    : assert(x &gt;= 0),
+      assert(y &gt;= 0) {
+  print('I just made a NonNegativePoint: ($x, $y)');
+}</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-12">Code example</h3>
+
+<p>Complete the <code class="language-plaintext highlighter-rouge">FirstTwoLetters</code> constructor below.
+Use an initializer list to assign the first two characters in <code class="language-plaintext highlighter-rouge">word</code> to
+the <code class="language-plaintext highlighter-rouge">letterOne</code> and <code class="language-plaintext highlighter-rouge">LetterTwo</code> properties.
+For extra credit, add an <code class="language-plaintext highlighter-rouge">assert</code> to catch words of less than two characters.</p>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:ga_id-initializer_lists">{$ begin main.dart $}
+class FirstTwoLetters {
+  final String letterOne;
+  final String letterTwo;
+
+  // Create a constructor with an initializer list here:
+  FirstTwoLetters(String word)
+    ...
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class FirstTwoLetters {
+  final String letterOne;
+  final String letterTwo;
+
+  FirstTwoLetters(String word)
+      : assert(word.length &gt;= 2),
+        letterOne = word[0],
+        letterTwo = word[1];
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+
+  try {
+    final result = FirstTwoLetters('My String');
+    
+    if (result.letterOne != 'M') {
+      errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterOne equal to \'${result.letterOne}\' instead of the expected value (\'M\').');
+    }
+
+    if (result.letterTwo != 'y') {
+      errs.add('Called FirstTwoLetters(\'My String\') and got an object with letterTwo equal to \'${result.letterTwo}\' instead of the expected value (\'y\').');
+    }
+  } catch (e) {
+    errs.add('Called FirstTwoLetters(\'My String\') and got an exception of type ${e.runtimeType}.');
+  }
+
+  bool caughtException = false;
+  
+  try {
+    FirstTwoLetters('');
+  } catch (e) {
+    caughtException = true;
+  }
+  
+  if (!caughtException) {
+    errs.add('Called FirstTwoLetters(\'\') and didn\'t get an exception from the failed assertion.');
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Two assignments need to happen:
+letterOne should be word[0], and letterTwo should be word[1].
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="named-constructors">
+<a class="anchor" href="#named-constructors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Named constructors</h2>
+
+<p>To allow classes to have multiple constructors,
+Dart supports named constructors:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class Point {
+  double x, y;
+
+  Point(this.x, this.y);
+
+  Point.origin()
+      : x = 0,
+        y = 0;
+}</pre></div>
+</div>
+
+<p>To use a named constructor, invoke it using its full name:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">final myPoint = Point.origin();</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-13">Code example</h3>
+
+<p>Give the <code class="language-plaintext highlighter-rouge">Color</code> class a constructor named <code class="language-plaintext highlighter-rouge">Color.black</code>
+that sets all three properties to zero.</p>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:height-240px:ga_id-named_constructors">{$ begin main.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
+
+  // Create a named constructor called "Color.black" here:
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
+
+  Color.black()
+      : red = 0,
+        green = 0,
+        blue = 0;
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+
+  try {
+    final result = Color.black();
+    
+    if (result.red != 0) {
+      errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+    }
+
+    if (result.green != 0) {
+      errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+    }
+
+    if (result.blue != 0) {
+  errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
+    }
+  } catch (e) {
+    _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The declaration for your constructor should be `Color.black() {}`.
+Inside the braces, set red, green, and blue to zero.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="factory-constructors">
+<a class="anchor" href="#factory-constructors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Factory constructors</h2>
+
+<p>Dart supports factory constructors,
+which can return subtypes or even null.
+To create a factory constructor, use the <code class="language-plaintext highlighter-rouge">factory</code> keyword:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class Square extends Shape {}
+
+class Circle extends Shape {}
+
+class Shape {
+  Shape();
+
+  factory Shape.fromTypeName(String typeName) {
+    if (typeName == 'square') return Square();
+    if (typeName == 'circle') return Circle();
+
+    throw ArgumentError('Unrecognized $typeName');
+  }
+}</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-14">Code example</h3>
+
+<p>Fill in the factory constructor named <code class="language-plaintext highlighter-rouge">IntegerHolder.fromList</code>,
+making it do the following:</p>
+
+<ul>
+  <li>If the list has <strong>one</strong> value,
+create an <code class="language-plaintext highlighter-rouge">IntegerSingle</code> with that value.</li>
+  <li>If the list has <strong>two</strong> values,
+create an <code class="language-plaintext highlighter-rouge">IntegerDouble</code> with the values in order.</li>
+  <li>If the list has <strong>three</strong> values,
+create an <code class="language-plaintext highlighter-rouge">IntegerTriple</code> with the values in order.</li>
+  <li>Otherwise, throw an <code class="language-plaintext highlighter-rouge">Error</code>.</li>
+</ul>
+
+<pre><code class="language-dart:run-dartpad:height-415px:ga_id-factory_constructors">{$ begin main.dart $}
+class IntegerHolder {
+  IntegerHolder();
+  
+  // Implement this factory constructor.
+  factory IntegerHolder.fromList(List&lt;int&gt; list) {
+    TODO();
+  }
+}
+
+class IntegerSingle extends IntegerHolder {
+  final int a;
+  IntegerSingle(this.a); 
+}
+
+class IntegerDouble extends IntegerHolder {
+  final int a;
+  final int b;
+  IntegerDouble(this.a, this.b); 
+}
+
+class IntegerTriple extends IntegerHolder {
+  final int a;
+  final int b;
+  final int c;
+  IntegerTriple(this.a, this.b, this.c); 
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class IntegerHolder {
+  IntegerHolder();
+  
+  factory IntegerHolder.fromList(List&lt;int&gt; list) {
+    if (list.length == 1) {
+      return IntegerSingle(list[0]);
+    } else if (list.length == 2) {
+      return IntegerDouble(list[0], list[1]);
+    } else if (list.length == 3) {
+      return IntegerTriple(list[0], list[1], list[2]);
+    } else {
+      throw Error();
+    } 
+  }
+}
+
+class IntegerSingle extends IntegerHolder {
+  final int a;
+  IntegerSingle(this.a); 
+}
+
+class IntegerDouble extends IntegerHolder {
+  final int a;
+  final int b;
+  IntegerDouble(this.a, this.b); 
+}
+
+class IntegerTriple extends IntegerHolder {
+  final int a;
+  final int b;
+  final int c;
+  IntegerTriple(this.a, this.b, this.c); 
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+
+  bool _throwed = false;
+  try {
+    IntegerHolder.fromList([]);
+  } on UnimplementedError {
+    _result(false, ['Test failed. Did you implement the method?']);
+    return;
+  } on Error {
+    _throwed = true;
+  } catch (e) {
+    _result(false, ['Called IntegerSingle.fromList([]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+  
+  if (!_throwed) {
+    errs.add('Called IntegerSingle.fromList([]) and didn\'t throw Error.');
+  } 
+
+  try {
+    final obj = IntegerHolder.fromList([1]);
+    
+    if (obj is! IntegerSingle) {
+      errs.add('Called IntegerHolder.fromList([1]) and got an object of type ${obj.runtimeType} instead of IntegerSingle.');
+    } else {
+      if (obj.a != 1) {
+        errs.add('Called IntegerHolder.fromList([1]) and got an IntegerSingle with an \'a\' value of ${obj.a} instead of the expected (1).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called IntegerHolder.fromList([]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final obj = IntegerHolder.fromList([1, 2]);
+    
+    if (obj is! IntegerDouble) {
+      errs.add('Called IntegerHolder.fromList([1, 2]) and got an object of type ${obj.runtimeType} instead of IntegerDouble.');
+    } else {
+      if (obj.a != 1) {
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'a\' value of ${obj.a} instead of the expected (1).');
+      }
+      
+      if (obj.b != 2) {
+        errs.add('Called IntegerHolder.fromList([1, 2]) and got an IntegerDouble with an \'b\' value of ${obj.b} instead of the expected (2).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called IntegerHolder.fromList([1, 2]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  try {
+    final obj = IntegerHolder.fromList([1, 2, 3]);
+    
+    if (obj is! IntegerTriple) {
+      errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an object of type ${obj.runtimeType} instead of IntegerTriple.');
+    } else {
+      if (obj.a != 1) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.a} instead of the expected (1).');
+      }
+      
+      if (obj.b != 2) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.b} instead of the expected (2).');
+      }
+
+      if (obj.c != 3) {
+        errs.add('Called IntegerHolder.fromList([1, 2, 3]) and got an IntegerTriple with an \'a\' value of ${obj.b} instead of the expected (2).');
+      }
+    }
+  } catch (e) {
+    _result(false, ['Called IntegerHolder.fromList([1, 2, 3]) and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Inside the factory constructor,
+check the length of the list and create an
+IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="redirecting-constructors">
+<a class="anchor" href="#redirecting-constructors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Redirecting constructors</h2>
+
+<p>Sometimes a constructor’s only purpose is to redirect to
+another constructor in the same class.
+A redirecting constructor’s body is empty,
+with the constructor call appearing after a colon (<code class="language-plaintext highlighter-rouge">:</code>).</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class Automobile {
+  String make;
+  String model;
+  int mpg;
+
+  // The main constructor for this class.
+  Automobile(this.make, this.model, this.mpg);
+
+  // Delegates to the main constructor.
+  Automobile.hybrid(String make, String model) : this(make, model, 60);
+
+  // Delegates to a named constructor
+  Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
+}</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-15">Code example</h3>
+
+<p>Remember the <code class="language-plaintext highlighter-rouge">Color</code> class from above? Create a named constructor called
+<code class="language-plaintext highlighter-rouge">black</code>, but rather than manually assigning the properties, redirect it to the
+default constructor with zeros as the arguments.</p>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:height-255px:ga_id-redirecting_constructors">{$ begin main.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
+
+  // Create a named constructor called "black" here and redirect it
+  // to call the existing constructor
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class Color {
+  int red;
+  int green;
+  int blue;
+  
+  Color(this.red, this.green, this.blue);
+
+  Color.black() : this(0, 0, 0);
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+
+  try {
+    final result = Color.black();
+    
+    if (result.red != 0) {
+      errs.add('Called Color.black() and got a Color with red equal to ${result.red} instead of the expected value (0).');
+    }
+
+    if (result.green != 0) {
+      errs.add('Called Color.black() and got a Color with green equal to ${result.green} instead of the expected value (0).');
+    }
+
+    if (result.blue != 0) {
+  errs.add('Called Color.black() and got a Color with blue equal to ${result.blue} instead of the expected value (0).');
+    }
+  } catch (e) {
+    _result(false, ['Called Color.black() and got an exception of type ${e.runtimeType}.']);
+    return;
+  }
+
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Your constructor should redirect to `this(0, 0, 0)`.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="const-constructors">
+<a class="anchor" href="#const-constructors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Const constructors</h2>
+
+<p>If your class produces objects that never change, you can make these objects compile-time constants. To
+do this, define a <code class="language-plaintext highlighter-rouge">const</code> constructor and make sure that all instance variables
+are final.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">class ImmutablePoint {
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+
+  final int x;
+  final int y;
+
+  const ImmutablePoint(this.x, this.y);
+}</pre></div>
+</div>
+
+<h3 class="no_toc" id="code-example-16">Code example</h3>
+
+<p>Modify the <code class="language-plaintext highlighter-rouge">Recipe</code> class so its instances can be constants,
+and create a constant constructor that does the following:</p>
+
+<ul>
+  <li>Has three parameters: <code class="language-plaintext highlighter-rouge">ingredients</code>, <code class="language-plaintext highlighter-rouge">calories</code>,
+and <code class="language-plaintext highlighter-rouge">milligramsOfSodium</code> (in that order).</li>
+  <li>Uses <code class="language-plaintext highlighter-rouge">this.</code> syntax to automatically assign the parameter values to the
+object properties of the same name.</li>
+  <li>Is constant, with the <code class="language-plaintext highlighter-rouge">const</code> keyword just before
+<code class="language-plaintext highlighter-rouge">Recipe</code> in the constructor declaration.</li>
+</ul>
+
+<p>Ignore all initial errors in the DartPad.</p>
+
+<pre><code class="language-dart:run-dartpad:ga_id-const_constructors">{$ begin main.dart $}
+class Recipe {
+  List&lt;String&gt; ingredients;
+  int calories;
+  double milligramsOfSodium;
+}
+{$ end main.dart $}
+{$ begin solution.dart $}
+class Recipe {
+  final List&lt;String&gt; ingredients;
+  final int calories;
+  final double milligramsOfSodium;
+
+  const Recipe(this.ingredients, this.calories, this.milligramsOfSodium);
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+void main() {
+  final errs = &lt;String&gt;[];
+
+  try {
+    const obj = Recipe(['1 egg', 'Pat of butter', 'Pinch salt'], 120, 200);
+    
+    if (obj.ingredients.length != 3) {
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with ingredient list of length ${obj.ingredients.length} rather than the expected length (3).');
+    }
+    
+    if (obj.calories != 120) {
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a calorie value of ${obj.calories} rather than the expected value (120).');
+    }
+    
+    if (obj.milligramsOfSodium != 200) {
+      errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
+    }
+  } catch (e) {
+    _result(false, ['Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) and received a null.']);
+  }
+  
+  if (errs.isEmpty) {
+    _result(true);
+  } else {
+    _result(false, errs);
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+To make the constructor const, you'll need to make all the properties final.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="what-next">
+<a class="anchor" href="#what-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What next?</h2>
+
+<p>We hope you enjoyed using this codelab to learn or test your knowledge of
+some of the most interesting features of the Dart language.
+Here are some suggestions for what to do now:</p>
+
+<ul>
+  <li>Try <a href="/codelabs">other Dart codelabs</a>.</li>
+  <li>Read the <a href="/guides/language/language-tour">Dart language tour</a>.</li>
+  <li>Play with <a href="https://dartpad.dev">DartPad.</a>
+</li>
+  <li>
+<a href="/get-dart">Get the Dart SDK</a>.</li>
+</ul>
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>

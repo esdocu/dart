@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM.">
+  <title>An introduction to the dart:io library | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="An introduction to the dart:io library" />
+  <meta name="twitter:description" content="An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="An introduction to the dart:io library" />
+  <meta property="og:description" content="An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM." />
+  <meta property="og:url" content="https://dart.esdocu.com/articles/libraries/dart-io" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+        ">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="false" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="true" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link active collapsable"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="true" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link active" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="false" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="false" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#the-dart-vm-and-the-event-loop">The Dart VM and the event loop</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#file-system-access">File system access</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#interacting-with-processes">Interacting with processes</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#writing-web-servers">Writing web servers</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#feature-requests-welcome">Feature requests welcome</a></li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/_articles/libraries/dart-io.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'An introduction to the dart:io library'&page-url=https://dart.esdocu.com/articles/libraries/dart-io&page-source=https://github.com/dart-lang/site-www/tree/main/src/_articles/libraries/dart-io.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>An introduction to the dart:io library</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#the-dart-vm-and-the-event-loop">The Dart VM and the event loop</a></li>
+<li class="toc-entry toc-h2"><a href="#file-system-access">File system access</a></li>
+<li class="toc-entry toc-h2"><a href="#interacting-with-processes">Interacting with processes</a></li>
+<li class="toc-entry toc-h2"><a href="#writing-web-servers">Writing web servers</a></li>
+<li class="toc-entry toc-h2"><a href="#feature-requests-welcome">Feature requests welcome</a></li>
+</ul>
+</div>
+
+
+          <p><em>Written by Mads Ager<br>
+March 2012 (updated June 2021)</em></p>
+
+<p>The <a href="https://api.dart.dev/stable/dart-io/dart-io-library.html">dart:io</a> library
+is aimed at code that runs in Flutter and the standalone Dart VM.
+In this article we will give you a feel for
+what is currently possible with dart:io
+by going through a couple of examples.</p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  When writing a Flutter app, use
+  <a href="https://api.flutter.dev">Flutter-specific APIs</a>
+  instead of dart:io whenever possible. For example, use the
+  <a href="https://docs.flutter.dev/development/ui/assets-and-images">Flutter asset support</a> to load
+  images and other assets into your app.</p>
+</aside>
+
+<p>Dart is a single-threaded programming language.
+If an operation blocks the Dart thread,
+the application makes no progress before that operation completes.
+For scalability it is therefore crucial that no I/O operations block.
+Instead of blocking on I/O operations,
+dart:io uses an asynchronous programming model inspired by
+<a href="https://nodejs.org">node.js,</a>
+<a href="https://github.com/eventmachine/eventmachine/wiki">EventMachine,</a> and
+<a href="https://twistedmatrix.com/trac/">Twisted.</a></p>
+
+<h2 id="the-dart-vm-and-the-event-loop">
+<a class="anchor" href="#the-dart-vm-and-the-event-loop" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Dart VM and the event loop</h2>
+
+<p>Before we dive into asynchronous I/O operations,
+it might be useful to explain how the standalone Dart VM operates.</p>
+
+<p>When executing a server-side application,
+the Dart VM runs in an event loop with
+an associated event queue of pending asynchronous operations.
+The VM terminates when it has executed the current code to completion
+and no more pending operations are in the queue.</p>
+
+<p>One simple way to add an event to the event queue is to
+schedule a function to be called in the future.
+You can do this by creating a
+<a href="https://api.dart.dev/stable/dart-async/Timer-class.html">Timer</a> object.
+The following example registers a timer with the event queue
+and then drops off the end of <code class="language-plaintext highlighter-rouge">main()</code>.
+Because a pending operation is in the event queue,
+the VM does not terminate at that point.
+After one second,
+the timer fires and the code in the argument callback executes.
+Once that code executes to completion,
+no more pending operations are in the event queue
+and the VM terminates.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:async';
+
+void main() {
+  Timer(const Duration(seconds: 1), () =&gt; print('timer'));
+  print('end of main');
+}</pre></div>
+</div>
+
+<p>Running this example at the command line, we get:</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>dart run timer.dart
+<span class="go">end of main
+timer
+</span></code></pre></div></div>
+
+<p>Had we made the timer repeating by using the
+<a href="https://api.dart.dev/stable/dart-async/Timer/Timer.periodic.html">Timer.periodic</a> constructor,
+the VM would not terminate
+and would continue to print out ‘timer’ every second.</p>
+
+<h2 id="file-system-access">
+<a class="anchor" href="#file-system-access" aria-hidden="true"><span class="octicon octicon-link"></span></a>File system access</h2>
+
+<p>The dart:io library provides access to files and directories through the
+<a href="https://api.dart.dev/stable/dart-io/File-class.html">File</a> and
+<a href="https://api.dart.dev/stable/dart-io/Directory-class.html">Directory</a> classes.</p>
+
+<p>The following example prints its own source code.
+To determine the location of the source code being executed,
+we use the
+<a href="https://api.dart.dev/stable/dart-io/Platform-class.html">Platform</a>
+class.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:convert';
+import 'dart:io';
+
+void main() async {
+  var file = File(Platform.script.toFilePath());
+  print(await (file.readAsString(encoding: ascii)));
+}</pre></div>
+</div>
+
+<p>Notice that the <code class="language-plaintext highlighter-rouge">readAsString()</code> method is asynchronous;
+it returns a <a href="https://api.dart.dev/stable/dart-async/Future-class.html">Future</a>
+that returns the contents of the file
+once the file has been read from the underlying system.
+This asynchronicity allows the Dart thread to perform other work
+while waiting for the I/O operation to complete.</p>
+
+<p>To illustrate more detailed file operations,
+let’s change the example to read the contents
+only up to the first semicolon and then to print that.
+You could do this in two ways:
+either open the file for random access,
+or open a
+<a href="https://api.dart.dev/stable/dart-async/Stream-class.html">Stream</a>
+for the file and stream in the data.</p>
+
+<p>Here is a version that opens the file for random access operations.
+The code opens the file for reading and then reads one byte at a time
+until it encounters the char code for <code class="language-plaintext highlighter-rouge">;</code>.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:io';
+
+void main() async {
+  final semicolon = ';'.codeUnitAt(0);
+  final result = &lt;int&gt;[];
+
+  final script = File(Platform.script.toFilePath());
+  RandomAccessFile file = await script.open(mode: FileMode.read);
+
+  // Deal with each byte.
+  while (true) {
+    final byte = await file.readByte();
+    result.add(byte);
+    if (byte == semicolon) {
+      print(String.fromCharCodes(result));
+      await file.close();
+      break;
+    }
+  }
+}</pre></div>
+</div>
+
+<p>When you see a use of <code class="language-plaintext highlighter-rouge">async</code> or <code class="language-plaintext highlighter-rouge">await</code>, you are seeing a Future in action.
+Both the <code class="language-plaintext highlighter-rouge">open()</code> and <code class="language-plaintext highlighter-rouge">readByte()</code> methods return a Future object.</p>
+
+<p>This code is, of course,
+a very simple use of random-access operations.
+Operations are available for writing,
+seeking to a given position, truncating, and so on.</p>
+
+<p>Let’s implement a version using a stream.
+The following code opens the file for reading presenting the content
+as a stream of lists of bytes. Like all streams in Dart you listen on
+this stream (using <code class="language-plaintext highlighter-rouge">await for</code>) and the data is given in chunks.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:io';
+
+void main() async {
+  final result = &lt;int&gt;[];
+
+  Stream&lt;List&lt;int&gt;&gt; stream = File(Platform.script.toFilePath()).openRead();
+  final semicolon = ';'.codeUnitAt(0);
+
+  await for (final data in stream) {
+    for (int i = 0; i &lt; data.length; i++) {
+      result.add(data[i]);
+      if (data[i] == semicolon) {
+        print(String.fromCharCodes(result));
+        return;
+      }
+    }
+  }
+}</pre></div>
+</div>
+
+<p>The stream subscription is implicitly handled by <code class="language-plaintext highlighter-rouge">await for</code>.
+Exiting the <code class="language-plaintext highlighter-rouge">await for</code> statement—using <code class="language-plaintext highlighter-rouge">break</code>, <code class="language-plaintext highlighter-rouge">return</code>, 
+or an uncaught exception—cancels the subscription.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Stream&lt;List&lt;int&gt;&gt;</code> is used in multiple places in dart:io:
+when working with stdin, files, sockets, HTTP connections, and so on.
+Similarly, <a href="https://api.dart.dev/stable/dart-io/IOSink-class.html">IOSink</a> objects
+are used to stream data to
+stdout, files, sockets, HTTP connections, and so on.</p>
+
+<h2 id="interacting-with-processes">
+<a class="anchor" href="#interacting-with-processes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interacting with processes</h2>
+
+<p>For the simple case, use
+<a href="https://api.dart.dev/stable/dart-io/Process/run.html">Process.run()</a>
+to run a process
+and collect its output. Use <code class="language-plaintext highlighter-rouge">run()</code> when you don’t
+need interactive control over the process.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:io';
+
+void main() async {
+  // List all files in the current directory,
+  // in UNIX-like operating systems.
+  ProcessResult results = await Process.run('ls', ['-l']);
+  print(results.stdout);
+}</pre></div>
+</div>
+
+<p>You can also start a process by creating a
+<a href="https://api.dart.dev/stable/dart-io/Process-class.html">Process</a> object
+using
+<a href="https://api.dart.dev/stable/dart-io/Process/start.html">Process.start().</a></p>
+
+<p>Once you have a Process object you can interact with the process
+by writing data to its stdin sink,
+reading data from its stderr and stdout streams,
+and killing the process.
+When the process exits, the <code class="language-plaintext highlighter-rouge">exitCode</code> future completes with
+the exit code of the process.</p>
+
+<p>The following example runs <code class="language-plaintext highlighter-rouge">ls -l</code> in a separate process
+and prints the output and the exit code for the process to stdout.
+Since we are interested in getting lines,
+we use a
+<a href="https://api.dart.dev/stable/dart-convert/Utf8Decoder-class.html">Utf8Decoder</a>
+(which decodes chunks of bytes into strings) followed by a
+<a href="https://api.dart.dev/stable/dart-convert/LineSplitter-class.html">LineSplitter</a>
+(which splits the strings at line boundaries).</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:convert';
+import 'dart:io';
+
+void main() async {
+  final process = await Process.start('ls', ['-l']);
+  final lineStream = process.stdout
+      .transform(const Utf8Decoder())
+      .transform(const LineSplitter());
+
+  await for (final line in lineStream) {
+    print(line);
+  }
+
+  await process.stderr.drain();
+  print('exit code: ${await process.exitCode}');
+}</pre></div>
+</div>
+
+<p>Notice that <code class="language-plaintext highlighter-rouge">exitCode</code> can complete before all of the lines of output
+have been processed. Also note
+that we do not explicitly close the process. In order to
+not leak resources we have to listen to both the stderr and stdout
+streams. We use <code class="language-plaintext highlighter-rouge">await for</code> to listen to stdout,
+and <code class="language-plaintext highlighter-rouge">stderr.drain()</code> to listen to (and discard) stderr.</p>
+
+<p>Instead of printing the output to stdout,
+we can use the streaming classes
+to pipe the output of the process to a file.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:io';
+
+void main() async {
+  final output = File('output.txt').openWrite();
+  Process process = await Process.start('ls', ['-l']);
+
+  // Wait for the process to finish; get the exit code.
+  final exitCode = (await Future.wait([
+    process.stdout.pipe(output), // Send stdout to file.
+    process.stderr.drain(), // Discard stderr.
+    process.exitCode
+  ]))[2];
+
+  print('exit code: $exitCode');
+}</pre></div>
+</div>
+
+<h2 id="writing-web-servers">
+<a class="anchor" href="#writing-web-servers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Writing web servers</h2>
+
+<p>dart:io makes it easy to write HTTP servers and clients.
+To write a simple web server,
+all you have to do is create an
+<a href="https://api.dart.dev/stable/dart-io/HttpServer-class.html">HttpServer</a>
+and hook up a listener (using <code class="language-plaintext highlighter-rouge">await for</code>) to its stream of <code class="language-plaintext highlighter-rouge">HttpRequest</code>s.</p>
+
+<p>Here is a simple web server
+that just answers ‘Hello, world’ to any request.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">import 'dart:io';
+
+void main() async {
+  final server = await HttpServer.bind('127.0.0.1', 8082);
+  await for (final request in server) {
+    request.response.write('Hello, world');
+    await request.response.close();
+  }
+}</pre></div>
+</div>
+
+<p>Running this application
+and pointing your browser to ‘http://127.0.0.1:8082’
+gives you ‘Hello, world’ as expected.</p>
+
+<p>Let’s add a bit more and actually serve files.
+The base path for every file that we serve will be
+the location of the script.
+If no path is specified in a request we will serve index.html.
+For a request with a path,
+we will attempt to find the file and serve it.
+If the file is not found we will respond with a ‘404 Not Found’ status.
+We make use of the streaming interface
+to pipe all the data read from a file directly to the response stream.</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'dart:io'</span><span class="o">;</span>
+
+<span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">runServer</span><span class="o">(</span><span class="kt">String</span> <span class="n">basePath</span><span class="o">)</span> <span class="kd">async</span> <span class="o">{</span>
+  <span class="kd">final</span> <span class="n">server</span> <span class="o">=</span> <span class="k">await</span> <span class="n">HttpServer</span><span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="s">'127.0.0.1'</span><span class="o">,</span> <span class="mi">8082</span><span class="o">);</span>
+  <span class="k">await</span> <span class="k">for</span> <span class="o">(</span><span class="kd">final</span> <span class="n">request</span> <span class="k">in</span> <span class="n">server</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">await</span> <span class="n">handleRequest</span><span class="o">(</span><span class="n">basePath</span><span class="o">,</span> <span class="n">request</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">handleRequest</span><span class="o">(</span><span class="kt">String</span> <span class="n">basePath</span><span class="o">,</span> <span class="n">HttpRequest</span> <span class="n">request</span><span class="o">)</span> <span class="kd">async</span> <span class="o">{</span>
+  <span class="kd">final</span> <span class="kt">String</span> <span class="n">path</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">uri</span><span class="o">.</span><span class="na">toFilePath</span><span class="o">();</span>
+  <span class="c1">// PENDING: Do more security checks here.</span>
+  <span class="kd">final</span> <span class="kt">String</span> <span class="n">resultPath</span> <span class="o">=</span> <span class="n">path</span> <span class="o">==</span> <span class="s">'/'</span> <span class="o">?</span> <span class="s">'/index.html'</span> <span class="o">:</span> <span class="n">path</span><span class="o">;</span>
+  <span class="kd">final</span> <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="o">(</span><span class="s">'</span><span class="si">$basePath$resultPath</span><span class="s">'</span><span class="o">);</span>
+  <span class="k">if</span> <span class="o">(</span><span class="k">await</span> <span class="n">file</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="k">await</span> <span class="n">request</span><span class="o">.</span><span class="na">response</span><span class="o">.</span><span class="na">addStream</span><span class="o">(</span><span class="n">file</span><span class="o">.</span><span class="na">openRead</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">exception</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">print</span><span class="o">(</span><span class="s">'Error happened: </span><span class="si">$exception</span><span class="s">'</span><span class="o">);</span>
+      <span class="k">await</span> <span class="n">sendInternalError</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">response</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="k">await</span> <span class="n">sendNotFound</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">response</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">sendInternalError</span><span class="o">(</span><span class="n">HttpResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">async</span> <span class="o">{</span>
+  <span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">=</span> <span class="n">HttpStatus</span><span class="o">.</span><span class="na">internalServerError</span><span class="o">;</span>
+  <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="n">Future</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;</span> <span class="n">sendNotFound</span><span class="o">(</span><span class="n">HttpResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">async</span> <span class="o">{</span>
+  <span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">=</span> <span class="n">HttpStatus</span><span class="o">.</span><span class="na">notFound</span><span class="o">;</span>
+  <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="o">)</span> <span class="kd">async</span> <span class="o">{</span>
+  <span class="c1">// Compute base path for the request based on the location of the</span>
+  <span class="c1">// script, and then start the server.</span>
+  <span class="kd">final</span> <span class="n">script</span> <span class="o">=</span> <span class="n">File</span><span class="o">(</span><span class="n">Platform</span><span class="o">.</span><span class="na">script</span><span class="o">.</span><span class="na">toFilePath</span><span class="o">());</span>
+  <span class="k">await</span> <span class="n">runServer</span><span class="o">(</span><span class="n">script</span><span class="o">.</span><span class="na">parent</span><span class="o">.</span><span class="na">path</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Writing HTTP clients is very similar to using the
+<a href="https://api.dart.dev/stable/dart-io/HttpClient-class.html">HttpClient</a>
+class.</p>
+
+<h2 id="feature-requests-welcome">
+<a class="anchor" href="#feature-requests-welcome" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature requests welcome</h2>
+
+<p>The dart:io library is already capable of performing a lot of tasks.
+For example, the <a href="https://pub.dev">pub.dev site</a> uses dart:io.</p>
+
+<p>Please give dart:io a spin and let us know what you think.
+Feature requests are very welcome!
+When you file a bug or feature request,
+use <a href="https://dartbug.com">dartbug.com.</a>
+To find reported issues, search for the
+<a href="https://github.com/dart-lang/sdk/issues?q=label%3Alibrary-io">library-io label.</a></p>
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>

@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="Use an analysis options file and code comments to customize static analysis.">
+  <title>Customizing static analysis | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="Customizing static analysis" />
+  <meta name="twitter:description" content="Use an analysis options file and code comments to customize static analysis." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Customizing static analysis" />
+  <meta property="og:description" content="Use an analysis options file and code comments to customize static analysis." />
+  <meta property="og:url" content="https://dart.esdocu.com/guides/language/analysis-options" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+         active">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link active">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="false" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="false" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="false" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="true" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link active collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link active" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#the-analysis-options-file">The analysis options file</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#enabling-additional-type-checks">Enabling stricter type checks</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#enabling-linter-rules">Enabling and disabling linter rules</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#lints">Enabling Dart team recommended linter rules</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#individual-rules">Enabling individual rules</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#disabling-individual-rules">Disabling individual rules</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#excluding-code-from-analysis">Excluding code from analysis</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#excluding-files">Excluding files</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#suppressing-rules-for-a-file">Suppressing rules for a file</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#suppressing-rules-for-a-line-of-code">Suppressing rules for a line of code</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#customizing-analysis-rules">Customizing analysis rules</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#ignoring-rules">Ignoring rules</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#changing-the-severity-of-rules">Changing the severity of rules</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#resources">Resources</a></li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/_guides/language/analysis-options.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Customizing static analysis'&page-url=https://dart.esdocu.com/guides/language/analysis-options&page-source=https://github.com/dart-lang/site-www/tree/main/src/_guides/language/analysis-options.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>Customizing static analysis</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc toc-collapsible toc-collapsed">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+      <span class="site-toc--inline__toggle toc-toggle-down"><i class="material-icons">keyboard_arrow_down</i></span>
+      <span class="site-toc--inline__toggle toc-toggle-up"><i class="material-icons">keyboard_arrow_up</i></span>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#the-analysis-options-file">The analysis options file</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-additional-type-checks">Enabling stricter type checks</a></li>
+<li class="toc-entry toc-h2"><a href="#enabling-linter-rules">Enabling and disabling linter rules</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#lints">Enabling Dart team recommended linter rules</a></li>
+<li class="toc-entry toc-h3"><a href="#individual-rules">Enabling individual rules</a></li>
+<li class="toc-entry toc-h3"><a href="#disabling-individual-rules">Disabling individual rules</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#excluding-code-from-analysis">Excluding code from analysis</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#excluding-files">Excluding files</a></li>
+<li class="toc-entry toc-h3"><a href="#suppressing-rules-for-a-file">Suppressing rules for a file</a></li>
+<li class="toc-entry toc-h3"><a href="#suppressing-rules-for-a-line-of-code">Suppressing rules for a line of code</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#customizing-analysis-rules">Customizing analysis rules</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#ignoring-rules">Ignoring rules</a></li>
+<li class="toc-entry toc-h3"><a href="#changing-the-severity-of-rules">Changing the severity of rules</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#resources">Resources</a></li>
+</ul>
+</div>
+
+
+          
+<style>
+li.L0, li.L1, li.L2, li.L3,
+li.L5, li.L6, li.L7, li.L8, li.L9 {
+  background: none;
+  list-style-type: decimal;
+}
+pre.prettyprint.analyzer .highlight {
+    border-bottom: 2px red dashed;
+    background: inherit;
+    padding-bottom: 1px;
+}
+</style>
+
+<p>Static analysis allows you to find problems before
+executing a single line of code. It’s a powerful tool
+used to prevent bugs and ensure that code conforms to style
+guidelines.</p>
+
+<p>With the help of the analyzer, you can find
+simple typos. For example, perhaps an accidental semicolon
+made its way into an <code class="language-plaintext highlighter-rouge">if</code> statement:</p>
+
+<blockquote class="ml-3">
+  <pre class="prettyprint lang-dart linenums:8 analyzer">void increment() {
+  if (count &lt; 10) <span class="highlight">;</span>
+  count++;
+}</pre>
+
+  <p>If properly configured, the analyzer points to the semicolon and
+produces the following warning:</p>
+
+  <div class="code-excerpt console-output">
+<div class="code-excerpt__code"><pre class="prettyprint nocode">info - example.dart:9:19 - Avoid empty statements. - empty_statements</pre></div>
+</div>
+
+</blockquote>
+
+<p>The analyzer can also help you find more subtle problems.
+For example, perhaps you’ve forgotten to close a sink method:</p>
+
+<blockquote class="ml-3">
+  <pre class="prettyprint lang-dart analyzer">var <span class="highlight">controller = StreamController&lt;String&gt;()</span>;</pre>
+
+  <div class="code-excerpt console-output">
+<div class="code-excerpt__code"><pre class="prettyprint nocode">info - Close instances of `dart.core.Sink`. - close_sinks</pre></div>
+</div>
+
+</blockquote>
+
+<p>In the Dart ecosystem,
+the Dart Analysis Server and other tools use the
+<a href="https://pub.dev/packages/analyzer">analyzer package</a>
+to perform static analysis.</p>
+
+<p>You can customize static analysis to look for a variety of potential
+problems, including errors and warnings specified in the
+<a href="/guides/language/spec">Dart language spec</a>.
+You can also configure the linter, one of the analyzer’s plugins,
+to ensure that your code complies with the
+<a href="/guides/language/effective-dart/style">Dart Style Guide</a>
+and other suggested guidelines in
+<a href="/guides/language/effective-dart">Effective Dart</a>. Dart tools such as the
+<a href="/tools/dart-compile">Dart compiler (<code class="language-plaintext highlighter-rouge">dart compile</code>)</a>,
+<a href="/tools/dart-analyze"><code class="language-plaintext highlighter-rouge">dart analyze</code></a>,
+<a href="https://docs.flutter.dev/testing/debugging#the-dart-analyzer"><code class="language-plaintext highlighter-rouge">flutter analyze</code></a>,
+and <a href="/tools/jetbrains-plugin">JetBrains IDEs</a>
+use the analyzer package to evaluate your code.</p>
+
+<p>This document explains how to customize the behavior of the analyzer
+using either an analysis options file or comments in Dart source code. If you want to
+add static analysis to your tool, see the
+<a href="https://pub.dev/packages/analyzer">analyzer package</a> docs and the
+<a href="https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html">Analysis Server API Specification.</a></p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  To view various analyzer diagnostics with explanations and common fixes,
+  see <a href="/tools/diagnostic-messages">Diagnostic messages</a>.</p>
+</aside>
+
+<h2 id="the-analysis-options-file">
+<a class="anchor" href="#the-analysis-options-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>The analysis options file</h2>
+
+<p>Place the analysis options file, <code class="language-plaintext highlighter-rouge">analysis_options.yaml</code>,
+at the root of the package, in the same directory as the pubspec file.</p>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  The older name for the analysis options file was <code class="language-plaintext highlighter-rouge">.analysis_options</code>;
+  support for that filename was dropped in Dart 2.8.
+  To upgrade an <code class="language-plaintext highlighter-rouge">.analysis_options</code> file,
+  just change its name to <code class="language-plaintext highlighter-rouge">analysis_options.yaml</code>.</p>
+</aside>
+
+<p>Here’s a sample analysis options file:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-yaml">include: package:lints/recommended.yaml
+
+analyzer:
+  exclude: [build/**]
+  language:
+    strict-casts: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    - cancel_subscriptions</pre></div>
+</div>
+
+<p>The sample illustrates the most common top-level entries:</p>
+
+<ul>
+  <li>Use <code>include: <em>url</em></code> to
+bring in options from the specified URL—in this case,
+from a file in the <code class="language-plaintext highlighter-rouge">lints</code> package.
+Because YAML doesn’t allow duplicate keys,
+you can include at most one file.</li>
+  <li>Use the <code class="language-plaintext highlighter-rouge">analyzer:</code> entry to customize static analysis:
+<a href="#enabling-additional-type-checks">enabling stricter type checks</a>,
+<a href="#excluding-files">excluding files</a>,
+<a href="#ignoring-rules">ignoring specific rules</a>,
+<a href="#changing-the-severity-of-rules">changing the severity of rules</a>, or
+<a href="/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide">enabling experiments</a>.</li>
+  <li>Use the <code class="language-plaintext highlighter-rouge">linter:</code> entry to configure <a href="#enabling-linter-rules">linter rules</a>.</li>
+</ul>
+
+<aside class="alert alert-warning" role="alert">
+  <p><i class="fas fa-exclamation-triangle"></i>
+  <strong>YAML is sensitive to whitespace.</strong> 
+  Don’t use tabs in a YAML file,
+  and use 2 spaces to denote each level of indentation.</p>
+</aside>
+
+<p>If the analyzer can’t find an analysis options file at the package root,
+it walks up the directory tree, looking for one.
+If no file is available, the analyzer defaults to standard checks.</p>
+
+<p>Consider the following directory structure for a large project:</p>
+
+<p><img src="/assets/img/guides/analysis-options-directory-structure.png" alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2)."></p>
+
+<p>The analyzer uses file #1 to analyze the code in <code class="language-plaintext highlighter-rouge">my_other_package</code>
+and <code class="language-plaintext highlighter-rouge">my_other_other_package</code>, and file #2 to analyze the code in
+<code class="language-plaintext highlighter-rouge">my_package</code>.</p>
+
+<h2 id="enabling-additional-type-checks">
+<a class="anchor" href="#enabling-additional-type-checks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling stricter type checks</h2>
+
+<p>If you want stricter static checks than
+the <a href="/guides/language/type-system">Dart type system</a> requires,
+consider enabling the 
+<code class="language-plaintext highlighter-rouge">strict-casts</code>, <code class="language-plaintext highlighter-rouge">strict-inference</code>, and <code class="language-plaintext highlighter-rouge">strict-raw-types</code> language modes:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-yaml">analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true</pre></div>
+</div>
+
+<p>You can use the modes together or separately; all default to <code class="language-plaintext highlighter-rouge">false</code>.</p>
+
+<dl>
+  <dt><code class="language-plaintext highlighter-rouge">strict-casts: &lt;bool&gt;</code></dt>
+  <dd>A value of <code class="language-plaintext highlighter-rouge">true</code> ensures that the type inference engine never
+implicitly casts from <code class="language-plaintext highlighter-rouge">dynamic</code> to a more specific type.
+The following valid Dart code includes an implicit downcast from the
+<code class="language-plaintext highlighter-rouge">dynamic</code> value returned by <code class="language-plaintext highlighter-rouge">jsonDecode</code> to <code class="language-plaintext highlighter-rouge">List&lt;String&gt;</code>
+that could fail at runtime.
+This mode reports the potential error, 
+requiring you to add an explicit cast or otherwise adjust your code.</dd>
+</dl>
+
+<pre class="prettyprint lang-dart analyzer fails-sa">void foo(List&lt;String&gt; lines) {
+  ...
+}
+
+void bar(String jsonText) {
+  foo(<span class="highlight">jsonDecode(jsonText)</span>); // Implicit cast
+}</pre>
+
+<div class="code-excerpt console-output">
+<div class="code-excerpt__code"><pre class="prettyprint nocode">error - The argument type 'dynamic' can't be assigned to the parameter type 'List&lt;String&gt;'. - argument_type_not_assignable</pre></div>
+</div>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
+  The <code class="language-plaintext highlighter-rouge">strict-casts</code> mode was introduced in Dart 2.16.
+  To enable similar checks with earlier SDK releases,
+  consider using the now deprecated <code class="language-plaintext highlighter-rouge">implicit-casts</code> option:</p>
+
+  <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="na">analyzer</span><span class="pi">:</span>
+    <span class="na">strong-mode</span><span class="pi">:</span>
+      <span class="na">implicit-casts</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div>  </div>
+</aside>
+
+<dl>
+  <dt><code class="language-plaintext highlighter-rouge">strict-inference: &lt;bool&gt;</code></dt>
+  <dd>A value of <code class="language-plaintext highlighter-rouge">true</code> ensures that the type inference engine never chooses
+the <code class="language-plaintext highlighter-rouge">dynamic</code> type when it can’t determine a static type.
+The following valid Dart code creates a <code class="language-plaintext highlighter-rouge">Map</code>
+whose type argument cannot be inferred, 
+resulting in an inference failure hint by this mode:</dd>
+</dl>
+
+<pre class="prettyprint lang-dart analyzer fails-sa">final lines = <span class="highlight">{}</span>; // Inference failure
+lines['Dart'] = 10000;
+lines['C++'] = 'one thousand';
+lines['Go'] = 2000;
+print('Lines: ${lines.values.reduce((a, b) =&gt; a + b)}'); // Runtime error</pre>
+
+<div class="code-excerpt console-output">
+<div class="code-excerpt__code"><pre class="prettyprint nocode">info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal</pre></div>
+</div>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i>
+  The <code class="language-plaintext highlighter-rouge">strict-inference</code> mode can identify many situations
+  which result in an inference failure.</p>
+
+  <p>See <a href="https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure">Conditions for strict inference failure</a> 
+  for an exhaustive list of inference failure conditions.</p>
+</aside>
+
+<dl>
+  <dt><code class="language-plaintext highlighter-rouge">strict-raw-types: &lt;bool&gt;</code></dt>
+  <dd>A value of <code class="language-plaintext highlighter-rouge">true</code> ensures that the type inference engine never chooses
+the <code class="language-plaintext highlighter-rouge">dynamic</code> type when it can’t determine a static type
+due to omitted type arguments.
+The following valid Dart code has a <code class="language-plaintext highlighter-rouge">List</code> variable with a raw type,
+resulting in a raw type hint by this mode:</dd>
+</dl>
+
+<pre class="prettyprint lang-dart analyzer fails-sa"><span class="highlight">List</span> numbers = [1, 2, 3]; // List with raw type
+for (final n in numbers) {
+  print(n.length); // Runtime error
+}</pre>
+
+<div class="code-excerpt console-output">
+<div class="code-excerpt__code"><pre class="prettyprint nocode">info - The generic type 'List&lt;dynamic&gt;' should have explicit type arguments but doesn't - strict_raw_type</pre></div>
+</div>
+
+<h2 id="enabling-linter-rules">
+<a class="anchor" href="#enabling-linter-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling and disabling linter rules</h2>
+
+<p>The analyzer package also provides a code linter. A wide variety of
+<a href="/tools/linter-rules">linter rules</a> are available. Linters tend to be
+nondenominational—rules don’t have to agree with each other.
+For example, some rules are more appropriate for library packages
+and others are designed for Flutter apps.
+Note that linter rules can have false positives, unlike static analysis.</p>
+
+<h3 id="lints">
+<a class="anchor" href="#lints" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling Dart team recommended linter rules</h3>
+
+<p>The Dart team provides two sets of recommended linter rules
+in the <a href="https://pub.dev/packages/lints">lints package</a>:</p>
+
+<dl>
+  <dt>Core rules</dt>
+  <dd>Help identify critical issues that are likely to lead to problems
+when running or consuming Dart code.
+All code should pass these linter rules.
+Packages that are uploaded to <a href="https://pub.dev">pub.dev</a>
+have a <a href="https://pub.dev/help/scoring">package score</a>
+that’s based in part on passing these rules.</dd>
+  <dt>Recommended rules</dt>
+  <dd>Help identify additional issues
+that may lead to problems when running or consuming Dart code,
+and enforce a single, idiomatic style and format.
+We recommend that all Dart code use these rules,
+which are a superset of the core rules.</dd>
+</dl>
+
+<aside class="alert alert-success" role="alert">
+  <p><i class="far fa-lightbulb"></i> <strong>Tip:</strong>
+  If you’re working on Flutter code, then instead of using the <code class="language-plaintext highlighter-rouge">lints</code> package, 
+  use <a href="https://pub.dev/packages/flutter_lints"><code class="language-plaintext highlighter-rouge">flutter_lints</code></a>,
+  which provides a superset of the recommended rules.</p>
+</aside>
+
+<p>To enable either set of lints,
+add the <a href="https://pub.dev/packages/lints">lints package</a> as a dev dependency:</p>
+
+<div class="language-terminal highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>dart pub add <span class="nt">--dev</span> lints
+</code></pre></div></div>
+
+<p>Then edit your <code class="language-plaintext highlighter-rouge">analysis_options.yaml</code> file to include
+your preferred rule set:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">include</span><span class="pi">:</span> <span class="s">package:lints/&lt;RULE_SET&gt;.yaml</span>
+</code></pre></div></div>
+
+<p>For example, you can include the recommended rule set like this:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">include</span><span class="pi">:</span> <span class="s">package:lints/recommended.yaml</span>
+</code></pre></div></div>
+
+<aside class="alert alert-warning" role="alert">
+  <p><i class="fas fa-exclamation-circle"></i> <strong>Important:</strong>
+  When a <strong>new version of <code class="language-plaintext highlighter-rouge">lints</code></strong> is published,
+  code that previously passed analysis might <strong>start failing analysis.</strong>
+  We recommend updating your code to work with the new rules.
+  Other options are to explicitly enable individual linter rules 
+  or <a href="#disabling-individual-rules">disable individual rules</a>.</p>
+</aside>
+
+<h3 id="individual-rules">
+<a class="anchor" href="#individual-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enabling individual rules</h3>
+
+<p>To enable a single linter rule, add <code class="language-plaintext highlighter-rouge">linter:</code> to the analysis options file
+as a top-level key,
+followed by <code class="language-plaintext highlighter-rouge">rules:</code> as a second-level key.
+On subsequent lines, specify the rules that you want to apply,
+prefixed with dashes (the syntax for a YAML list).
+For example:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-yaml">linter:
+  rules:
+    - always_declare_return_types
+    - cancel_subscriptions
+    - close_sinks
+    - comment_references
+    - one_member_abstracts
+    - only_throw_errors
+    - package_api_docs
+    - prefer_final_in_for_each
+    - prefer_single_quotes</pre></div>
+</div>
+
+<h3 id="disabling-individual-rules">
+<a class="anchor" href="#disabling-individual-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Disabling individual rules</h3>
+
+<p>If you include an analysis options file such as the one in <code class="language-plaintext highlighter-rouge">lints</code>,
+you might want to disable some of the included rules.
+Disabling individual rules is similar to enabling them,
+but requires the use of a map rather than a list
+as the value for the <code class="language-plaintext highlighter-rouge">rules:</code> entry,
+so each line should contain the name of a rule followed by
+either <code class="language-plaintext highlighter-rouge">: false</code> or <code class="language-plaintext highlighter-rouge">: true</code>.</p>
+
+<p>Here’s an example of an analysis options file
+that uses all the recommended rules from <code class="language-plaintext highlighter-rouge">lints</code>
+except <code class="language-plaintext highlighter-rouge">avoid_shadowing_type_parameters</code>.
+It also enables the lint <code class="language-plaintext highlighter-rouge">await_only_futures</code>:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-yaml">include: package:lints/recommended.yaml
+
+linter:
+  rules:
+    avoid_shadowing_type_parameters: false
+    await_only_futures: true</pre></div>
+</div>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  Due to YAML restrictions, 
+  <strong>you can’t mix list and key-value syntax in the same <code class="language-plaintext highlighter-rouge">rules</code> entry.</strong>
+  You can, however, use the other syntax for rules in an included file.</p>
+</aside>
+
+<h2 id="excluding-code-from-analysis">
+<a class="anchor" href="#excluding-code-from-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Excluding code from analysis</h2>
+
+<p>Sometimes it’s OK for some code to fail analysis.
+For example, you might rely on code generated by a package that
+you don’t own—the generated code works,
+but produces warnings during static analysis.
+Or a linter rule might cause a false positive
+that you want to suppress.</p>
+
+<p>You have a few ways to exclude code from analysis:</p>
+
+<ul>
+  <li>Exclude entire files from analysis.</li>
+  <li>Stop specific non-error rules from being applied to individual files.</li>
+  <li>Stop specific non-error rules from being applied to individual lines of code.</li>
+</ul>
+
+<p>You can also <a href="#disabling-individual-rules">disable specific rules</a>
+for all files or
+<a href="#changing-the-severity-of-rules">change the severity of rules</a>.</p>
+
+<h3 id="excluding-files">
+<a class="anchor" href="#excluding-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Excluding files</h3>
+
+<p>To exclude files from static analysis, use the <code class="language-plaintext highlighter-rouge">exclude:</code> analyzer option. You
+can list individual files, or use <a href="https://pub.dev/packages/glob">glob</a> syntax:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-yaml">analyzer:
+  exclude:
+    - lib/client.dart
+    - lib/server/*.g.dart
+    - test/_data/**</pre></div>
+</div>
+
+<h3 id="suppressing-rules-for-a-file">
+<a class="anchor" href="#suppressing-rules-for-a-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>Suppressing rules for a file</h3>
+
+<p>To ignore a specific non-error rule for a specific file,
+add an <code class="language-plaintext highlighter-rouge">ignore_for_file</code> comment to the file:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// ignore_for_file: unused_local_variable</pre></div>
+</div>
+
+<p>This acts for the whole file, before or after the comment, and is
+particularly useful for generated code.</p>
+
+<p>To suppress more than one rule, use a comma-separated list:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// ignore_for_file: unused_local_variable, duplicate_ignore, dead_code</pre></div>
+</div>
+
+<p>To suppress all linter rules, add a <code class="language-plaintext highlighter-rouge">type=lint</code> specifier:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// ignore_for_file: type=lint</pre></div>
+</div>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
+  Support for the <code class="language-plaintext highlighter-rouge">type=lint</code> specifier was added in Dart 2.15.</p>
+</aside>
+
+<h3 id="suppressing-rules-for-a-line-of-code">
+<a class="anchor" href="#suppressing-rules-for-a-line-of-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Suppressing rules for a line of code</h3>
+
+<p>To suppress a specific non-error rule on a specific line of code,
+put an <code class="language-plaintext highlighter-rouge">ignore</code> comment
+above the line of code. 
+Here’s an example of ignoring code that causes a runtime error, 
+as you might do in a language test:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// ignore: invalid_assignment
+int x = '';</pre></div>
+</div>
+
+<p>To suppress more than one rule, supply a comma-separated list:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// ignore: invalid_assignment, const_initialized_with_non_constant_value
+const x = y;</pre></div>
+</div>
+
+<p>Alternatively, append the ignore rule to the line that it applies to:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">int x = ''; // ignore: invalid_assignment</pre></div>
+</div>
+
+<h2 id="customizing-analysis-rules">
+<a class="anchor" href="#customizing-analysis-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing analysis rules</h2>
+
+<p>Each <a href="https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/error/error.dart">analyzer error code</a> and
+<a href="/tools/linter-rules">linter rule</a> has a default severity.
+You can use the analysis options file to change
+the severity of individual rules, or to always ignore some rules.</p>
+
+<p>The analyzer supports three severity levels:</p>
+
+<dl>
+  <dt><code class="language-plaintext highlighter-rouge">info</code></dt>
+  <dd>An informational message that doesn’t cause analysis to fail.
+Example: <a href="/tools/diagnostic-messages#dead_code"><code class="language-plaintext highlighter-rouge">dead_code</code></a>
+</dd>
+  <dt><code class="language-plaintext highlighter-rouge">warning</code></dt>
+  <dd>A warning that doesn’t cause analysis to fail unless
+the analyzer is configured to treat warnings as errors.
+Example: <a href="/tools/diagnostic-messages#invalid_null_aware_operator"><code class="language-plaintext highlighter-rouge">invalid_null_aware_operator</code></a>
+</dd>
+  <dt><code class="language-plaintext highlighter-rouge">error</code></dt>
+  <dd>An error that causes analysis to fail.
+Example: <a href="/tools/diagnostic-messages#invalid_assignment"><code class="language-plaintext highlighter-rouge">invalid_assignment</code></a>
+</dd>
+</dl>
+
+<h3 id="ignoring-rules">
+<a class="anchor" href="#ignoring-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ignoring rules</h3>
+
+<p>You can ignore specific <a href="https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/error/error.dart">analyzer error codes</a> and <a href="/tools/linter-rules">linter rules</a>
+by using the <code class="language-plaintext highlighter-rouge">errors:</code> field.
+List the rule, followed by <code>: ignore</code>. For example, the following
+analysis options file instructs the analysis tools to ignore the TODO rule:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-yaml">analyzer:
+  errors:
+    todo: ignore</pre></div>
+</div>
+
+<h3 id="changing-the-severity-of-rules">
+<a class="anchor" href="#changing-the-severity-of-rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changing the severity of rules</h3>
+
+<p>You can globally change the severity of a particular rule.
+This technique works for regular analysis issues as well as for lints.
+For example, the following analysis options file instructs the analysis tools to
+treat invalid assignments as warnings and missing returns as errors,
+and to provide information (but not a warning or error) about dead code:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-yaml">analyzer:
+  errors:
+    invalid_assignment: warning
+    missing_return: error
+    dead_code: info</pre></div>
+</div>
+
+<h2 id="resources">
+<a class="anchor" href="#resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<p>Use the following resources to learn more about static analysis in Dart:</p>
+
+<ul>
+  <li><a href="/guides/language/type-system">Dart’s type system</a></li>
+  <li><a href="https://github.com/dart-lang/linter#linter-for-dart">Dart linter</a></li>
+  <li><a href="/tools/linter-rules">Dart linter rules</a></li>
+  <li><a href="https://pub.dev/packages/analyzer">analyzer package</a></li>
+</ul>
+
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>

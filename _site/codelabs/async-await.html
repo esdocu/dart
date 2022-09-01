@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html>
+  
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Language" content="es_ES" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M146BEZEJV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M146BEZEJV');
+  </script>
+
+  <meta name="description" content="Learn about and practice writing asynchronous code in DartPad!">
+  <title>Asynchronous programming: futures, async, await | Dart es Español</title>
+
+  <!-- Favicon / Touch Icons -->
+  <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
+  <link href="/assets/img/touch-icon-iphone.png" rel="apple-touch-icon">
+  <link href="/assets/img/touch-icon-ipad.png" rel="apple-touch-icon" sizes="152x152">
+  <link href="/assets/img/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="/assets/img/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="167x167">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@dart_lang" />
+  <meta name="twitter:title" content="Asynchronous programming: futures, async, await" />
+  <meta name="twitter:description" content="Learn about and practice writing asynchronous code in DartPad!" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Asynchronous programming: futures, async, await" />
+  <meta property="og:description" content="Learn about and practice writing asynchronous code in DartPad!" />
+  <meta property="og:url" content="https://dart.esdocu.com/codelabs/async-await.html" />
+  
+  <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" rel="stylesheet">
+  <script 
+    src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+    data-auto-replace-svg="nest">
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662038679">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"
+          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js"
+          integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js" 
+          integrity="sha512-wT7uPE7tOP6w4o28u1DN775jYjHQApdBnib5Pho4RB0Pgd9y7eSkAV1BTqQydupYDB9GBhTcQQzyNMPMV3cAew==" 
+          crossorigin="anonymous" 
+          referrerpolicy="no-referrer"></script>
+
+  <script src="/assets/js/vendor/code-prettify/prettify.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
+  <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
+  <script src="/assets/js/os-tabs.js?v=1662038679"></script>
+  <script src="/assets/js/utilities.js?v=1662038679"></script>
+  <script src="/assets/js/main.js?v=1662038679"></script>
+
+  <script defer src="https://dartpad.dev/inject_embed.dart.js"></script>
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-26406144-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+ </head>
+
+  <body class="default show_banner">
+    <section id="cookie-notice">
+  <div class="container">
+    <p>Google uses cookies to deliver its services, to personalize ads, and to 
+      analyze traffic. You can adjust your privacy controls anytime in your 
+      <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Google settings</a>. 
+      <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Learn more</a>.
+    </p>
+    <button id="cookie-consent" class="btn btn-primary">Okay</button>
+  </div>
+</section>
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
+ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header id="page-header" class="site-header">
+  <nav id="mainnav" class="site-header">
+  <div id="menu-toggle"><i class="material-icons">menu</i></div>
+  <a href="/" class="brand" title="Dart es Español">
+    <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart es Español">
+  </a>
+  <ul class="navbar">
+    <li>
+      <a href="/overview" class="nav-link">Overview</a>
+    </li>
+    <li class="mainnav__get-started">
+      <a href="/guides" class="nav-link
+         active">
+        <span>Docs</span>
+      </a>
+    </li>
+    <li>
+      <a href="/community" class="nav-link">Comunidad</a>
+    </li>
+    <li>
+      <a href="/#try-dart" class="nav-link">Probar Dart</a>
+    </li>
+    <li>
+      <a href="/get-dart" class="nav-link">Obtener Dart</a>
+    </li>
+    <li class="searchfield">
+      <form action="/search" class="site-header__search form-inline" id="cse-search-box">
+        <input type="hidden" name="cx" value="011220921317074318178:_yy-tmb5t_i">
+        <input type="hidden" name="ie" value="UTF-8">
+        <input type="hidden" name="hl" value="en">
+        <input class="site-header__searchfield form-control search-field" type="search" name="q"
+          id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+      </form>
+    </li>
+  </ul>
+</nav>
+
+  
+</header>
+ <div class="banner">
+  <p class="banner__text">
+    Dart 2.18 ya está disponible con interoperabilidad de Objective-C y Swift y mejoras de networking, la inferencia de tipos y el rendimiento del código asíncrono. <a href="https://medium.com/@mit.mit/dart-2-18-f4b3101f146c">Más información</a><br>
+    Los equipos de Flutter y Dart están contratando.
+    <a href="https://docs.flutter.dev/jobs">Más información</a>
+  </p>
+</div> 
+
+    <div id="sidenav" class="">
+  <form action="/search/" class="site-header__search form-inline">
+    <input class="site-header__searchfield form-control search-field" type="search" name="q"
+           id="q" autocomplete="off" placeholder="Search" aria-label="Search">
+  </form>
+
+  <div class="site-sidebar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/overview" class="nav-link">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a href="/community" class="nav-link">Comunidad</a>
+      </li>
+      <li class="nav-item">
+        <a href="https://dartpad.dev" class="nav-link">Probar Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/get-dart" class="nav-link">Obtener Dart</a>
+      </li>
+      <li class="nav-item">
+        <a href="/guides" class="nav-link active">Docs</a>
+      </li>
+    </ul>
+
+    <ul class="nav flex-column"><li class="nav-item">
+      <a class="nav-link active" data-toggle="collapse" href="#sidenav-1" role="button"
+        aria-expanded="true" aria-controls="sidenav-1"
+      >Samples & tutorials</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1">
+        <li class="nav-item">
+    <a class="nav-link" href="/samples">Language samples</a>
+  </li><li class="nav-item">
+    <a class="nav-link active collapsable"
+      data-toggle="collapse" data-target="#sidenav-1-2"
+      href="#sidenav-1-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-1-2"
+    >Codelabs
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-1-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/codelabs">List of Dart codelabs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/dart-cheatsheet">Language cheatsheet</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/iterables">Iterable collections</a>
+  </li><li class="nav-item">
+    <a class="nav-link active" href="/codelabs/async-await">Asynchronous programming</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/codelabs/null-safety">Null safety</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/tutorials">Tutorials</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-2" role="button"
+        aria-expanded="false" aria-controls="sidenav-2"
+      >Language</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/language/language-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/type-system">Type system</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-3"
+      href="#sidenav-2-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-3"
+    >Effective Dart
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/style">Style</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/documentation">Documentation</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/usage">Usage</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/effective-dart/design">Design</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-4"
+      href="#sidenav-2-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-4"
+    >Coming from ...
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/coming-from/js-to-dart">JavaScript to Dart</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/extension-methods">Extension methods</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/concurrency">Concurrency</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/numbers">Numbers</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-2-8"
+      href="#sidenav-2-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-2-8"
+    >Null safety
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-2-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/null-safety">Overview: Sound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/migration-guide">Migrating to null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/understanding-null-safety">Understanding null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/unsound-null-safety">Unsound null safety</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/null-safety/faq">FAQ</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/language/evolution">Evolution</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/spec">Specification</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-3" role="button"
+        aria-expanded="false" aria-controls="sidenav-3"
+      >Core libraries</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/library-tour">Tour</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-3-3"
+      href="#sidenav-3-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-3-3"
+    >Articles
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-3-3">
+      <li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/dart-io">Intro to dart:io</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/articles/libraries/creating-streams">Creating streams</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-4" role="button"
+        aria-expanded="false" aria-controls="sidenav-4"
+      >Packages</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4">
+        <li class="nav-item">
+    <a class="nav-link" href="/guides/packages">How to use packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/useful-libraries">Commonly used packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/create-library-packages">Creating packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/publishing">Publishing packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/writing-package-pages">Writing package pages</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-4-6"
+      href="#sidenav-4-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-4-6"
+    >Package reference
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-4-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/dependencies">Dependencies</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/glossary">Glossary</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/package-layout">Package layout conventions</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/environment-variables">Pub environment variables</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/pubspec">Pubspec file</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/troubleshoot">Troubleshooting pub</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/verified-publishers">Verified publishers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/pub/versioning">Versioning</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-5" role="button"
+        aria-expanded="false" aria-controls="sidenav-5"
+      >Development</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5">
+        <li class="nav-item">
+    <a class="nav-link" href="/codelabs/async-await">Futures, async, await</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/language/streams">Streams</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/json">JSON</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-4"
+      href="#sidenav-5-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-4"
+    >Interoperability
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/c-interop">C interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/objective-c-interop">Objective-C and Swift interop</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/js-interop">JavaScript interop</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/guides/google-apis">Google APIs</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/multiplatform-apps">Multi-platform apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-7"
+      href="#sidenav-5-7" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-7"
+    >Command-line & server apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-7">
+      <li class="nav-item">
+    <a class="nav-link" href="/server">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/cmdline">Write command-line apps</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/server/httpserver">Write HTTP servers</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/libraries">Libraries and packages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/server/google-cloud">Google Cloud</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8"
+      href="#sidenav-5-8" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8"
+    >Web apps
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8">
+      <li class="nav-item">
+    <a class="nav-link" href="/web">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/get-started">Get started</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/fetch-data">Fetch data dynamically</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-5-8-4"
+      href="#sidenav-5-8-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-5-8-4"
+    >Low-level web programming
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-5-8-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/add-elements">Add elements to the DOM</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tutorials/web/low-level-html/remove-elements">Remove DOM elements</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/web/deployment">Deployment</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/libraries">Libraries and packages</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-6" role="button"
+        aria-expanded="false" aria-controls="sidenav-6"
+      >Tools & techniques</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6">
+        <li class="nav-item">
+    <a class="nav-link" href="/tools">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-2"
+      href="#sidenav-6-2" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-2"
+    >Editors & debuggers
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/jetbrains-plugin">IntelliJ & Android Studio</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/vs-code">VS Code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dart-devtools">Dart DevTools</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/dartpad">DartPad</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-3"
+      href="#sidenav-6-3" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-3"
+    >Command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-3">
+      <li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-1"
+      href="#sidenav-6-3-1" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-1"
+    >Dart SDK
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-1">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/sdk">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-tool">dart</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-analyze">dart analyze</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-compile">dart compile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-create">dart create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-doc">dart doc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-fix">dart fix</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-format">dart format</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/pub/cmd">dart pub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-run">dart run</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dart-test">dart test</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/dartaotruntime">dartaotruntime</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/experiment-flags">Experiment flags</a>
+  </li>
+  </ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable"
+      data-toggle="collapse" data-target="#sidenav-6-3-2"
+      href="#sidenav-6-3-2" role="button"
+      aria-expanded="true" aria-controls="sidenav-6-3-2"
+    >Other command-line tools
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-6-3-2">
+      <li class="nav-item">
+    <a class="nav-link" href="/tools/build_runner">build_runner</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tools/webdev">webdev</a>
+  </li>
+  </ul>
+  </li>
+</ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-4"
+      href="#sidenav-6-4" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-4"
+    >Managing source code
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-4">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/formatting">Formatting code</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/libraries/private-files">What not to commit</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-5"
+      href="#sidenav-6-5" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-5"
+    >Static analysis
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-5">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/language/analysis-options">Customizing static analysis</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/guides/language/sound-problems">Fixing common type problems</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/diagnostic-messages">Diagnostic messages</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/tools/linter-rules">Linter rules</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-6-6"
+      href="#sidenav-6-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-6-6"
+    >Testing & optimization
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-6-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/guides/testing">Testing</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/web/debugging">Debugging web apps</a>
+  </li></ul>
+  </li>
+
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link collapsed" data-toggle="collapse" href="#sidenav-7" role="button"
+        aria-expanded="false" aria-controls="sidenav-7"
+      >Resources</a>
+
+      <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7">
+        <li class="nav-item">
+    <a class="nav-link" href="/resources">Overview</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/books">Books</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/resources/dartpad-best-practices">DartPad in tutorials: Best practices</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/code-of-conduct">Code of conduct</a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="/faq">FAQ</a>
+  </li><li class="nav-item">
+    <a class="nav-link collapsable collapsed"
+      data-toggle="collapse" data-target="#sidenav-7-6"
+      href="#sidenav-7-6" role="button"
+      aria-expanded="false" aria-controls="sidenav-7-6"
+    >History
+    </a>
+    <ul class="nav flex-column flex-nowrap collapse " id="sidenav-7-6">
+      <li class="nav-item">
+    <a class="nav-link" href="/dart-2">Migrating to Dart&nbsp;2</a>
+  </li></ul>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" href="/resources/videos">Videos</a>
+  </li>
+</ul>
+    </li><li class="nav-item">
+      <a class="nav-link " data-toggle="collapse" href="#sidenav-8" role="button"
+        aria-expanded="true" aria-controls="sidenav-8"
+      >Related sites</a>
+
+      <ul class="nav flex-column flex-nowrap collapse show" id="sidenav-8">
+        <li class="nav-item">
+    <a class="nav-link" href="https://api.dart.dev" target="_blank" rel="noopener">API reference<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://medium.com/dartlang" target="_blank" rel="noopener">Blog<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://dartpad.dev" target="_blank" rel="noopener">DartPad (online editor)<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://flutter.dev" target="_blank" rel="noopener">Flutter<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li><li class="nav-item">
+    <a class="nav-link" href="https://pub.dev" target="_blank" rel="noopener">Package site<span class="material-icons md-24">
+        open_in_new
+      </span></a>
+  </li>
+</ul>
+    </li></ul>
+
+  </div>
+</div>
+
+    <main id="page-content">
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#why-asynchronous-code-matters">Why asynchronous code matters</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#example-incorrectly-using-an-asynchronous-function">Example: Incorrectly using an asynchronous function</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#what-is-a-future">What is a future?</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#uncompleted">Uncompleted</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#completed">Completed</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#example-introducing-futures">Example: Introducing futures</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#example-completing-with-an-error">Example: Completing with an error</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#working-with-futures-async-and-await">Working with futures: async and await</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#execution-flow-with-async-and-await">Execution flow with async and await</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#example-execution-within-async-functions">Example: Execution within async functions</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#exercise-practice-using-async-and-await">Exercise: Practice using async and await</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#handling-errors">Handling errors</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#example-async-and-await-with-try-catch">Example: async and await with try-catch</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#exercise-practice-handling-errors">Exercise: Practice handling errors</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#exercise-putting-it-all-together">Exercise: Putting it all together</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#whats-next">What’s next?</a></li>
+</ul>
+</div>
+
+
+      <article>
+        <div class="content">
+          
+
+          <div>
+            <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/codelabs/async-await.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+    <i class="fas fa-file-alt fa-sm"></i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Asynchronous programming: futures, async, await'&page-url=https://dart.esdocu.com/codelabs/async-await.html&page-source=https://github.com/dart-lang/site-www/tree/main/src/codelabs/async-await.md" class="btn no-automatic-external" title="Report an issue with this page"
+    target="_blank" rel="noopener">
+    <i class="fas fa-bug fa-sm"></i>
+  </a>
+</div>
+
+            <h1>Asynchronous programming: futures, async, await</h1>
+          </div>
+          
+
+
+
+
+
+
+
+<div id="site-toc--inline" class="site-toc toc-collapsible toc-collapsed">
+  <header class="site-toc__title">
+    Contents
+    <button type="button" class="btn site-toc--button__page-top" aria-label="Page top"></button>
+    
+      <span class="site-toc--inline__toggle toc-toggle-down"><i class="material-icons">keyboard_arrow_down</i></span>
+      <span class="site-toc--inline__toggle toc-toggle-up"><i class="material-icons">keyboard_arrow_up</i></span>
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#why-asynchronous-code-matters">Why asynchronous code matters</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#example-incorrectly-using-an-asynchronous-function">Example: Incorrectly using an asynchronous function</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#what-is-a-future">What is a future?</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#uncompleted">Uncompleted</a></li>
+<li class="toc-entry toc-h3"><a href="#completed">Completed</a></li>
+<li class="toc-entry toc-h3"><a href="#example-introducing-futures">Example: Introducing futures</a></li>
+<li class="toc-entry toc-h3"><a href="#example-completing-with-an-error">Example: Completing with an error</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#working-with-futures-async-and-await">Working with futures: async and await</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#execution-flow-with-async-and-await">Execution flow with async and await</a></li>
+<li class="toc-entry toc-h3"><a href="#example-execution-within-async-functions">Example: Execution within async functions</a></li>
+<li class="toc-entry toc-h3"><a href="#exercise-practice-using-async-and-await">Exercise: Practice using async and await</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#handling-errors">Handling errors</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#example-async-and-await-with-try-catch">Example: async and await with try-catch</a></li>
+<li class="toc-entry toc-h3"><a href="#exercise-practice-handling-errors">Exercise: Practice handling errors</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#exercise-putting-it-all-together">Exercise: Putting it all together</a></li>
+<li class="toc-entry toc-h2"><a href="#whats-next">What’s next?</a></li>
+</ul>
+</div>
+
+
+          
+<p>This codelab teaches you how to write asynchronous code using
+futures and the <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> keywords. 
+Using embedded DartPad editors, 
+you can test your knowledge by running example code
+and completing exercises.</p>
+
+<p>To get the most out of this codelab, you should have the following:</p>
+
+<ul>
+  <li>Knowledge of <a href="/samples">basic Dart syntax</a>.</li>
+  <li>Some experience writing asynchronous code in another language.</li>
+</ul>
+
+<p>This codelab covers the following material:</p>
+
+<ul>
+  <li>How and when to use the <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> keywords.</li>
+  <li>How using <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> affects execution order.</li>
+  <li>How to handle errors from an asynchronous call
+using <code class="language-plaintext highlighter-rouge">try-catch</code> expressions in <code class="language-plaintext highlighter-rouge">async</code> functions.</li>
+</ul>
+
+<p>Estimated time to complete this codelab: 40-60 minutes.</p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  This page uses embedded DartPads to display examples and exercises.
+  If you see empty boxes instead of DartPads, go to the
+<a href="/tools/dartpad/troubleshoot">DartPad troubleshooting page</a>.</p>
+
+</aside>
+
+<h2 id="why-asynchronous-code-matters">
+<a class="anchor" href="#why-asynchronous-code-matters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why asynchronous code matters</h2>
+
+<p>Asynchronous operations let your program complete work
+while waiting for another operation to finish. 
+Here are some common asynchronous operations:</p>
+
+<ul>
+  <li>Fetching data over a network.</li>
+  <li>Writing to a database.</li>
+  <li>Reading data from a file.</li>
+</ul>
+
+<p>Such asynchronous computations usually provide their result as a <code class="language-plaintext highlighter-rouge">Future</code>
+or, if the result has multiple parts, as a <code class="language-plaintext highlighter-rouge">Stream</code>.
+These computations introduce asynchrony into a program.
+To accommodate that initial asynchrony, 
+other plain Dart functions also need to become asynchronous.</p>
+
+<p>To interact with these asynchronous results,
+you can use the <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> keywords.
+Most asynchronous functions are just async Dart functions
+that depend, possibly deep down, 
+on an inherently asynchronous computation.</p>
+
+<h3 id="example-incorrectly-using-an-asynchronous-function">
+<a class="anchor" href="#example-incorrectly-using-an-asynchronous-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Incorrectly using an asynchronous function</h3>
+
+<p>The following example shows the wrong way
+to use an asynchronous function (<code class="language-plaintext highlighter-rouge">fetchUserOrder()</code>). 
+Later you’ll fix the example using <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code>.
+Before running this example, try to spot the issue – 
+what do you think the output will be?</p>
+<pre><code class="language-dart:run-dartpad:height-380px:ga_id-incorrect_usage">// This example shows how *not* to write asynchronous Dart code.
+
+String createOrderMessage() {
+  var order = fetchUserOrder();
+  return 'Your order is: $order';
+}
+
+Future&lt;String&gt; fetchUserOrder() =&gt;
+    // Imagine that this function is more complex and slow.
+    Future.delayed(
+      const Duration(seconds: 2),
+      () =&gt; 'Large Latte',
+    );
+
+void main() {
+  print(createOrderMessage());
+}
+</code></pre>
+
+<p>Here’s why the example fails to print the value
+that <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> eventually produces:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> is an asynchronous function that, after a delay,
+provides a string that describes the user’s order: a “Large Latte”.</li>
+  <li>To get the user’s order, <code class="language-plaintext highlighter-rouge">createOrderMessage()</code> should call <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code>
+and wait for it to finish. Because <code class="language-plaintext highlighter-rouge">createOrderMessage()</code> does <em>not</em> wait
+for <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> to finish, <code class="language-plaintext highlighter-rouge">createOrderMessage()</code> fails to
+get the string value that <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> eventually provides.</li>
+  <li>Instead, <code class="language-plaintext highlighter-rouge">createOrderMessage()</code> gets a representation of pending work to be
+done: an uncompleted future. 
+You’ll learn more about futures in the next section.</li>
+  <li>Because <code class="language-plaintext highlighter-rouge">createOrderMessage()</code> fails to get the value describing the user’s
+order, the example fails to print “Large Latte” to the console, and instead
+prints “Your order is: Instance of ‘_Future&lt;String&gt;’”.</li>
+</ul>
+
+<p>In the next sections you’ll learn about futures and about working with futures
+(using <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code>)
+so that you’ll be able to write the code necessary to make <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code>
+print the desired value (“Large Latte”) to the console.</p>
+
+<aside class="alert alert-secondary" role="alert">
+  <p><strong>Key terms:</strong></p>
+
+  <ul>
+    <li>
+<strong>synchronous operation</strong>: A synchronous operation blocks other operations
+from executing until it completes.</li>
+    <li>
+<strong>synchronous function</strong>: A synchronous function only performs synchronous
+operations.</li>
+    <li>
+<strong>asynchronous operation</strong>: Once initiated, an asynchronous operation allows
+other operations to execute before it completes.</li>
+    <li>
+<strong>asynchronous function</strong>: An asynchronous function performs at least one
+asynchronous operation and can also perform <em>synchronous</em> operations.</li>
+  </ul>
+</aside>
+
+<h2 id="what-is-a-future">
+<a class="anchor" href="#what-is-a-future" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is a future?</h2>
+
+<p>A future (lower case “f”) is an instance
+of the <a href="https://api.dart.dev/stable/dart-async/Future-class.html">Future</a> (capitalized “F”) class. 
+A future represents the result of an asynchronous operation, 
+and can have two states: uncompleted or completed.</p>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  <em>Uncompleted</em> is a Dart term referring to the state of a future
+  before it has produced a value.</p>
+</aside>
+
+<h3 id="uncompleted">
+<a class="anchor" href="#uncompleted" aria-hidden="true"><span class="octicon octicon-link"></span></a>Uncompleted</h3>
+
+<p>When you call an asynchronous function, it returns an uncompleted future.
+That future is waiting for the function’s asynchronous operation
+to finish or to throw an error.</p>
+
+<h3 id="completed">
+<a class="anchor" href="#completed" aria-hidden="true"><span class="octicon octicon-link"></span></a>Completed</h3>
+
+<p>If the asynchronous operation succeeds, 
+the future completes with a value. 
+Otherwise, it completes with an error.</p>
+
+<h4 id="completing-with-a-value">Completing with a value</h4>
+
+<p>A future of type <code class="language-plaintext highlighter-rouge">Future&lt;T&gt;</code> completes with a value of type <code class="language-plaintext highlighter-rouge">T</code>.
+For example, a future with type <code class="language-plaintext highlighter-rouge">Future&lt;String&gt;</code> produces a string value.
+If a future doesn’t produce a usable value, 
+then the future’s type is <code class="language-plaintext highlighter-rouge">Future&lt;void&gt;</code>.</p>
+
+<h4 id="completing-with-an-error">Completing with an error</h4>
+
+<p>If the asynchronous operation performed by the function fails for any reason,
+the future completes with an error.</p>
+
+<h3 id="example-introducing-futures">
+<a class="anchor" href="#example-introducing-futures" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Introducing futures</h3>
+
+<p>In the following example, <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> returns a future
+that completes after printing to the console. 
+Because it doesn’t return a usable value,
+<code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> has the type <code class="language-plaintext highlighter-rouge">Future&lt;void&gt;</code>. 
+Before you run the example,
+try to predict which will print first: 
+“Large Latte” or “Fetching user order…”.</p>
+<pre><code class="language-dart:run-dartpad:height-300px:ga_id-introducting_futures">Future&lt;void&gt; fetchUserOrder() {
+  // Imagine that this function is fetching user info from another service or database.
+  return Future.delayed(const Duration(seconds: 2), () =&gt; print('Large Latte'));
+}
+
+void main() {
+  fetchUserOrder();
+  print('Fetching user order...');
+}
+</code></pre>
+
+<p>In the preceding example, 
+even though <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> executes before the <code class="language-plaintext highlighter-rouge">print()</code> call on line 8, 
+the console shows the output from line 8(“Fetching user order…”) 
+before the output from <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> (“Large Latte”).
+This is because <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> delays before it prints “Large Latte”.</p>
+
+<h3 id="example-completing-with-an-error">
+<a class="anchor" href="#example-completing-with-an-error" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Completing with an error</h3>
+
+<p>Run the following example to see how a future completes with an error.
+A bit later you’ll learn how to handle the error.</p>
+<pre><code class="language-dart:run-dartpad:height-300px:ga_id-completing_with_error">Future&lt;void&gt; fetchUserOrder() {
+// Imagine that this function is fetching user info but encounters a bug
+  return Future.delayed(const Duration(seconds: 2),
+      () =&gt; throw Exception('Logout failed: user ID is invalid'));
+}
+
+void main() {
+  fetchUserOrder();
+  print('Fetching user order...');
+}
+</code></pre>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> completes
+with an error indicating that the user ID is invalid.</p>
+
+<p>You’ve learned about futures and how they complete, 
+but how do you use the results of asynchronous functions? 
+In the next section you’ll learn how to get results
+with the <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> keywords.</p>
+
+<aside class="alert alert-secondary" role="alert">
+  <p><strong>Quick review:</strong></p>
+
+  <ul>
+    <li>A <a href="https://api.dart.dev/stable/dart-async/Future-class.html">Future&lt;T&gt;</a> instance produces a value of type <code class="language-plaintext highlighter-rouge">T</code>.</li>
+    <li>If a future doesn’t produce a usable value, 
+then the future’s type is <code class="language-plaintext highlighter-rouge">Future&lt;void&gt;</code>.</li>
+    <li>A future can be in one of two states: uncompleted or completed.</li>
+    <li>When you call a function that returns a future, 
+the function queues up work to be done and returns an uncompleted future.</li>
+    <li>When a future’s operation finishes, 
+the future completes with a value or with an error.</li>
+  </ul>
+
+  <p><strong>Key terms:</strong></p>
+
+  <ul>
+    <li>
+<strong>Future</strong>: the Dart <a href="https://api.dart.dev/stable/dart-async/Future-class.html">Future</a> class.</li>
+    <li>
+<strong>future</strong>: an instance of the Dart <code class="language-plaintext highlighter-rouge">Future</code> class.</li>
+  </ul>
+</aside>
+
+<h2 id="working-with-futures-async-and-await">
+<a class="anchor" href="#working-with-futures-async-and-await" aria-hidden="true"><span class="octicon octicon-link"></span></a>Working with futures: async and await</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> keywords provide a declarative way
+to define asynchronous functions and use their results. 
+Remember these two basic guidelines when using <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code>:</p>
+
+<ul>
+  <li><strong>To define an async function, add <code class="language-plaintext highlighter-rouge">async</code> before the function body:</strong></li>
+  <li><strong>The <code class="language-plaintext highlighter-rouge">await</code> keyword works only in <code class="language-plaintext highlighter-rouge">async</code> functions.</strong></li>
+</ul>
+
+<p>Here’s an example  that converts <code class="language-plaintext highlighter-rouge">main()</code> 
+from a synchronous to asynchronous function.</p>
+
+<p>First, add the <code class="language-plaintext highlighter-rouge">async</code> keyword before the function body:</p>
+<pre class="prettyprint lang-dart"><code>void main() <span class="highlight">async</span> { ··· }</code></pre>
+
+<p>If the function has a declared return type, 
+then update the type to be <code class="language-plaintext highlighter-rouge">Future&lt;T&gt;</code>, 
+where <code class="language-plaintext highlighter-rouge">T</code> is the type of the value that the function returns.
+If the function doesn’t explicitly return a value,
+then the return type is <code class="language-plaintext highlighter-rouge">Future&lt;void&gt;</code>:</p>
+<pre class="prettyprint lang-dart"><code><span class="highlight">Future&lt;void&gt;</span> main() async { ··· }</code></pre>
+
+<p>Now that you have an <code class="language-plaintext highlighter-rouge">async</code> function, 
+you can use the <code class="language-plaintext highlighter-rouge">await</code> keyword to wait for a future to complete:</p>
+<pre class="prettyprint lang-dart"><code>print(<span class="highlight">await</span> createOrderMessage());</code></pre>
+
+<p>As the following two examples show, the <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> keywords 
+result in asynchronous code that looks a lot like synchronous code.
+The only differences are highlighted in the asynchronous example, 
+which—if your window is wide enough—is 
+to the right of the synchronous example.</p>
+
+<div class="container">
+<div class="row">
+<div class="col-sm">
+      <h4 id="example-synchronous-functions">Example: synchronous functions</h4>
+
+      <div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">String createOrderMessage() {
+  var order = fetchUserOrder();
+  return 'Your order is: $order';
+}
+
+Future&lt;String&gt; fetchUserOrder() =&gt;
+    // Imagine that this function is
+    // more complex and slow.
+    Future.delayed(
+      const Duration(seconds: 2),
+      () =&gt; 'Large Latte',
+    );
+
+void main() {
+  print('Fetching user order...');
+  print(createOrderMessage());
+}</pre></div>
+</div>
+
+      <pre class="console-output"><code class="language-nocode">Fetching user order...
+Your order is: Instance of '_Future&lt;String&gt;'
+</code></pre>
+    </div>
+<div class="col-sm">
+      <h4 id="example-asynchronous-functions">Example: asynchronous functions</h4>
+      <pre class="prettyprint lang-dart"><code><span class="highlight">Future&lt;String&gt;</span> createOrderMessage() <span class="highlight">async</span> {
+  var order = <span class="highlight">await</span> fetchUserOrder();
+  return 'Your order is: $order';
+}
+
+Future&lt;String&gt; fetchUserOrder() =&gt;
+    // Imagine that this function is
+    // more complex and slow.
+    Future.delayed(
+      const Duration(seconds: 2),
+      () =&gt; 'Large Latte',
+    );
+
+<span class="highlight">Future&lt;void&gt;</span> main() <span class="highlight">async</span> {
+  print('Fetching user order...');
+  print(<span class="highlight">await</span> createOrderMessage());
+}</code></pre>
+
+      <pre class="console-output"><code class="language-nocode">Fetching user order...
+Your order is: Large Latte
+</code></pre>
+    </div>
+</div>
+</div>
+
+<p>The asynchronous example is different in three ways:</p>
+
+<ul>
+  <li>The return type for <code class="language-plaintext highlighter-rouge">createOrderMessage()</code> changes 
+from <code class="language-plaintext highlighter-rouge">String</code> to <code class="language-plaintext highlighter-rouge">Future&lt;String&gt;</code>.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">async</code></strong> keyword appears before the function bodies for
+<code class="language-plaintext highlighter-rouge">createOrderMessage()</code> and <code class="language-plaintext highlighter-rouge">main()</code>.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">await</code></strong> keyword appears before calling the asynchronous functions
+<code class="language-plaintext highlighter-rouge">fetchUserOrder()</code> and <code class="language-plaintext highlighter-rouge">createOrderMessage()</code>.</li>
+</ul>
+
+<aside class="alert alert-secondary" role="alert">
+  <p><strong>Key terms:</strong></p>
+
+  <ul>
+    <li>
+<strong>async</strong>: You can use the <code class="language-plaintext highlighter-rouge">async</code> keyword before a function’s body to mark it as
+asynchronous.</li>
+    <li>
+<strong>async function</strong>:  An <code class="language-plaintext highlighter-rouge">async</code> function is a function labeled with the <code class="language-plaintext highlighter-rouge">async</code>
+keyword.</li>
+    <li>
+<strong>await</strong>: You can use the <code class="language-plaintext highlighter-rouge">await</code> keyword to get the completed result of an
+asynchronous expression. The <code class="language-plaintext highlighter-rouge">await</code> keyword only works within an <code class="language-plaintext highlighter-rouge">async</code> function.</li>
+  </ul>
+</aside>
+
+<h3 id="execution-flow-with-async-and-await">
+<a class="anchor" href="#execution-flow-with-async-and-await" aria-hidden="true"><span class="octicon octicon-link"></span></a>Execution flow with async and await</h3>
+
+<p>An <code class="language-plaintext highlighter-rouge">async</code> function runs synchronously until the first <code class="language-plaintext highlighter-rouge">await</code> keyword. 
+This means that within an <code class="language-plaintext highlighter-rouge">async</code> function body, 
+all synchronous code before the first <code class="language-plaintext highlighter-rouge">await</code> keyword executes immediately.</p>
+
+<h3 id="example-execution-within-async-functions">
+<a class="anchor" href="#example-execution-within-async-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: Execution within async functions</h3>
+
+<p>Run the following example to see how execution proceeds
+within an <code class="language-plaintext highlighter-rouge">async</code> function body. 
+What do you think the output will be?</p>
+<pre><code class="language-dart:run-dartpad:height-530px:ga_id-execution_within_async_function">Future&lt;void&gt; printOrderMessage() async {
+  print('Awaiting user order...');
+  var order = await fetchUserOrder();
+  print('Your order is: $order');
+}
+
+Future&lt;String&gt; fetchUserOrder() {
+  // Imagine that this function is more complex and slow.
+  return Future.delayed(const Duration(seconds: 4), () =&gt; 'Large Latte');
+}
+
+void main() async {
+  countSeconds(4);
+  await printOrderMessage();
+}
+
+// You can ignore this function - it's here to visualize delay time in this example.
+void countSeconds(int s) {
+  for (var i = 1; i &lt;= s; i++) {
+    Future.delayed(Duration(seconds: i), () =&gt; print(i));
+  }
+}
+</code></pre>
+
+<p>After running the code in the preceding example, try reversing lines 2 and 3:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">var order = await fetchUserOrder();
+print('Awaiting user order...');</pre></div>
+</div>
+
+<p>Notice that timing of the output shifts, now that <code class="language-plaintext highlighter-rouge">print('Awaiting user order')</code>
+appears after the first <code class="language-plaintext highlighter-rouge">await</code> keyword in <code class="language-plaintext highlighter-rouge">printOrderMessage()</code>.</p>
+
+<h3 id="exercise-practice-using-async-and-await">
+<a class="anchor" href="#exercise-practice-using-async-and-await" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise: Practice using async and await</h3>
+
+<p>The following exercise is a failing unit test
+that contains partially completed code snippets. 
+Your task is to complete the exercise by writing code to make the tests pass.
+You don’t need to implement <code class="language-plaintext highlighter-rouge">main()</code>.</p>
+
+<p>To simulate asynchronous operations, call the following functions, 
+which are provided for you:</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Type signature</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fetchRole()</td>
+      <td><code class="language-plaintext highlighter-rouge">Future&lt;String&gt; fetchRole()</code></td>
+      <td>Gets a short description of the user’s role.</td>
+    </tr>
+    <tr>
+      <td>fetchLoginAmount()</td>
+      <td><code class="language-plaintext highlighter-rouge">Future&lt;int&gt; fetchLoginAmount()</code></td>
+      <td>Gets the number of times a user has logged in.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="part-1-reportuserrole">Part 1: <code class="language-plaintext highlighter-rouge">reportUserRole()</code>
+</h4>
+
+<p>Add code to the <code class="language-plaintext highlighter-rouge">reportUserRole()</code> function so that it does the following:</p>
+<ul>
+  <li>Returns a future that completes with the following
+string: <code class="language-plaintext highlighter-rouge">"User role: &lt;user role&gt;"</code>
+    <ul>
+      <li>Note: You must use the actual value returned by <code class="language-plaintext highlighter-rouge">fetchRole()</code>; 
+copying and pasting the example return value won’t make the test pass.</li>
+      <li>Example return value: <code class="language-plaintext highlighter-rouge">"User role: tester"</code>
+</li>
+    </ul>
+  </li>
+  <li>Gets the user role by calling the provided function <code class="language-plaintext highlighter-rouge">fetchRole()</code>.</li>
+</ul>
+
+<h4 id="part-2-reportlogins">Part 2: <code class="language-plaintext highlighter-rouge">reportLogins()</code>
+</h4>
+
+<p>Implement an <code class="language-plaintext highlighter-rouge">async</code> function <code class="language-plaintext highlighter-rouge">reportLogins()</code> so that it does the following:</p>
+
+<ul>
+  <li>Returns the string <code class="language-plaintext highlighter-rouge">"Total number of logins: &lt;# of logins&gt;"</code>.
+    <ul>
+      <li>Note: You must use the actual value returned by <code class="language-plaintext highlighter-rouge">fetchLoginAmount()</code>; 
+copying and pasting the example return value won’t make the test pass.</li>
+      <li>Example return value from <code class="language-plaintext highlighter-rouge">reportLogins()</code>: <code class="language-plaintext highlighter-rouge">"Total number of logins: 57"</code>
+</li>
+    </ul>
+  </li>
+  <li>Gets the number of logins by calling the provided function <code class="language-plaintext highlighter-rouge">fetchLoginAmount()</code>.</li>
+</ul>
+
+<pre><code class="language-dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using">{$ begin main.dart $}
+// Part 1
+// You can call the provided async function fetchRole()
+// to return the user role.
+Future&lt;String&gt; reportUserRole() async {
+  TODO('Your implementation goes here.');
+}
+
+// Part 2
+// Implement reportLogins here
+// You can call the provided async function fetchLoginAmount()
+// to return the number of times that the user has logged in.
+reportLogins() {}
+{$ end main.dart $}
+{$ begin solution.dart $}
+Future&lt;String&gt; reportUserRole() async {
+  var username = await fetchRole();
+  return 'User role: $username';
+}
+
+Future&lt;String&gt; reportLogins() async {
+  var logins = await fetchLoginAmount();
+  return 'Total number of logins: $logins';
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+const role = 'administrator';
+const logins = 42;
+const passed = 'PASSED';
+const testFailedMessage = 'Test failed for the function:';
+const typoMessage = 'Test failed! Check for typos in your return value';
+const didNotImplement = 'Test failed! Did you forget to implement or return from ';
+const oneSecond = Duration(seconds: 1);
+List&lt;String&gt; messages = [];
+Future&lt;String&gt; fetchRole() =&gt; Future.delayed(oneSecond, () =&gt; role);
+Future&lt;int&gt; fetchLoginAmount() =&gt; Future.delayed(oneSecond, () =&gt; logins);
+
+void main() async {
+  try {
+    messages
+      ..add(makeReadable(
+
+        testLabel: 'Part 1',
+        testResult: await asyncEquals(
+          expected: 'User role: administrator',
+          actual: await reportUserRole(),
+          typoKeyword: role
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement reportUserRole?',
+          'User role: Instance of \'Future&lt;String&gt;\'': '$testFailedMessage reportUserRole. Did you use the await keyword?',
+          'User role: Instance of \'_Future&lt;String&gt;\'': '$testFailedMessage reportUserRole. Did you use the await keyword?',
+          'User role:' : '$testFailedMessage reportUserRole. Did you return a user role?',
+          'User role: ' : '$testFailedMessage reportUserRole. Did you return a user role?',
+          'User role: tester' : '$testFailedMessage reportUserRole. Did you invoke fetchRole to fetch the user\'s role?',
+        }))
+
+      ..add(makeReadable(
+        testLabel: 'Part 2',
+        testResult: await asyncEquals(
+          expected: 'Total number of logins: 42',
+          actual: await reportLogins(),
+          typoKeyword: logins.toString()
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement reportLogins?',
+          'Total number of logins: Instance of \'Future&lt;int&gt;\'': '$testFailedMessage reportLogins. Did you use the await keyword?',
+          'Total number of logins: Instance of \'_Future&lt;int&gt;\'': '$testFailedMessage reportLogins. Did you use the await keyword?',
+          'Total number of logins: ': '$testFailedMessage reportLogins. Did you return the number of logins?',
+          'Total number of logins:': '$testFailedMessage reportLogins. Did you return the number of logins?',
+          'Total number of logins: 57': '$testFailedMessage reportLogins. Did you invoke fetchLoginAmount to fetch the number of user logins?',
+        }))
+      ..removeWhere((m) =&gt; m.contains(passed))
+      ..toList();
+
+    if (messages.isEmpty) {
+      _result(true);
+    } else {
+      _result(false, messages);
+    }
+  } on UnimplementedError {
+    _result(false, [
+      '$didNotImplement reportUserRole?',
+    ]);
+  } catch (e) {
+    _result(false, ['Tried to run solution, but received an exception: $e']);
+  }
+}
+
+////////////////////////////////////////
+///////////// Test Helpers /////////////
+////////////////////////////////////////
+String makeReadable({
+  required String testResult,
+  required Map readableErrors,
+  required String testLabel,
+}) {
+  if (readableErrors.containsKey(testResult)) {
+    var readable = readableErrors[testResult];
+    return '$testLabel $readable';
+  } else {
+    return '$testLabel $testResult';
+  }
+}
+
+///////////////////////////////////////
+//////////// Assertions ///////////////
+///////////////////////////////////////
+Future&lt;String&gt; asyncEquals({
+  expected,
+  actual,
+  required String typoKeyword,
+}) async {
+  var strActual = actual is String ? actual : actual.toString();
+  try {
+    if (expected == actual) {
+      return passed;
+    } else if (strActual.contains(typoKeyword)) {
+      return typoMessage;
+    } else {
+      return strActual;
+    }
+  } catch(e) {
+    return e.toString();
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Did you remember to add the async keyword to the reportUserRole() function?
+
+Did you remember to use the await keyword before invoking fetchRole()?
+
+Remember: reportUserRole() needs to return a future!
+{$ end hint.txt $}
+</code></pre>
+
+<aside class="alert alert-info" role="alert">
+  <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
+  If your code passes the tests, you can ignore
+  <a href="/guides/language/analysis-options#customizing-analysis-rules">info-level messages.</a></p>
+</aside>
+
+<h2 id="handling-errors">
+<a class="anchor" href="#handling-errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Handling errors</h2>
+
+<p>To handle errors in an <code class="language-plaintext highlighter-rouge">async</code> function, use try-catch:</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">try {
+  print('Awaiting user order...');
+  var order = await fetchUserOrder();
+} catch (err) {
+  print('Caught error: $err');
+}</pre></div>
+</div>
+
+<p>Within an <code class="language-plaintext highlighter-rouge">async</code> function, you can write 
+<a href="/guides/language/language-tour#catch">try-catch clauses</a>
+the same way you would in synchronous code.</p>
+
+<h3 id="example-async-and-await-with-try-catch">
+<a class="anchor" href="#example-async-and-await-with-try-catch" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example: async and await with try-catch</h3>
+
+<p>Run the following example to see how to handle an error
+from an asynchronous function. 
+What do you think the output will be?</p>
+<pre><code class="language-dart:run-dartpad:height-530px:ga_id-try_catch">Future&lt;void&gt; printOrderMessage() async {
+  try {
+    print('Awaiting user order...');
+    var order = await fetchUserOrder();
+    print(order);
+  } catch (err) {
+    print('Caught error: $err');
+  }
+}
+
+Future&lt;String&gt; fetchUserOrder() {
+  // Imagine that this function is more complex.
+  var str = Future.delayed(
+      const Duration(seconds: 4),
+      () =&gt; throw 'Cannot locate user order');
+  return str;
+}
+
+void main() async {
+  await printOrderMessage();
+}
+</code></pre>
+
+<h3 id="exercise-practice-handling-errors">
+<a class="anchor" href="#exercise-practice-handling-errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise: Practice handling errors</h3>
+
+<p>The following exercise provides practice handling errors with asynchronous code,
+using the approach described in the previous section. To simulate asynchronous
+operations, your code will call the following function, which is provided for you:</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Type signature</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fetchNewUsername()</td>
+      <td><code class="language-plaintext highlighter-rouge">Future&lt;String&gt; fetchNewUsername()</code></td>
+      <td>Returns the new username that you can use to replace an old one.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Use <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> to implement an asynchronous <code class="language-plaintext highlighter-rouge">changeUsername()</code> function
+that does the following:</p>
+
+<ul>
+  <li>Calls the provided asynchronous function <code class="language-plaintext highlighter-rouge">fetchNewUsername()</code> 
+and returns its result.
+    <ul>
+      <li>Example return value from <code class="language-plaintext highlighter-rouge">changeUsername()</code>: <code class="language-plaintext highlighter-rouge">"jane_smith_92"</code>
+</li>
+    </ul>
+  </li>
+  <li>Catches any error that occurs and returns the string value of the error.
+    <ul>
+      <li>You can use the
+<a href="https://api.dart.dev/stable/dart-core/ArgumentError/toString.html">toString()</a>
+method to stringify both
+<a href="https://api.dart.dev/stable/dart-core/Exception-class.html">Exceptions</a> 
+and
+<a href="https://api.dart.dev/stable/dart-core/Error-class.html">Errors.</a>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code class="language-dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors">{$ begin main.dart $}
+// Implement changeUsername here
+changeUsername() {}
+{$ end main.dart $}
+{$ begin solution.dart $}
+Future&lt;String&gt; changeUsername() async {
+  try {
+    return await fetchNewUsername();
+  } catch (err) {
+    return err.toString();
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+List&lt;String&gt; messages = [];
+bool logoutSucceeds = false;
+const passed = 'PASSED';
+const noCatch = 'NO_CATCH';
+const typoMessage = 'Test failed! Check for typos in your return value';
+const oneSecond = Duration(seconds: 1);
+
+class UserError implements Exception {
+  String errMsg() =&gt; 'New username is invalid';
+}
+
+Future fetchNewUsername() {
+  var str = Future.delayed(oneSecond, () =&gt; throw UserError());
+  return str;
+}
+
+void main() async {
+  try {
+    // ignore: cascade_invocations
+    messages
+      ..add(makeReadable(
+          testLabel: '',
+          testResult: await asyncDidCatchException(changeUsername),
+          readableErrors: {
+            typoMessage: typoMessage,
+            noCatch: 'Did you remember to call fetchNewUsername within a try/catch block?',
+          }
+      ))
+      ..add(makeReadable(
+          testLabel: '',
+          testResult: await asyncErrorEquals(changeUsername),
+          readableErrors: {
+            typoMessage: typoMessage,
+            noCatch: 'Did you remember to call fetchNewUsername within a try/catch block?',
+          }
+      ))
+      ..removeWhere((m) =&gt; m.contains(passed))
+      ..toList();
+
+    if (messages.isEmpty) {
+      _result(true);
+    } else {
+      _result(false, messages);
+    }
+  } catch (e) {
+    _result(false, ['Tried to run solution, but received an exception: $e']);
+  }
+}
+
+////////////////////////////////////////
+///////////// Test Helpers /////////////
+////////////////////////////////////////
+String makeReadable({
+  required String testResult,
+  required Map readableErrors,
+  required String testLabel,
+}) {
+  if (readableErrors.containsKey(testResult)) {
+    var readable = readableErrors[testResult];
+    return '$testLabel $readable';
+  } else {
+    return '$testLabel $testResult';
+  }
+}
+
+void passIfNoMessages(List&lt;String&gt; messages, Map&lt;String, String&gt; readable){
+  if (messages.isEmpty) {
+    _result(true);
+  } else {
+
+    // ignore: omit_local_variable_types
+    List&lt;String&gt; userMessages = messages
+        .where((message) =&gt; readable.containsKey(message))
+        .map((message) =&gt; readable[message]!)
+        .toList();
+    print(messages);
+
+    _result(false, userMessages);
+  }
+}
+///////////////////////////////////////
+//////////// Assertions ///////////////
+///////////////////////////////////////
+Future&lt;String&gt; asyncErrorEquals(Function fn) async {
+  var result = await fn();
+  if (result == UserError().toString()) {
+    return passed;
+  } else {
+    return 'Test failed! Did you stringify and return the caught error?';
+  }
+}
+
+Future&lt;String&gt; asyncDidCatchException(Function fn) async {
+  var caught = true;
+  try {
+    await fn();
+  } on UserError catch(_) {
+    caught = false;
+  }
+
+  if (caught == false) {
+    return noCatch;
+  } else {
+    return passed;
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+Implement changeUsername() to return the string from fetchNewUsername() or
+(if that fails) the string value of any error that occurs.
+You'll need a try-catch statement to catch and handle errors.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="exercise-putting-it-all-together">
+<a class="anchor" href="#exercise-putting-it-all-together" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exercise: Putting it all together</h2>
+
+<p>It’s time to practice what you’ve learned in one final exercise.
+To simulate asynchronous operations, this exercise provides the asynchronous
+functions <code class="language-plaintext highlighter-rouge">fetchUsername()</code> and <code class="language-plaintext highlighter-rouge">logoutUser()</code>:</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Type signature</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fetchUsername()</td>
+      <td><code class="language-plaintext highlighter-rouge">Future&lt;String&gt; fetchUsername()</code></td>
+      <td>Returns the name associated with the current user.</td>
+    </tr>
+    <tr>
+      <td>logoutUser()</td>
+      <td><code class="language-plaintext highlighter-rouge">Future&lt;String&gt; logoutUser()</code></td>
+      <td>Performs logout of current user and returns the username that was logged out.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Write the following:</p>
+
+<h4 id="part-1-addhello">Part 1: <code class="language-plaintext highlighter-rouge">addHello()</code>
+</h4>
+
+<ul>
+  <li>Write a function <code class="language-plaintext highlighter-rouge">addHello()</code> that takes a single <code class="language-plaintext highlighter-rouge">String</code> argument.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">addHello()</code> returns its <code class="language-plaintext highlighter-rouge">String</code> argument preceded by <code class="language-plaintext highlighter-rouge">'Hello '</code>.<br>
+Example: <code class="language-plaintext highlighter-rouge">addHello('Jon')</code> returns <code class="language-plaintext highlighter-rouge">'Hello Jon'</code>.</li>
+</ul>
+
+<h4 id="part-2-greetuser">Part 2: <code class="language-plaintext highlighter-rouge">greetUser()</code>
+</h4>
+
+<ul>
+  <li>Write a function <code class="language-plaintext highlighter-rouge">greetUser()</code> that takes no arguments.</li>
+  <li>To get the username, <code class="language-plaintext highlighter-rouge">greetUser()</code> calls the provided asynchronous
+function <code class="language-plaintext highlighter-rouge">fetchUsername()</code>.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">greetUser()</code> creates a greeting for the user by calling <code class="language-plaintext highlighter-rouge">addHello()</code>,
+passing it the username, and returning the result.<br>
+Example: If <code class="language-plaintext highlighter-rouge">fetchUsername()</code> returns <code class="language-plaintext highlighter-rouge">'Jenny'</code>, then
+<code class="language-plaintext highlighter-rouge">greetUser()</code> returns <code class="language-plaintext highlighter-rouge">'Hello Jenny'</code>.</li>
+</ul>
+
+<h4 id="part-3-saygoodbye">Part 3: <code class="language-plaintext highlighter-rouge">sayGoodbye()</code>
+</h4>
+
+<ul>
+  <li>Write a function <code class="language-plaintext highlighter-rouge">sayGoodbye()</code> that does the following:
+    <ul>
+      <li>Takes no arguments.</li>
+      <li>Catches any errors.</li>
+      <li>Calls the provided asynchronous function <code class="language-plaintext highlighter-rouge">logoutUser()</code>.</li>
+    </ul>
+  </li>
+  <li>If <code class="language-plaintext highlighter-rouge">logoutUser()</code> fails, <code class="language-plaintext highlighter-rouge">sayGoodbye()</code> returns any string you like.</li>
+  <li>If <code class="language-plaintext highlighter-rouge">logoutUser()</code> succeeds, <code class="language-plaintext highlighter-rouge">sayGoodbye()</code> returns the string
+<code class="language-plaintext highlighter-rouge">'&lt;result&gt; Thanks, see you next time'</code>, where <code class="language-plaintext highlighter-rouge">&lt;result&gt;</code> is
+the string value returned by calling <code class="language-plaintext highlighter-rouge">logoutUser()</code>.</li>
+</ul>
+
+<pre><code class="language-dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together">{$ begin main.dart $}
+// Part 1
+addHello(String user) {}
+
+// Part 2
+// You can call the provided async function fetchUsername()
+// to return the username.
+greetUser() {}
+
+// Part 3
+// You can call the provided async function logoutUser()
+// to log out the user.
+sayGoodbye() {}
+{$ end main.dart $}
+{$ begin solution.dart $}
+String addHello(String user) =&gt; 'Hello $user';
+
+Future&lt;String&gt; greetUser() async {
+  var username = await fetchUsername();
+  return addHello(username);
+}
+
+Future&lt;String&gt; sayGoodbye() async {
+  try {
+    var result = await logoutUser();
+    return '$result Thanks, see you next time';
+  } catch (e) {
+    return 'Failed to logout user: $e';
+  }
+}
+{$ end solution.dart $}
+{$ begin test.dart $}
+List&lt;String&gt; messages = [];
+bool logoutSucceeds = false;
+const passed = 'PASSED';
+const noCatch = 'NO_CATCH';
+const typoMessage = 'Test failed! Check for typos in your return value';
+const didNotImplement = 'Test failed! Did you forget to implement or return from ';
+const oneSecond = Duration(seconds: 1);
+
+Future&lt;String&gt; fetchUsername() =&gt; Future.delayed(oneSecond, () =&gt; 'Jean');
+String failOnce () {
+  if (logoutSucceeds) {
+    return 'Success!';
+  } else {
+    logoutSucceeds = true;
+    throw Exception('Logout failed');
+  }
+}
+
+logoutUser() =&gt; Future.delayed(oneSecond, failOnce);
+
+void main() async {
+  try {
+    // ignore: cascade_invocations
+    messages
+      ..add(makeReadable(
+
+        testLabel: 'Part 1',
+        testResult: await asyncEquals(
+          expected: 'Hello Jerry',
+          actual: addHello('Jerry'),
+          typoKeyword: 'Jerry'
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement addHello?',
+          'Hello Instance of \'Future&lt;String&gt;\'': 'Looks like you forgot to use the \'await\' keyword!',
+          'Hello Instance of \'_Future&lt;String&gt;\'': 'Looks like you forgot to use the \'await\' keyword!',
+        }))
+      ..add(makeReadable(
+
+        testLabel: 'Part 2',
+        testResult: await asyncEquals(
+          expected: 'Hello Jean',
+          actual: await greetUser(),
+          typoKeyword: 'Jean'
+        ),
+        readableErrors: {
+          typoMessage: typoMessage,
+          'null': '$didNotImplement greetUser?',
+          'HelloJean' : 'Looks like you forgot the space between \'Hello\' and \'Jean\'',
+          'Hello Instance of \'Future&lt;String&gt;\'': 'Looks like you forgot to use the \'await\' keyword!',
+          'Hello Instance of \'_Future&lt;String&gt;\'': 'Looks like you forgot to use the \'await\' keyword!',
+          '{Closure: (String) =&gt; dynamic from Function \'addHello\': static.(await fetchUsername())}': 'Did you place the \'\$\' character correctly?',
+          '{Closure \'addHello\'(await fetchUsername())}': 'Did you place the \'\$\' character correctly?', 
+        }))
+      ..add(makeReadable(
+        testLabel: 'Part 3',
+        testResult: await asyncDidCatchException(sayGoodbye),
+        readableErrors: {
+          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
+          'null': '$didNotImplement sayGoodbye?',
+          noCatch: 'Did you remember to call logoutUser within a try/catch block?',
+          'Instance of \'Future&lt;String&gt;\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+          'Instance of \'_Future&lt;String&gt;\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+        }
+      ))
+      ..add(makeReadable(
+        testLabel: 'Part 3',
+        testResult: await asyncEquals(
+          expected: 'Success! Thanks, see you next time',
+          actual: await sayGoodbye(),
+          typoKeyword: 'Success'
+        ),
+        readableErrors: {
+          typoMessage: '$typoMessage. Did you add the text \'Thanks, see you next time\'?',
+          'null': '$didNotImplement sayGoodbye?',
+          noCatch: 'Did you remember to call logoutUser within a try/catch block?',
+          'Instance of \'Future&lt;String&gt;\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+          'Instance of \'_Future&lt;String&gt;\' Thanks, see you next time':'Did you remember to use the \'await\' keyword in the sayGoodbye function?',
+          'Instance of \'_Exception\'': 'CAUGHT Did you remember to return a string?',
+          }
+      ))
+    ..removeWhere((m) =&gt; m.contains(passed))
+    ..toList();
+
+    if (messages.isEmpty) {
+      _result(true);
+    } else {
+      _result(false, messages);
+    }
+  } catch (e) {
+    _result(false, ['Tried to run solution, but received an exception: $e']);
+  }
+}
+
+////////////////////////////////////////
+///////////// Test Helpers /////////////
+////////////////////////////////////////
+String makeReadable({
+  required String testResult,
+  required Map&lt;String, String&gt; readableErrors,
+  required String testLabel,
+}) {
+  String? readable;
+  if (readableErrors.containsKey(testResult)) {
+    readable = readableErrors[testResult];
+    return '$testLabel $readable';
+  } else if ((testResult != passed) &amp;&amp; (testResult.length &lt; 18)) {
+    readable = typoMessage;
+    return '$testLabel $readable';
+  } else {
+    return '$testLabel $testResult';
+  }
+}
+
+void passIfNoMessages(List&lt;String&gt; messages, Map&lt;String, String&gt; readable){
+  if (messages.isEmpty) {
+    _result(true);
+  } else {
+
+    // ignore: omit_local_variable_types
+    List&lt;String&gt; userMessages = messages
+        .where((message) =&gt; readable.containsKey(message))
+        .map((message) =&gt; readable[message]!)
+        .toList();
+    print(messages);
+
+    _result(false, userMessages);
+  }
+}
+///////////////////////////////////////
+//////////// Assertions ///////////////
+///////////////////////////////////////
+Future&lt;String&gt; asyncEquals({
+  expected,
+  actual,
+  required String typoKeyword,
+}) async {
+  var strActual = actual is String ? actual : actual.toString();
+  try {
+    if (expected == actual) {
+      return passed;
+    } else if (strActual.contains(typoKeyword)) {
+      return typoMessage;
+    } else {
+      return strActual;
+    }
+  } catch(e) {
+    return e.toString();
+  }
+}
+
+Future&lt;String&gt; asyncDidCatchException(Function fn) async {
+  var caught = true;
+  try {
+    await fn();
+  } on Exception catch(_) {
+    caught = false;
+  }
+
+  if (caught == true) {
+    return passed;
+  } else {
+    return noCatch;
+  }
+}
+{$ end test.dart $}
+{$ begin hint.txt $}
+The greetUser() and sayGoodbye() functions are asynchronous;
+addHello() isn't.
+{$ end hint.txt $}
+</code></pre>
+
+<h2 id="whats-next">
+<a class="anchor" href="#whats-next" aria-hidden="true"><span class="octicon octicon-link"></span></a>What’s next?</h2>
+
+<p>Congratulations, you’ve finished the codelab! If you’d like to learn more, here
+are some suggestions for where to go next:</p>
+
+<ul>
+  <li>Play with <a href="https://dartpad.dev">DartPad.</a>
+</li>
+  <li>Try another <a href="/codelabs">codelab</a>.</li>
+  <li>Learn more about futures and asynchrony:
+    <ul>
+      <li>
+<a href="/tutorials/language/streams">Streams tutorial</a>:
+Learn how to work with a sequence of asynchronous events.</li>
+      <li>
+<a href="/guides/language/concurrency">Concurrency in Dart</a>
+Understand and learn how to implement concurrency in Dart.</li>
+      <li>
+<a href="https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J">Dart videos from Google:</a>
+Watch one or more of the videos about asynchronous coding.
+Or, if you prefer, read the articles that are based on these videos.
+(Start with <a href="https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a">isolates and event loops.</a>)</li>
+    </ul>
+  </li>
+  <li><a href="/get-dart">Get the Dart SDK.</a></li>
+</ul>
+
+<p>If you’re interested in using embedded DartPads, like this codelab does, see
+<a href="/resources/dartpad-best-practices">best practices for using DartPad in tutorials</a>.</p>
+
+
+          
+
+        </div>
+      </article>
+    </main>
+    <footer id="page-footer">
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://medium.com/dartlang" target="_blank" rel="noopener" title="Medium blog" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/medium.svg#medium"></use>
+        </svg>
+      </a>
+      <a href="https://github.com/dart-lang" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+      <a href="https://twitter.com/dart_lang" target="_blank" rel="noopener" title="Twitter" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/twitter.svg#twitter"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      Salvo que se indique lo contrario, este sitio está bajo una 
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">licencia internacional Creative Commons Attribution 4.0</a >, 
+      y los ejemplos de código tienen licencia 
+      <a href="https://opensource.org/licenses/BSD-3-Clause" class="no-automatic-external">3-Clause BSD License</a>.
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="Terms of use">Términos</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" title="Privacy policy" class="no-automatic-external">Privacidad</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Seguridad</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+   
+  </body>
+</html>
