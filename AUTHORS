@@ -1,0 +1,15 @@
+# This is a list of some of the Dart website's contributors.
+# To see the full list of contributors, see the revision history in
+# source control with a command like: git shortlog -sne
+#
+# Names should be added to the list like so:
+#
+#   Name/Organization <email address>
+
+Google Inc.
+
+Matthew Butler <butler.matthew@gmail.com>
+Chris Buckett <chrisbuckett@gmail.com>
+Michael Haubenwallner <michael.haubenwallner@gmail.com>
+Victor Berchet <victor.berchet@gmail.com>
+Pradumna Saraf <pradumnasaraf@gmail.com>

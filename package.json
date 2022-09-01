@@ -1,0 +1,13 @@
+{
+  "name": "dart.dev",
+  "version": "0.0.0",
+  "private": false,
+  "description": "Source code for https://dart.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dart-lang/site-www.git"
+  },
+  "dependencies": {
+    "bootstrap-scss": "^4.6.0"
+  }
+}

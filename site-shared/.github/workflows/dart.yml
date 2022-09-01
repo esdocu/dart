@@ -1,0 +1,209 @@
+# Created with package:mono_repo v6.2.2
+name: Dart CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: "0 0 * * 0"
+defaults:
+  run:
+    shell: bash
+env:
+  PUB_ENVIRONMENT: bot.github
+
+jobs:
+  job_001:
+    name: mono_repo self validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: stable
+      - id: checkout
+        uses: actions/checkout@v3
+      - name: mono_repo self validate
+        run: dart pub global activate mono_repo 6.2.2
+      - name: mono_repo self validate
+        run: dart pub global run mono_repo generate --validate
+  job_002:
+    name: "analyzer_and_format; Dart 2.16.1; PKGS: packages/code_excerpt_updater, packages/code_excerpter; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.16.1;packages:packages/code_excerpt_updater-packages/code_excerpter;commands:format-analyze"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.16.1;packages:packages/code_excerpt_updater-packages/code_excerpter
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.16.1
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: "2.16.1"
+      - id: checkout
+        uses: actions/checkout@v3
+      - id: packages_code_excerpt_updater_pub_upgrade
+        name: packages/code_excerpt_updater; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart pub upgrade
+      - name: "packages/code_excerpt_updater; dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.packages_code_excerpt_updater_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: "dart format --output=none --set-exit-if-changed ."
+      - name: "packages/code_excerpt_updater; dart analyze --fatal-infos ."
+        if: "always() && steps.packages_code_excerpt_updater_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart analyze --fatal-infos .
+      - id: packages_code_excerpter_pub_upgrade
+        name: packages/code_excerpter; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart pub upgrade
+      - name: "packages/code_excerpter; dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.packages_code_excerpter_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: "dart format --output=none --set-exit-if-changed ."
+      - name: "packages/code_excerpter; dart analyze --fatal-infos ."
+        if: "always() && steps.packages_code_excerpter_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart analyze --fatal-infos .
+  job_003:
+    name: "analyzer_and_format; Dart dev; PKGS: packages/code_excerpt_updater, packages/code_excerpter; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:packages/code_excerpt_updater-packages/code_excerpter;commands:format-analyze"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:packages/code_excerpt_updater-packages/code_excerpter
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: dev
+      - id: checkout
+        uses: actions/checkout@v3
+      - id: packages_code_excerpt_updater_pub_upgrade
+        name: packages/code_excerpt_updater; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart pub upgrade
+      - name: "packages/code_excerpt_updater; dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.packages_code_excerpt_updater_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: "dart format --output=none --set-exit-if-changed ."
+      - name: "packages/code_excerpt_updater; dart analyze --fatal-infos ."
+        if: "always() && steps.packages_code_excerpt_updater_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart analyze --fatal-infos .
+      - id: packages_code_excerpter_pub_upgrade
+        name: packages/code_excerpter; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart pub upgrade
+      - name: "packages/code_excerpter; dart format --output=none --set-exit-if-changed ."
+        if: "always() && steps.packages_code_excerpter_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: "dart format --output=none --set-exit-if-changed ."
+      - name: "packages/code_excerpter; dart analyze --fatal-infos ."
+        if: "always() && steps.packages_code_excerpter_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart analyze --fatal-infos .
+  job_004:
+    name: "unit_test; Dart 2.16.1; PKGS: packages/code_excerpt_updater, packages/code_excerpter; `dart test`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:2.16.1;packages:packages/code_excerpt_updater-packages/code_excerpter;commands:test"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.16.1;packages:packages/code_excerpt_updater-packages/code_excerpter
+            os:ubuntu-latest;pub-cache-hosted;sdk:2.16.1
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: "2.16.1"
+      - id: checkout
+        uses: actions/checkout@v3
+      - id: packages_code_excerpt_updater_pub_upgrade
+        name: packages/code_excerpt_updater; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart pub upgrade
+      - name: packages/code_excerpt_updater; dart test
+        if: "always() && steps.packages_code_excerpt_updater_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart test
+      - id: packages_code_excerpter_pub_upgrade
+        name: packages/code_excerpter; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart pub upgrade
+      - name: packages/code_excerpter; dart test
+        if: "always() && steps.packages_code_excerpter_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart test
+    needs:
+      - job_001
+      - job_002
+      - job_003
+  job_005:
+    name: "unit_test; Dart dev; PKGS: packages/code_excerpt_updater, packages/code_excerpter; `dart test`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:packages/code_excerpt_updater-packages/code_excerpter;commands:test"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:packages/code_excerpt_updater-packages/code_excerpter
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: dev
+      - id: checkout
+        uses: actions/checkout@v3
+      - id: packages_code_excerpt_updater_pub_upgrade
+        name: packages/code_excerpt_updater; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart pub upgrade
+      - name: packages/code_excerpt_updater; dart test
+        if: "always() && steps.packages_code_excerpt_updater_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpt_updater
+        run: dart test
+      - id: packages_code_excerpter_pub_upgrade
+        name: packages/code_excerpter; dart pub upgrade
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart pub upgrade
+      - name: packages/code_excerpter; dart test
+        if: "always() && steps.packages_code_excerpter_pub_upgrade.conclusion == 'success'"
+        working-directory: packages/code_excerpter
+        run: dart test
+    needs:
+      - job_001
+      - job_002
+      - job_003
