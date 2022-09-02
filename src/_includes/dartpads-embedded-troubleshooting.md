@@ -1,2 +1,2 @@
-If you see empty boxes instead of DartPads, go to the
-[DartPad troubleshooting page](/tools/dartpad/troubleshoot).
+Si ves cuadros vacíos en lugar de DartPads, ve a la 
+[página de solución de problemas de DartPad](/tools/dartpad/troubleshoot).

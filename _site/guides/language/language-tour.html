@@ -18,8 +18,8 @@
     gtag('config', 'G-M146BEZEJV');
   </script>
 
-  <meta name="description" content="A tour of all the major Dart language features.">
-  <title>Language tour | Dart es Español</title>
+  <meta name="description" content="Un recorrido por las principales funciones del lenguaje Dart.">
+  <title>Tour por el lenguaje | Dart es Español</title>
 
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
@@ -31,12 +31,12 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@dart_lang" />
-  <meta name="twitter:title" content="A tour of the Dart language" />
-  <meta name="twitter:description" content="A tour of all the major Dart language features." />
+  <meta name="twitter:title" content="Un tour por el lenguaje Dart" />
+  <meta name="twitter:description" content="Un recorrido por las principales funciones del lenguaje Dart." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="A tour of the Dart language" />
-  <meta property="og:description" content="A tour of all the major Dart language features." />
+  <meta property="og:title" content="Un tour por el lenguaje Dart" />
+  <meta property="og:description" content="Un recorrido por las principales funciones del lenguaje Dart." />
   <meta property="og:url" content="https://dart.esdocu.com/guides/language/language-tour" />
   
   <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
@@ -53,7 +53,7 @@
     data-auto-replace-svg="nest">
   </script>
 
-  <link rel="stylesheet" href="/assets/css/main.css?v=1662104133">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662143073">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
           integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
           crossorigin="anonymous"
@@ -75,9 +75,9 @@
   <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
   <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
   <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
-  <script src="/assets/js/os-tabs.js?v=1662104133"></script>
-  <script src="/assets/js/utilities.js?v=1662104133"></script>
-  <script src="/assets/js/main.js?v=1662104133"></script>
+  <script src="/assets/js/os-tabs.js?v=1662143073"></script>
+  <script src="/assets/js/utilities.js?v=1662143073"></script>
+  <script src="/assets/js/main.js?v=1662143073"></script>
 
   <script defer src="https://dartpad.dev/inject_embed.dart.js"></script>
   <script>
@@ -685,7 +685,7 @@ ga('send', 'pageview');
     
   </header>
   <ul id="toc" class="section-nav">
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#a-basic-dart-program">A basic Dart program</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#un-programa-básico-de-dart">Un programa básico de Dart</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#important-concepts">Important concepts</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#keywords">Keywords</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#variables">Variables</a>
@@ -815,13 +815,13 @@ ga('send', 'pageview');
   <a href="https://github.com/dart-lang/site-www/tree/main/src/_guides/language/language-tour.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
     <i class="fas fa-file-alt fa-sm"></i>
   </a>
-  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'A tour of the Dart language'&page-url=https://dart.esdocu.com/guides/language/language-tour&page-source=https://github.com/dart-lang/site-www/tree/main/src/_guides/language/language-tour.md" class="btn no-automatic-external" title="Report an issue with this page"
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Un tour por el lenguaje Dart'&page-url=https://dart.esdocu.com/guides/language/language-tour&page-source=https://github.com/dart-lang/site-www/tree/main/src/_guides/language/language-tour.md" class="btn no-automatic-external" title="Report an issue with this page"
     target="_blank" rel="noopener">
     <i class="fas fa-bug fa-sm"></i>
   </a>
 </div>
 
-            <h1>A tour of the Dart language</h1>
+            <h1>Un tour por el lenguaje Dart</h1>
           </div>
           
 
@@ -841,7 +841,7 @@ ga('send', 'pageview');
     
   </header>
   <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2"><a href="#a-basic-dart-program">A basic Dart program</a></li>
+<li class="toc-entry toc-h2"><a href="#un-programa-básico-de-dart">Un programa básico de Dart</a></li>
 <li class="toc-entry toc-h2"><a href="#important-concepts">Important concepts</a></li>
 <li class="toc-entry toc-h2"><a href="#keywords">Keywords</a></li>
 <li class="toc-entry toc-h2"><a href="#variables">Variables</a>
@@ -963,56 +963,55 @@ ga('send', 'pageview');
 
 
           
-<p>This page shows you how to use each major Dart feature, from
-variables and operators to classes and libraries, with the assumption
-that you already know how to program in another language.
-For a briefer, less complete introduction to the language, see the
-<a href="/samples">language samples page</a>.</p>
+<p>Esta página te muestra cómo usar cada función importante de Dart, 
+desde variables y operadores hasta clases y bibliotecas, 
+suponiendo que ya sabes cómo programar en otro lenguaje.
+Para obtener una introducción más breve y menos completa del lenguaje, 
+consulta la <a href="/samples">página de ejemplos del lenguaje</a>.</p>
 
-<p>To learn more about Dart’s core libraries, see the
-<a href="/guides/libraries/library-tour">library tour</a>.
-Whenever you want more details about a language feature,
-consult the <a href="/guides/language/spec">Dart language specification</a>.</p>
+<p>Para obtener más información sobre las bibliotecas principales de Dart, 
+consulta el <a href="/guides/libraries/library-tour">tour por las bibliotecas</a>.
+Siempre que desees más detalles sobre una función del lenguaje, 
+consulta la <a href="/guides/language/spec">Especificación del lenguaje Dart</a>.</p>
 
 <aside class="alert alert-info" role="alert">
   <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
-  You can play with most of Dart’s language features using DartPad
-  (<a href="/tools/dartpad">learn more</a>).
-  <strong><a href="https://dartpad.dev" target="_blank" rel="noopener">Open
+  Puedes jugar con la mayoría de las funciones de lenguaje Dart usando DartPad
+  (<a href="/tools/dartpad">aprende más</a>).
+  <strong><a href="https://dartpad.dev" target="_blank" rel="noopener">Abre
   DartPad.</a></strong></p>
 
-  <p>This page uses embedded DartPads to display some of the examples.
-  If you see empty boxes instead of DartPads, go to the
-<a href="/tools/dartpad/troubleshoot">DartPad troubleshooting page</a>.</p>
-
+  <p>Esta página utiliza DartPads embebidos para mostrar algunos de los ejemplos.
+  Si ves cuadros vacíos en lugar de DartPads, ve a la 
+<a href="/tools/dartpad/troubleshoot">página de solución de problemas de DartPad</a>.</p>
 </aside>
 
-<h2 id="a-basic-dart-program">
-<a class="anchor" href="#a-basic-dart-program" aria-hidden="true"><span class="octicon octicon-link"></span></a>A basic Dart program</h2>
+<h2 id="un-programa-básico-de-dart">
+<a class="anchor" href="#un-programa-b%C3%A1sico-de-dart" aria-hidden="true"><span class="octicon octicon-link"></span></a>Un programa básico de Dart</h2>
 
-<p>The following code uses many of Dart’s most basic features:</p>
+<p>El siguiente código utiliza muchas de las características más básicas de Dart:</p>
 
 <div class="code-excerpt">
-<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// Define a function.
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// Define una función.
 void printInteger(int aNumber) {
-  print('The number is $aNumber.'); // Print to console.
+  print('The number is $aNumber.'); // Imprime en consola.
 }
 
-// This is where the app starts executing.
+// Aquí es donde la aplicación comienza a ejecutarse.
 void main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
+  var number = 42; // Declarar e inicializar una variable.
+  printInteger(number); // Llama una función.
 }</pre></div>
 </div>
 
-<p>Here’s what this program uses that applies to all (or almost all) Dart
-apps:</p>
+<p>Esto es lo que usa este programa que se aplica a todas (o casi todas) 
+las aplicaciones de Dart:</p>
 
 <dl>
-  <dt><code>// <em>This is a comment.</em> </code></dt>
-  <dd>A single-line comment.
-Dart also supports multi-line and document comments.
-For details, see <a href="#comments">Comments</a>.</dd>
+  <dt><code>// <em>Esto es un comentario.</em> </code></dt>
+  <dd>Un comentario de una sola línea.
+Dart también admite comentarios de documentación y de varias líneas.
+Para obtener más información, consulta <a href="#comentarios">Comentarios</a>.</dd>
   <dt><code class="language-plaintext highlighter-rouge">void</code></dt>
   <dd>A special type that indicates a value that’s never used.
 Functions like <code class="language-plaintext highlighter-rouge">printInteger()</code> and <code class="language-plaintext highlighter-rouge">main()</code> that don’t explicitly return a value
@@ -2752,7 +2751,7 @@ You can implement many of these <a href="#_operators">operators as class members
   <p><i class="fas fa-exclamation-triangle"></i> <strong>Warning:</strong>
   Operator precedence is an approximation of the behavior of a Dart parser.
   For definitive answers, consult the grammar in the
-  <a href="/guides/language/spec">Dart language specification</a>.</p>
+  <a href="/guides/language/spec">Especificación del lenguaje Dart</a>.</p>
 </aside>
 
 <p>When you use operators, you create expressions. Here are some examples
@@ -4703,7 +4702,7 @@ In this case, you can use the
 <a href="/guides/language/sound-problems#the-covariant-keyword"><code class="language-plaintext highlighter-rouge">covariant</code> keyword</a>
 in a parameter declaration.
 For details, see the 
-<a href="/guides/language/spec">Dart language specification</a>.</p>
+<a href="/guides/language/spec">Especificación del lenguaje Dart</a>.</p>
 
 <aside class="alert alert-warning" role="alert">
   <p><i class="fas fa-exclamation-triangle"></i> <strong>Warning:</strong>
@@ -5888,7 +5887,7 @@ For advice on how to structure your comments, see
 
 <p>This page summarized the commonly used features in the Dart language.
 More features are being implemented, but we expect that they won’t break
-existing code. For more information, see the <a href="/guides/language/spec">Dart language specification</a> and
+existing code. For more information, see the <a href="/guides/language/spec">Especificación del lenguaje Dart</a> and
 <a href="/guides/language/effective-dart">Effective Dart</a>.</p>
 
 <p>To learn more about Dart’s core libraries, see

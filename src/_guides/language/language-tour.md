@@ -1,29 +1,29 @@
 ---
-title: A tour of the Dart language
-description: A tour of all the major Dart language features.
-short-title: Language tour
+title: Un tour por el lenguaje Dart
+description: Un recorrido por las principales funciones del lenguaje Dart.
+short-title: Tour por el lenguaje
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
-This page shows you how to use each major Dart feature, from
-variables and operators to classes and libraries, with the assumption
-that you already know how to program in another language.
-For a briefer, less complete introduction to the language, see the
-[language samples page](/samples).
+Esta página te muestra cómo usar cada función importante de Dart, 
+desde variables y operadores hasta clases y bibliotecas, 
+suponiendo que ya sabes cómo programar en otro lenguaje.
+Para obtener una introducción más breve y menos completa del lenguaje, 
+consulta la [página de ejemplos del lenguaje](/samples).
 
-To learn more about Dart's core libraries, see the
-[library tour](/guides/libraries/library-tour).
-Whenever you want more details about a language feature,
-consult the [Dart language specification][].
+Para obtener más información sobre las bibliotecas principales de Dart, 
+consulta el [tour por las bibliotecas](/guides/libraries/library-tour).
+Siempre que desees más detalles sobre una función del lenguaje, 
+consulta la [Especificación del lenguaje Dart][].
 
 {{site.alert.note}}
-  You can play with most of Dart's language features using DartPad
-  ([learn more](/tools/dartpad)).
-  **<a href="{{site.dartpad}}" target="_blank" rel="noopener">Open
+  Puedes jugar con la mayoría de las funciones de lenguaje Dart usando DartPad
+  ([aprende más](/tools/dartpad)).
+  **<a href="{{site.dartpad}}" target="_blank" rel="noopener">Abre
   DartPad.</a>**
 
-  This page uses embedded DartPads to display some of the examples.
+  Esta página utiliza DartPads embebidos para mostrar algunos de los ejemplos.
   {% include dartpads-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
@@ -33,31 +33,31 @@ consult the [Dart language specification][].
 Look for dynamic. Look for code that isn't auto-included (no code-excerpt.)]
 {% endcomment %}
 
-## A basic Dart program
+## Un programa básico de Dart
 
-The following code uses many of Dart’s most basic features:
+El siguiente código utiliza muchas de las características más básicas de Dart:
 
 <?code-excerpt "misc/test/language_tour/basic_test.dart"?>
 ```dart
-// Define a function.
+// Define una función.
 void printInteger(int aNumber) {
-  print('The number is $aNumber.'); // Print to console.
+  print('The number is $aNumber.'); // Imprime en consola.
 }
 
-// This is where the app starts executing.
+// Aquí es donde la aplicación comienza a ejecutarse.
 void main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
+  var number = 42; // Declarar e inicializar una variable.
+  printInteger(number); // Llama una función.
 }
 ```
 
-Here’s what this program uses that applies to all (or almost all) Dart
-apps:
+Esto es lo que usa este programa que se aplica a todas (o casi todas) 
+las aplicaciones de Dart:
 
-<code>// <em>This is a comment.</em> </code>
-:   A single-line comment.
-    Dart also supports multi-line and document comments.
-    For details, see [Comments](#comments).
+<code>// <em>Esto es un comentario.</em> </code>
+:   Un comentario de una sola línea.
+    Dart también admite comentarios de documentación y de varias líneas.
+    Para obtener más información, consulta [Comentarios](#comentarios).
 
 `void`
 :   A special type that indicates a value that's never used.
@@ -1740,7 +1740,7 @@ You can implement many of these [operators as class members](#_operators).
 {{site.alert.warning}}
   Operator precedence is an approximation of the behavior of a Dart parser.
   For definitive answers, consult the grammar in the
-  [Dart language specification][].
+  [Especificación del lenguaje Dart][].
 {{site.alert.end}}
 
 When you use operators, you create expressions. Here are some examples
@@ -3540,7 +3540,7 @@ In this case, you can use the
 [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword)
 in a parameter declaration.
 For details, see the 
-[Dart language specification][].
+[Especificación del lenguaje Dart][].
 
 {{site.alert.warning}}
   If you override `==`, you should also override Object's `hashCode` getter.
@@ -4781,7 +4781,7 @@ For advice on how to structure your comments, see
 
 This page summarized the commonly used features in the Dart language.
 More features are being implemented, but we expect that they won’t break
-existing code. For more information, see the [Dart language specification][] and
+existing code. For more information, see the [Especificación del lenguaje Dart][] and
 [Effective Dart](/guides/language/effective-dart).
 
 To learn more about Dart's core libraries, see
@@ -4796,7 +4796,7 @@ To learn more about Dart's core libraries, see
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
 [dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math
-[Dart language specification]: /guides/language/spec
+[Especificación del lenguaje Dart]: /guides/language/spec
 [dartdevc]: /tools/dartdevc
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [`double`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html

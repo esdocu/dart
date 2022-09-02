@@ -1,2 +1,2 @@
-If you see an empty box instead of code, go to the
-[DartPad troubleshooting page](/tools/dartpad/troubleshoot).
+Si ves un cuadro vacío en lugar de un código, ve a la 
+[página de solución de problemas de DartPad](/tools/dartpad/troubleshoot).
