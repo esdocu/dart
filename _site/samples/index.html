@@ -18,8 +18,8 @@
     gtag('config', 'G-M146BEZEJV');
   </script>
 
-  <meta name="description" content="Examples of idiomatic Dart with links to larger examples.">
-  <title>Language samples | Dart es Español</title>
+  <meta name="description" content="Ejemplos de Dart idiomático con enlaces a ejemplos más grandes.">
+  <title>Ejemplos del lenguaje | Dart es Español</title>
 
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
@@ -31,12 +31,12 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@dart_lang" />
-  <meta name="twitter:title" content="Language samples" />
-  <meta name="twitter:description" content="Examples of idiomatic Dart with links to larger examples." />
+  <meta name="twitter:title" content="Ejemplos del lenguaje" />
+  <meta name="twitter:description" content="Ejemplos de Dart idiomático con enlaces a ejemplos más grandes." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Language samples" />
-  <meta property="og:description" content="Examples of idiomatic Dart with links to larger examples." />
+  <meta property="og:title" content="Ejemplos del lenguaje" />
+  <meta property="og:description" content="Ejemplos de Dart idiomático con enlaces a ejemplos más grandes." />
   <meta property="og:url" content="https://dart.esdocu.com/samples/" />
   
   <meta property="og:image" content="https://dart.esdocu.com/assets/shared/dart-logo-for-shares.png?2" />
@@ -53,7 +53,7 @@
     data-auto-replace-svg="nest">
   </script>
 
-  <link rel="stylesheet" href="/assets/css/main.css?v=1662050124">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662104133">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
           integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
           crossorigin="anonymous"
@@ -75,9 +75,9 @@
   <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
   <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
   <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
-  <script src="/assets/js/os-tabs.js?v=1662050124"></script>
-  <script src="/assets/js/utilities.js?v=1662050124"></script>
-  <script src="/assets/js/main.js?v=1662050124"></script>
+  <script src="/assets/js/os-tabs.js?v=1662104133"></script>
+  <script src="/assets/js/utilities.js?v=1662104133"></script>
+  <script src="/assets/js/main.js?v=1662104133"></script>
 
   <script>
 
@@ -102,7 +102,7 @@ ga('send', 'pageview');
       <a href="https://myaccount.google.com/data-and-personalization" target="_blank" rel="noopener" class="no-automatic-external">Configuración de Google</a>.
       <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener" class="no-automatic-external">Más información</a>.
     </p>
-    <button id="cookie-consent" class="btn btn-primary">Está bien</button>
+    <button id="cookie-consent" class="btn btn-primary">Entiendo</button>
   </div>
 </section>
 
@@ -684,20 +684,20 @@ ga('send', 'pageview');
     
   </header>
   <ul id="toc" class="section-nav">
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#hello-world">Hello World</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#hola-mundo">Hola mundo</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#variables">Variables</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#control-flow-statements">Control flow statements</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#functions">Functions</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#comments">Comments</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#imports">Imports</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#classes">Classes</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#declaraciones-de-flujo-de-control">Declaraciones de flujo de control</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#funciones">Funciones</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#comentarios">Comentarios</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#importaciones">Importaciones</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#clases">Clases</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#enums">Enums</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#inheritance">Inheritance</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#herencia">Herencia</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#mixins">Mixins</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#interfaces-and-abstract-classes">Interfaces and abstract classes</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#interfaces-y-clases-abstractas">Interfaces y clases abstractas</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#async">Async</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#exceptions">Exceptions</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#other-topics">Other topics</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#excepciones">Excepciones</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#otros-temas">Otros temas</a></li>
 </ul>
 </div>
 
@@ -711,13 +711,13 @@ ga('send', 'pageview');
   <a href="https://github.com/dart-lang/site-www/tree/main/src/samples/index.md" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
     <i class="fas fa-file-alt fa-sm"></i>
   </a>
-  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Language samples'&page-url=https://dart.esdocu.com/samples/&page-source=https://github.com/dart-lang/site-www/tree/main/src/samples/index.md" class="btn no-automatic-external" title="Report an issue with this page"
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&title=[PAGE ISSUE]: 'Ejemplos del lenguaje'&page-url=https://dart.esdocu.com/samples/&page-source=https://github.com/dart-lang/site-www/tree/main/src/samples/index.md" class="btn no-automatic-external" title="Report an issue with this page"
     target="_blank" rel="noopener">
     <i class="fas fa-bug fa-sm"></i>
   </a>
 </div>
 
-            <h1>Language samples</h1>
+            <h1>Ejemplos del lenguaje</h1>
           </div>
           
 
@@ -737,65 +737,64 @@ ga('send', 'pageview');
     
   </header>
   <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2"><a href="#hello-world">Hello World</a></li>
+<li class="toc-entry toc-h2"><a href="#hola-mundo">Hola mundo</a></li>
 <li class="toc-entry toc-h2"><a href="#variables">Variables</a></li>
-<li class="toc-entry toc-h2"><a href="#control-flow-statements">Control flow statements</a></li>
-<li class="toc-entry toc-h2"><a href="#functions">Functions</a></li>
-<li class="toc-entry toc-h2"><a href="#comments">Comments</a></li>
-<li class="toc-entry toc-h2"><a href="#imports">Imports</a></li>
-<li class="toc-entry toc-h2"><a href="#classes">Classes</a></li>
+<li class="toc-entry toc-h2"><a href="#declaraciones-de-flujo-de-control">Declaraciones de flujo de control</a></li>
+<li class="toc-entry toc-h2"><a href="#funciones">Funciones</a></li>
+<li class="toc-entry toc-h2"><a href="#comentarios">Comentarios</a></li>
+<li class="toc-entry toc-h2"><a href="#importaciones">Importaciones</a></li>
+<li class="toc-entry toc-h2"><a href="#clases">Clases</a></li>
 <li class="toc-entry toc-h2"><a href="#enums">Enums</a></li>
-<li class="toc-entry toc-h2"><a href="#inheritance">Inheritance</a></li>
+<li class="toc-entry toc-h2"><a href="#herencia">Herencia</a></li>
 <li class="toc-entry toc-h2"><a href="#mixins">Mixins</a></li>
-<li class="toc-entry toc-h2"><a href="#interfaces-and-abstract-classes">Interfaces and abstract classes</a></li>
+<li class="toc-entry toc-h2"><a href="#interfaces-y-clases-abstractas">Interfaces y clases abstractas</a></li>
 <li class="toc-entry toc-h2"><a href="#async">Async</a></li>
-<li class="toc-entry toc-h2"><a href="#exceptions">Exceptions</a></li>
-<li class="toc-entry toc-h2"><a href="#other-topics">Other topics</a></li>
+<li class="toc-entry toc-h2"><a href="#excepciones">Excepciones</a></li>
+<li class="toc-entry toc-h2"><a href="#otros-temas">Otros temas</a></li>
 </ul>
 </div>
 
 
-          <p>This collection is not exhaustive—it’s just a brief
-introduction to the language for people who like to learn by example.
-You might also want to check out the language and library tours,
-or the <a href="/codelabs/dart-cheatsheet">Dart cheatsheet codelab</a>.</p>
+          <p>Esta colección no es exhaustiva, es solo una breve introducción al lenguaje 
+para las personas a las que les gusta aprender con ejemplos.
+También puedes consultar los tours por el lenguaje y las bibliotecas, 
+o el <a href="/codelabs/dart-cheatsheet">codelab de la hoja de trucos de Dart</a>.</p>
 
 <div class="card-grid no_toc_section">
   <div class="card">
-    <h3><a href="/guides/language/language-tour">Language tour</a></h3>
+    <h3><a href="/guides/language/language-tour">Tour del lenguaje</a></h3>
     <p>
-      A comprehensive tour, with examples, of the Dart language.
-      Most of the <em>read more</em> links in this page
-      point to the language tour.
+      Un recorrido completo, con ejemplos, del lenguaje Dart.
+      La mayoría de los enlaces <em>leer más</em> en esta página apuntan al tour del lenguaje.
     </p>
   </div>
   <div class="card">
-    <h3><a href="/guides/libraries/library-tour">Library tour</a></h3>
+    <h3><a href="/guides/libraries/library-tour">Tour de bibliotecas</a></h3>
     <p>
-      An example-based introduction to the Dart core libraries.
-      See how to use the built-in types, collections,
-      dates and times, streams, and more.
+      Una introducción basada en ejemplos a las bibliotecas del core de Dart.
+      Conoce cómo usar los tipos integrados, colecciones, 
+      fechas y horas, streams y más.
     </p>
   </div>
 </div>
 
-<h2 id="hello-world">
-<a class="anchor" href="#hello-world" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hello World</h2>
+<h2 id="hola-mundo">
+<a class="anchor" href="#hola-mundo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hola mundo</h2>
 
-<p>Every app has a <code class="language-plaintext highlighter-rouge">main()</code> function.
-To display text on the console, you can use the top-level <code class="language-plaintext highlighter-rouge">print()</code> function:</p>
+<p>Cada aplicación tiene una función <code class="language-plaintext highlighter-rouge">main()</code>.
+Para mostrar texto en la consola, puedes usar la función <code class="language-plaintext highlighter-rouge">print()</code> de nivel superior:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">void main() {
-  print('Hello, World!');
+  print('¡Hola mundo!');
 }</pre></div>
 </div>
 
 <h2 id="variables">
 <a class="anchor" href="#variables" aria-hidden="true"><span class="octicon octicon-link"></span></a>Variables</h2>
 
-<p>Even in type-safe Dart code, most variables don’t need explicit types,
-thanks to type inference:</p>
+<p>Incluso en el código Dart con seguridad de tipos, la mayoría de las variables 
+no necesitan tipos explícitos, gracias a la inferencia de tipos:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">var name = 'Voyager I';
@@ -808,19 +807,19 @@ var image = {
 };</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#variables">Read more</a> about variables in Dart, 
-including default values, the <code class="language-plaintext highlighter-rouge">final</code> and <code class="language-plaintext highlighter-rouge">const</code> keywords, and static types.</p>
+<p><a href="/guides/language/language-tour#variables">Leer más</a> sobre las variables en Dart, incluidos 
+los valores predeterminados, las palabras clave <code class="language-plaintext highlighter-rouge">final</code> y <code class="language-plaintext highlighter-rouge">const</code>, y los tipos estáticos.</p>
 
-<h2 id="control-flow-statements">
-<a class="anchor" href="#control-flow-statements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Control flow statements</h2>
+<h2 id="declaraciones-de-flujo-de-control">
+<a class="anchor" href="#declaraciones-de-flujo-de-control" aria-hidden="true"><span class="octicon octicon-link"></span></a>Declaraciones de flujo de control</h2>
 
-<p>Dart supports the usual control flow statements:</p>
+<p>Dart admite las declaraciones de control de flujo habituales:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">if (year &gt;= 2001) {
-  print('21st century');
+  print('Siglo 21');
 } else if (year &gt;= 1901) {
-  print('20th century');
+  print('Siglo 20');
 }
 
 for (final object in flybyObjects) {
@@ -836,15 +835,14 @@ while (year &lt; 2016) {
 }</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#control-flow-statements">Read more</a> 
-about control flow statements in Dart,
-including <code class="language-plaintext highlighter-rouge">break</code> and <code class="language-plaintext highlighter-rouge">continue</code>, <code class="language-plaintext highlighter-rouge">switch</code> and <code class="language-plaintext highlighter-rouge">case</code>, and <code class="language-plaintext highlighter-rouge">assert</code>.</p>
+<p><a href="/guides/language/language-tour#control-flow-statements">Leer más</a> sobre las declaraciones 
+de flujo de control en Dart, incluidas <code class="language-plaintext highlighter-rouge">break</code> y <code class="language-plaintext highlighter-rouge">continue</code>, <code class="language-plaintext highlighter-rouge">switch</code> y <code class="language-plaintext highlighter-rouge">case</code>, y <code class="language-plaintext highlighter-rouge">assert</code>.</p>
 
-<h2 id="functions">
-<a class="anchor" href="#functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions</h2>
+<h2 id="funciones">
+<a class="anchor" href="#funciones" aria-hidden="true"><span class="octicon octicon-link"></span></a>Funciones</h2>
 
-<p><a href="/guides/language/effective-dart/design#types">We recommend</a>
-specifying the types of each function’s arguments and return value:</p>
+<p><a href="/guides/language/effective-dart/design#types">Recomendamos</a> especifica los tipos de 
+argumentos de cada función y el valor de retorno:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">int fibonacci(int n) {
@@ -855,98 +853,98 @@ specifying the types of each function’s arguments and return value:</p>
 var result = fibonacci(20);</pre></div>
 </div>
 
-<p>A shorthand <code class="language-plaintext highlighter-rouge">=&gt;</code> (<em>arrow</em>) syntax is handy for functions that
-contain a single statement.
-This syntax is especially useful when passing anonymous functions as arguments:</p>
+<p>Una sintaxis abreviada <code class="language-plaintext highlighter-rouge">=&gt;</code> (<em>flecha</em>) es útil para las funciones que 
+contienen una sola instrucción.
+Esta sintaxis es especialmente útil cuando se pasan funciones anónimas como argumentos:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">flybyObjects.where((name) =&gt; name.contains('turn')).forEach(print);</pre></div>
 </div>
 
-<p>Besides showing an anonymous function (the argument to <code class="language-plaintext highlighter-rouge">where()</code>),
-this code shows that you can use a function as an argument:
-the top-level <code class="language-plaintext highlighter-rouge">print()</code> function is an argument to <code class="language-plaintext highlighter-rouge">forEach()</code>.</p>
+<p>Además de mostrar una función anónima (el argumento de <code class="language-plaintext highlighter-rouge">where()</code>), 
+este código muestra que puedes usar una función como argumento: 
+la función <code class="language-plaintext highlighter-rouge">print()</code> de nivel superior es un argumento de <code class="language-plaintext highlighter-rouge">forEach()</code>.</p>
 
-<p><a href="/guides/language/language-tour#functions">Read more</a> about functions in Dart,
-including optional parameters, default parameter values, and lexical scope.</p>
+<p><a href="/guides/language/language-tour#functions">Leer más</a> sobre funciones en Dart, 
+incluidos parámetros opcionales, valores predeterminados de parámetros y alcance léxico.</p>
 
-<h2 id="comments">
-<a class="anchor" href="#comments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comments</h2>
+<h2 id="comentarios">
+<a class="anchor" href="#comentarios" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comentarios</h2>
 
-<p>Dart comments usually start with <code class="language-plaintext highlighter-rouge">//</code>.</p>
+<p>Los comentarios de Dart generalmente comienzan con <code class="language-plaintext highlighter-rouge">//</code>.</p>
 
-<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This is a normal, one-line comment.</span>
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Este es un comentario normal de una línea.</span>
 
-<span class="c1">/// This is a documentation comment, used to document libraries,</span>
-<span class="c1">/// classes, and their members. Tools like IDEs and dartdoc treat</span>
-<span class="c1">/// doc comments specially.</span>
+<span class="c1">/// Este es un comentario de documentación, usado para documentar bibliotecas,</span>
+<span class="c1">/// clases y sus miembros. Herramientas como IDE y dartdoc tratan </span>
+<span class="c1">/// los comentarios de documentos de forma especial.</span>
 
-<span class="cm">/* Comments like these are also supported. */</span>
+<span class="cm">/* También se admiten comentarios como estos. */</span>
+
 </code></pre></div></div>
 
-<p><a href="/guides/language/language-tour#comments">Read more</a> about comments in Dart,
-including how the documentation tooling works.</p>
+<p><a href="/guides/language/language-tour#comments">Leer más</a> sobre los comentarios en Dart, 
+incluido cómo funcionan las herramientas de documentación.</p>
 
-<h2 id="imports">
-<a class="anchor" href="#imports" aria-hidden="true"><span class="octicon octicon-link"></span></a>Imports</h2>
+<h2 id="importaciones">
+<a class="anchor" href="#importaciones" aria-hidden="true"><span class="octicon octicon-link"></span></a>Importaciones</h2>
 
-<p>To access APIs defined in other libraries, use <code class="language-plaintext highlighter-rouge">import</code>.</p>
+<p>Para acceder a las API definidas en otras bibliotecas, use <code class="language-plaintext highlighter-rouge">import</code>.</p>
 
 <div class="code-excerpt">
-<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// Importing core libraries
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">// Importa bibliotecas del core
 import 'dart:math';
 
-// Importing libraries from external packages
+// Importa bibliotecas de paquetes externos
 import 'package:test/test.dart';
 
-// Importing files
+// Importa archivos
 import 'path/to/my_other_file.dart';</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#libraries-and-visibility">Read more</a> 
-about libraries and visibility in Dart,
-including library prefixes, <code class="language-plaintext highlighter-rouge">show</code> and <code class="language-plaintext highlighter-rouge">hide</code>, 
-and lazy loading through the <code class="language-plaintext highlighter-rouge">deferred</code> keyword.</p>
+<p><a href="/guides/language/language-tour#libraries-and-visibility">Leer más</a>
+sobre bibliotecas y visibilidad en Dart, incluidos los prefijos de biblioteca, 
+<code class="language-plaintext highlighter-rouge">show</code> y <code class="language-plaintext highlighter-rouge">hide</code>, y la carga diferida a través de la palabra clave <code class="language-plaintext highlighter-rouge">deferred</code>.</p>
 
-<h2 id="classes">
-<a class="anchor" href="#classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes</h2>
+<h2 id="clases">
+<a class="anchor" href="#clases" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clases</h2>
 
-<p>Here’s an example of a class with three properties, two constructors,
-and a method. One of the properties can’t be set directly, so it’s
-defined using a getter method (instead of a variable).</p>
+<p>Aquí hay un ejemplo de una clase con tres propiedades, dos constructores y un método. 
+Una de las propiedades no se puede establecer directamente, por lo que se define 
+mediante un método getter (en lugar de una variable).</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">class Spacecraft {
   String name;
   DateTime? launchDate;
 
-  // Read-only non-final property
+  // Propiedad no final de solo lectura
   int? get launchYear =&gt; launchDate?.year;
 
-  // Constructor, with syntactic sugar for assignment to members.
+  // Constructor, con azúcar sintáctico para asignación a miembros.
   Spacecraft(this.name, this.launchDate) {
-    // Initialization code goes here.
+    // El código de inicialización va aquí.
   }
 
-  // Named constructor that forwards to the default one.
+  // Constructor con nombre que reenvía al predeterminado.
   Spacecraft.unlaunched(String name) : this(name, null);
 
-  // Method.
+  // Método.
   void describe() {
     print('Spacecraft: $name');
-    // Type promotion doesn't work on getters.
+    // La promoción de tipos no funciona con getters.
     var launchDate = this.launchDate;
     if (launchDate != null) {
       int years = DateTime.now().difference(launchDate).inDays ~/ 365;
-      print('Launched: $launchYear ($years years ago)');
+      print('Lanzado: $launchYear (hace $years años)');
     } else {
-      print('Unlaunched');
+      print('No lanzado');
     }
   }
 }</pre></div>
 </div>
 
-<p>You might use the <code class="language-plaintext highlighter-rouge">Spacecraft</code> class like this:</p>
+<p>Podrías usar la clase <code class="language-plaintext highlighter-rouge">Spacecraft</code> así:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
@@ -956,31 +954,32 @@ var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#classes">Read more</a> about classes in Dart,
-including initializer lists, optional <code class="language-plaintext highlighter-rouge">new</code> and <code class="language-plaintext highlighter-rouge">const</code>, redirecting constructors,
-<code class="language-plaintext highlighter-rouge">factory</code> constructors, getters, setters, and much more.</p>
+<p><a href="/guides/language/language-tour#classes">Leer más</a> sobre las clases en Dart, 
+incluidas las listas de inicializadores, <code class="language-plaintext highlighter-rouge">new</code> y <code class="language-plaintext highlighter-rouge">const</code> opcionales, 
+constructores de redireccionamiento, constructores <code class="language-plaintext highlighter-rouge">factory</code>, getters, 
+setters y mucho más.</p>
 
 <h2 id="enums">
 <a class="anchor" href="#enums" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enums</h2>
 
-<p>Enums are a way of enumerating a predefined set of values or instances
-in a way which ensures that there cannot be any other instances of that type.</p>
+<p>Las enumeraciones son una forma de enumerar un conjunto predefinido de valores 
+o instancias de una manera que garantiza que no puede haber otras 
+instancias de ese tipo.</p>
 
-<p>Here is an example of a simple <code class="language-plaintext highlighter-rouge">enum</code> that defines
-a simple list of predefined planet types:</p>
+<p>Aquí hay un ejemplo de un <code class="language-plaintext highlighter-rouge">enum</code> simple que define una lista simple de 
+tipos de planetas predefinidos:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">enum PlanetType { terrestrial, gas, ice }</pre></div>
 </div>
 
-<p>Here is an example of an enhanced enum declaration
-of a class describing planets,
-with a defined set of constant instances,
-namely the planets of our own solar system.</p>
+<p>Aquí hay un ejemplo de una declaración de enumeración mejorada de una clase que 
+describe planetas, con un conjunto definido de instancias constantes, 
+a saber, los planetas de nuestro propio sistema solar.</p>
 
 <div class="code-excerpt">
-<div class="code-excerpt__code"><pre class="prettyprint lang-dart">/// Enum that enumerates the different planets in our solar system
-/// and some of their properties.
+<div class="code-excerpt__code"><pre class="prettyprint lang-dart">/// Enum que enumera los diferentes planetas de nuestro sistema solar 
+/// y algunas de sus propiedades.
 enum Planet {
   mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
   venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
@@ -988,39 +987,40 @@ enum Planet {
   uranus(planetType: PlanetType.ice, moons: 27, hasRings: true),
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
-  /// A constant generating constructor
+  /// Un constructor de generación constante
   const Planet(
       {required this.planetType, required this.moons, required this.hasRings});
 
-  /// All instance variables are final
+  /// Todas las variables de instancia son finales
   final PlanetType planetType;
   final int moons;
   final bool hasRings;
 
-  /// Enhanced enums support getters and other methods
+  /// Las enumeraciones mejoradas admiten getters y otros métodos
   bool get isGiant =&gt;
       planetType == PlanetType.gas || planetType == PlanetType.ice;
 }</pre></div>
 </div>
 
-<p>You might use the <code class="language-plaintext highlighter-rouge">Planet</code> enum like this:</p>
+<p>Podrías usar la enumeración <code class="language-plaintext highlighter-rouge">Planet</code> así:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">final yourPlanet = Planet.earth;
 
 if (!yourPlanet.isGiant) {
-  print('Your planet is not a "giant planet".');
+  print('Tu planeta no es un "planeta gigante".');
 }</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#enums">Read more</a> about enums in Dart,
-including enhanced enum requirements, automatically introduced properties,
-accessing enumerated value names, switch statement support, and much more.</p>
+<p><a href="/guides/language/language-tour#enums">Leer más</a> sobre las enumeraciones en Dart, 
+incluidos los requisitos de enumeración mejorados, las propiedades introducidas 
+automáticamente, el acceso a los nombres de valores enumerados, 
+la compatibilidad con declaraciones switch y mucho más.</p>
 
-<h2 id="inheritance">
-<a class="anchor" href="#inheritance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inheritance</h2>
+<h2 id="herencia">
+<a class="anchor" href="#herencia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Herencia</h2>
 
-<p>Dart has single inheritance.</p>
+<p>Dart tiene herencia única.</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">class Orbiter extends Spacecraft {
@@ -1030,40 +1030,40 @@ accessing enumerated value names, switch statement support, and much more.</p>
 }</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#extending-a-class">Read more</a> 
-about extending classes, the optional <code class="language-plaintext highlighter-rouge">@override</code> annotation, and more.</p>
+<p><a href="/guides/language/language-tour#extending-a-class">Leer más</a> sobre 
+la extensión de clases, la anotación opcional <code class="language-plaintext highlighter-rouge">@override</code> y más.</p>
 
 <h2 id="mixins">
 <a class="anchor" href="#mixins" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mixins</h2>
 
-<p>Mixins are a way of reusing code in multiple class hierarchies. The following is
-a mixin declaration:</p>
+<p>Los mixins son una forma de reutilizar el código en varias jerarquías 
+de clases. La siguiente es una declaración de mixin:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">mixin Piloted {
   int astronauts = 1;
 
   void describeCrew() {
-    print('Number of astronauts: $astronauts');
+    print('Número de astronautas: $astronauts');
   }
 }</pre></div>
 </div>
 
-<p>To add a mixin’s capabilities to a class, just extend the class with the mixin.</p>
+<p>Para agregar las capacidades de un mixin a una clase, simplemente extiende la clase con el mixin.</p>
 <pre class="prettyprint lang-dart"><code>class PilotedCraft extends Spacecraft <span class="highlight">with</span> Piloted {
   // ···
 }</code></pre>
 
-<p><code class="language-plaintext highlighter-rouge">PilotedCraft</code> now has the <code class="language-plaintext highlighter-rouge">astronauts</code> field as well as the <code class="language-plaintext highlighter-rouge">describeCrew()</code> method.</p>
+<p><code class="language-plaintext highlighter-rouge">PilotedCraft</code> ahora tiene el campo <code class="language-plaintext highlighter-rouge">astronauts</code> así como el método <code class="language-plaintext highlighter-rouge">describeCrew()</code>.</p>
 
-<p><a href="/guides/language/language-tour#adding-features-to-a-class-mixins">Read more</a> about mixins.</p>
+<p><a href="/guides/language/language-tour#adding-features-to-a-class-mixins">Leer más</a> sobre mixins.</p>
 
-<h2 id="interfaces-and-abstract-classes">
-<a class="anchor" href="#interfaces-and-abstract-classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interfaces and abstract classes</h2>
+<h2 id="interfaces-y-clases-abstractas">
+<a class="anchor" href="#interfaces-y-clases-abstractas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interfaces y clases abstractas</h2>
 
-<p>Dart has no <code class="language-plaintext highlighter-rouge">interface</code> keyword. 
-Instead, all classes implicitly define an interface. 
-Therefore, you can implement any class.</p>
+<p>Dart no tiene la palabra clave <code class="language-plaintext highlighter-rouge">interface</code>.
+En cambio, todas las clases definen implícitamente una interfaz.
+Por lo tanto, puedes implementar cualquier clase.</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">class MockSpaceship implements Spacecraft {
@@ -1071,11 +1071,10 @@ Therefore, you can implement any class.</p>
 }</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#implicit-interfaces">Read more</a> about implicit interfaces.</p>
+<p><a href="/guides/language/language-tour#implicit-interfaces">Leer más</a> sobre las interfaces implícitas.</p>
 
-<p>You can create an abstract class
-to be extended (or implemented) by a concrete class. 
-Abstract classes can contain abstract methods (with empty bodies).</p>
+<p>Puedes crear una clase abstracta para que una clase concreta la amplíe (o la implemente).
+Las clases abstractas pueden contener métodos abstractos (con cuerpos vacíos).</p>
 <pre class="prettyprint lang-dart"><code><span class="highlight">abstract</span> class Describable {
   void describe();
 
@@ -1086,17 +1085,17 @@ Abstract classes can contain abstract methods (with empty bodies).</p>
   }
 }</code></pre>
 
-<p>Any class extending <code class="language-plaintext highlighter-rouge">Describable</code> has the <code class="language-plaintext highlighter-rouge">describeWithEmphasis()</code> method, 
-which calls the extender’s implementation of <code class="language-plaintext highlighter-rouge">describe()</code>.</p>
+<p>Cualquier clase que extienda <code class="language-plaintext highlighter-rouge">Describable</code> tiene el método <code class="language-plaintext highlighter-rouge">describeWithEmphasis()</code>, 
+que llama a la implementación del extensor de <code class="language-plaintext highlighter-rouge">describe()</code>.</p>
 
-<p><a href="/guides/language/language-tour#abstract-classes">Read more</a> 
-about abstract classes and methods.</p>
+<p><a href="/guides/language/language-tour#abstract-classes">Leer más</a> 
+sobre clases y métodos abstractos.</p>
 
 <h2 id="async">
 <a class="anchor" href="#async" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async</h2>
 
-<p>Avoid callback hell and make your code much more readable by
-using <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code>.</p>
+<p>Evita el infierno de devolución de llamada y haz que tu código sea 
+mucho más legible usando <code class="language-plaintext highlighter-rouge">async</code> y <code class="language-plaintext highlighter-rouge">await</code>.</p>
 <pre class="prettyprint lang-dart"><code>const oneSecond = Duration(seconds: 1);
 // ···
 Future&lt;void&gt; printWithDelay(String message) <span class="highlight">async</span> {
@@ -1104,7 +1103,7 @@ Future&lt;void&gt; printWithDelay(String message) <span class="highlight">async<
   print(message);
 }</code></pre>
 
-<p>The method above is equivalent to:</p>
+<p>El método anterior es equivalente a:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">Future&lt;void&gt; printWithDelay(String message) {
@@ -1114,8 +1113,8 @@ Future&lt;void&gt; printWithDelay(String message) <span class="highlight">async<
 }</pre></div>
 </div>
 
-<p>As the next example shows, <code class="language-plaintext highlighter-rouge">async</code> and <code class="language-plaintext highlighter-rouge">await</code> help make asynchronous code
-easy to read.</p>
+<p>Como muestra el siguiente ejemplo, <code class="language-plaintext highlighter-rouge">async</code> y <code class="language-plaintext highlighter-rouge">await</code> ayudan a que 
+el código asíncrono sea fácil de leer.</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">Future&lt;void&gt; createDescriptions(Iterable&lt;String&gt; objects) async {
@@ -1137,7 +1136,7 @@ easy to read.</p>
 }</pre></div>
 </div>
 
-<p>You can also use <code class="language-plaintext highlighter-rouge">async*</code>, which gives you a nice, readable way to build streams.</p>
+<p>También puedes usar <code class="language-plaintext highlighter-rouge">async*</code>, que te brinda una forma agradable y legible de crear streams.</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">Stream&lt;String&gt; report(Spacecraft craft, Iterable&lt;String&gt; objects) async* {
@@ -1148,14 +1147,14 @@ easy to read.</p>
 }</pre></div>
 </div>
 
-<p><a href="/guides/language/language-tour#asynchrony-support">Read more</a> about
-asynchrony support, including <code class="language-plaintext highlighter-rouge">async</code> functions, <code class="language-plaintext highlighter-rouge">Future</code>, <code class="language-plaintext highlighter-rouge">Stream</code>,
-and the asynchronous loop (<code class="language-plaintext highlighter-rouge">await for</code>).</p>
+<p><a href="/guides/language/language-tour#asynchrony-support">Leer más</a> sobre 
+la compatibilidad con la asincronía, incluidos <code class="language-plaintext highlighter-rouge">Future</code>, <code class="language-plaintext highlighter-rouge">Stream</code>, 
+las funciones <code class="language-plaintext highlighter-rouge">async</code>, y el bucle asíncrono (<code class="language-plaintext highlighter-rouge">await for</code>).</p>
 
-<h2 id="exceptions">
-<a class="anchor" href="#exceptions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exceptions</h2>
+<h2 id="excepciones">
+<a class="anchor" href="#excepciones" aria-hidden="true"><span class="octicon octicon-link"></span></a>Excepciones</h2>
 
-<p>To raise an exception, use <code class="language-plaintext highlighter-rouge">throw</code>:</p>
+<p>Para generar una excepción, usa <code class="language-plaintext highlighter-rouge">throw</code>:</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">if (astronauts == 0) {
@@ -1163,7 +1162,7 @@ and the asynchronous loop (<code class="language-plaintext highlighter-rouge">aw
 }</pre></div>
 </div>
 
-<p>To catch an exception, use a <code class="language-plaintext highlighter-rouge">try</code> statement with <code class="language-plaintext highlighter-rouge">on</code> or <code class="language-plaintext highlighter-rouge">catch</code> (or both):</p>
+<p>Para capturar una excepción, usa una instrucción <code class="language-plaintext highlighter-rouge">try</code> con <code class="language-plaintext highlighter-rouge">on</code> o <code class="language-plaintext highlighter-rouge">catch</code> (o ambos):</p>
 
 <div class="code-excerpt">
 <div class="code-excerpt__code"><pre class="prettyprint lang-dart">try {
@@ -1172,27 +1171,27 @@ and the asynchronous loop (<code class="language-plaintext highlighter-rouge">aw
     print(description);
   }
 } on IOException catch (e) {
-  print('Could not describe object: $e');
+  print('No se pudo describir el objeto: $e');
 } finally {
   flybyObjects.clear();
 }</pre></div>
 </div>
 
-<p>Note that the code above is asynchronous;
-<code class="language-plaintext highlighter-rouge">try</code> works for both synchronous code and code in an <code class="language-plaintext highlighter-rouge">async</code> function.</p>
+<p>Ten en cuenta que el código anterior es asíncrono; 
+<code class="language-plaintext highlighter-rouge">try</code> funciona tanto para el código síncrono como para el código en una función <code class="language-plaintext highlighter-rouge">async</code>.</p>
 
-<p><a href="/guides/language/language-tour#exceptions">Read more</a> about exceptions, 
-including stack traces, <code class="language-plaintext highlighter-rouge">rethrow</code>, 
-and the difference between <code class="language-plaintext highlighter-rouge">Error</code> and <code class="language-plaintext highlighter-rouge">Exception</code>.</p>
+<p><a href="/guides/language/language-tour#exceptions">Leer más</a> sobre las excepciones, incluidos 
+los seguimientos de pila (stack traces), <code class="language-plaintext highlighter-rouge">rethrow</code> y la diferencia 
+entre <code class="language-plaintext highlighter-rouge">Error</code> y <code class="language-plaintext highlighter-rouge">Exception</code>.</p>
 
-<h2 id="other-topics">
-<a class="anchor" href="#other-topics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other topics</h2>
+<h2 id="otros-temas">
+<a class="anchor" href="#otros-temas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Otros temas</h2>
 
-<p>Many more code samples are in the
-<a href="/guides/language/language-tour">language tour</a> and the
-<a href="/guides/libraries/library-tour">library tour</a>.
-Also see the <a href="https://api.dart.dev">Dart API reference,</a>
-which often contains examples.</p>
+<p>Hay muchas más muestras de código en el 
+<a href="/guides/language/language-tour">tour del lenguaje</a> y el 
+<a href="/guides/libraries/library-tour">tour por las bibliotecas</a>.
+Consulta también la <a href="https://api.dart.dev">referencia de API de Dart</a>, 
+que a menudo contiene ejemplos.</p>
 
           
 
