@@ -1,19 +1,19 @@
 ---
-title: Dart documentation
-description: Learn to use the Dart language and libraries.
+title: Documentación de Dart
+description: Aprende a usar el lenguaje y las bibliotecas de Dart.
 toc: false
 ---
 
-Welcome to the Dart documentation!
-For a list of changes to this site—new pages, new guidelines, and more—see
-the [What's new page][].
+¡Bienvenido a la documentación de Dart!
+Para obtener una lista de los cambios en este sitio (páginas nuevas, 
+lineamientos nuevos y más), consulta la [Página de novedades][].
 
-[What's new page]: /guides/whats-new
+[Página de novedades]: /guides/whats-new
 
-Here are some of this site's most visited pages:
+Estas son algunas de las páginas más visitadas de este sitio:
 
 {% comment %}
-To update these cards, edit src/_data/docs_cards.yml.
+Para actualizar estas tarjetas, edita src/_data/docs_cards.yml.
 {% endcomment %}
 
 <div class="card-grid">
