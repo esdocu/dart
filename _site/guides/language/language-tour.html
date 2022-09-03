@@ -53,7 +53,7 @@
     data-auto-replace-svg="nest">
   </script>
 
-  <link rel="stylesheet" href="/assets/css/main.css?v=1662143073">
+  <link rel="stylesheet" href="/assets/css/main.css?v=1662220220">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
           integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK"
           crossorigin="anonymous"
@@ -75,9 +75,9 @@
   <script src="/assets/js/vendor/code-prettify/lang-css.js"></script>
   <script src="/assets/js/vendor/code-prettify/lang-dart.js"></script>
   <script src="/assets/js/vendor/code-prettify/lang-yaml.js"></script>
-  <script src="/assets/js/os-tabs.js?v=1662143073"></script>
-  <script src="/assets/js/utilities.js?v=1662143073"></script>
-  <script src="/assets/js/main.js?v=1662143073"></script>
+  <script src="/assets/js/os-tabs.js?v=1662220220"></script>
+  <script src="/assets/js/utilities.js?v=1662220220"></script>
+  <script src="/assets/js/main.js?v=1662220220"></script>
 
   <script defer src="https://dartpad.dev/inject_embed.dart.js"></script>
   <script>
@@ -686,7 +686,7 @@ ga('send', 'pageview');
   </header>
   <ul id="toc" class="section-nav">
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#un-programa-básico-de-dart">Un programa básico de Dart</a></li>
-<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#important-concepts">Important concepts</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#conceptos-importantes">Conceptos importantes</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#keywords">Keywords</a></li>
 <li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#variables">Variables</a>
 <ul class="nav">
@@ -842,7 +842,7 @@ ga('send', 'pageview');
   </header>
   <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2"><a href="#un-programa-básico-de-dart">Un programa básico de Dart</a></li>
-<li class="toc-entry toc-h2"><a href="#important-concepts">Important concepts</a></li>
+<li class="toc-entry toc-h2"><a href="#conceptos-importantes">Conceptos importantes</a></li>
 <li class="toc-entry toc-h2"><a href="#keywords">Keywords</a></li>
 <li class="toc-entry toc-h2"><a href="#variables">Variables</a>
 <ul>
@@ -1013,48 +1013,60 @@ las aplicaciones de Dart:</p>
 Dart también admite comentarios de documentación y de varias líneas.
 Para obtener más información, consulta <a href="#comentarios">Comentarios</a>.</dd>
   <dt><code class="language-plaintext highlighter-rouge">void</code></dt>
-  <dd>A special type that indicates a value that’s never used.
-Functions like <code class="language-plaintext highlighter-rouge">printInteger()</code> and <code class="language-plaintext highlighter-rouge">main()</code> that don’t explicitly return a value
-have the <code class="language-plaintext highlighter-rouge">void</code> return type.</dd>
+  <dd>Un tipo especial que indica un valor que nunca se usa.
+Funciones como <code class="language-plaintext highlighter-rouge">printInteger()</code> y <code class="language-plaintext highlighter-rouge">main()</code> que no devuelven 
+explícitamente un valor tienen el tipo de retorno <code class="language-plaintext highlighter-rouge">void</code>.</dd>
   <dt><code class="language-plaintext highlighter-rouge">int</code></dt>
-  <dd>Another type, indicating an integer.
-Some additional <a href="#built-in-types">built-in types</a>
-are <code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">List</code>, and <code class="language-plaintext highlighter-rouge">bool</code>.</dd>
+  <dd>Otro tipo, que indica un número entero.
+Algunos <a href="#tipos-integrados">tipos integrados</a> adicionales 
+son <code class="language-plaintext highlighter-rouge">String</code>, <code class="language-plaintext highlighter-rouge">List</code> y <code class="language-plaintext highlighter-rouge">bool</code>.</dd>
   <dt><code class="language-plaintext highlighter-rouge">42</code></dt>
-  <dd>A number literal. Number literals are a kind of compile-time constant.</dd>
+  <dd>Un número literal. Los literales numéricos son una especie de 
+constante de tiempo de compilación.</dd>
   <dt><code class="language-plaintext highlighter-rouge">print()</code></dt>
-  <dd>A handy way to display output.</dd>
+  <dd>Una forma práctica de mostrar una salida.</dd>
   <dt>
-<code class="language-plaintext highlighter-rouge">'...'</code> (or <code class="language-plaintext highlighter-rouge">"..."</code>)</dt>
-  <dd>A string literal.</dd>
+<code class="language-plaintext highlighter-rouge">'...'</code> (o <code class="language-plaintext highlighter-rouge">"..."</code>)</dt>
+  <dd>Un string literal.</dd>
   <dt>
-<code>$<em>variableName</em></code> (or <code>${<em>expression</em>}</code>)</dt>
-  <dd>String interpolation: including a variable or expression’s string
-equivalent inside of a string literal. For more information, see
-<a href="#strings">Strings</a>.</dd>
+<code>$<em>variableName</em></code> (o <code>${<em>expression</em>}</code>)</dt>
+  <dd>Interpolación de cadenas: incluye el valor de cadena de una variable 
+o el resultado de una expresión dentro de un literal de cadena. 
+Para obtener más información, consulta <a href="#strings">Strings</a>.</dd>
   <dt><code class="language-plaintext highlighter-rouge">main()</code></dt>
-  <dd>The special, <em>required</em>, top-level function where app execution
-starts. For more information, see
-<a href="#the-main-function">The main() function</a>.</dd>
+  <dd>La función especial, <em>requerida</em>, de nivel superior donde comienza la 
+ejecución de la aplicación. 
+Para obtener más información, consulta <a href="#la-funcion-main">La función main()</a>.</dd>
   <dt><code class="language-plaintext highlighter-rouge">var</code></dt>
-  <dd>A way to declare a variable without specifying its type.
-The type of this variable (<code class="language-plaintext highlighter-rouge">int</code>)
-is determined by its initial value (<code class="language-plaintext highlighter-rouge">42</code>).</dd>
+  <dd>Una forma de declarar una variable sin especificar su tipo.
+El tipo de esta variable (<code class="language-plaintext highlighter-rouge">int</code>) está determinado por su valor inicial (<code class="language-plaintext highlighter-rouge">42</code>).</dd>
 </dl>
 
 <aside class="alert alert-info" role="alert">
   <p><i class="fas fa-info-circle"></i> <strong>Note:</strong>
-  This site’s code follows the conventions in the
-  <a href="/guides/language/effective-dart/style">Dart style guide</a>.</p>
+  El código de este sitio sigue las convenciones de la
+  <a href="/guides/language/effective-dart/style">Guía de estilo de Dart</a>.</p>
 </aside>
 
-<h2 id="important-concepts">
-<a class="anchor" href="#important-concepts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Important concepts</h2>
+<h2 id="conceptos-importantes">
+<a class="anchor" href="#conceptos-importantes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conceptos importantes</h2>
 
-<p>As you learn about the Dart language, keep these facts and concepts in
-mind:</p>
+<p>Durante tu aprendizaje sobre el lenguaje Dart, ten en cuenta estos conceptos:</p>
 
 <ul>
+  <li>
+    <p>Todo lo que puedes colocar en una variable es un <em>objeto</em>, y cada objeto 
+es una instancia de una <em>clase</em>. Incluso los números, las funciones 
+y <code class="language-plaintext highlighter-rouge">null</code> son objetos.
+Con la excepción de <code class="language-plaintext highlighter-rouge">null</code> (si habilitas <a href="/null-safety">null safety</a>), 
+todos los objetos heredan de la clase <a href="https://api.dart.dev/stable/dart-core/Object-class.html"><code class="language-plaintext highlighter-rouge">Object</code></a>.</p>
+
+    <aside class="alert alert-info" role="alert">
+      <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
+  <a href="/null-safety">Null safety</a> se introdujo en Dart 2.12.
+  El uso de null safety requiere una [versión de idioma][] de al menos 2.12.</p>
+    </aside>
+  </li>
   <li>
     <p>Everything you can place in a variable is an <em>object</em>, and every
 object is an instance of a <em>class</em>. Even numbers, functions, and
@@ -1065,7 +1077,7 @@ all objects inherit from the <a href="https://api.dart.dev/stable/dart-core/Obje
     <aside class="alert alert-info" role="alert">
       <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
   <a href="/null-safety">Null safety</a> was introduced in Dart 2.12.
-  Using null safety requires a <a href="/guides/language/evolution#language-versioning">language version</a> of at least 2.12.</p>
+  Using null safety requires a <a href="/guides/language/evolution#language-versioning">versión del lenguaje</a> of at least 2.12.</p>
     </aside>
   </li>
   <li>
@@ -3206,7 +3218,7 @@ assert((-value &gt;&gt;&gt; 4) &gt; 0); // Unsigned shift right</pre></div>
 <aside class="alert alert-info" role="alert">
   <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
   The <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code> operator (known as <em>triple-shift</em> or <em>unsigned shift</em>)
-  requires a <a href="/guides/language/evolution#language-versioning">language version</a> of at least 2.14.</p>
+  requires a <a href="/guides/language/evolution#language-versioning">versión del lenguaje</a> of at least 2.14.</p>
 </aside>
 
 <h3 id="conditional-expressions">
@@ -3305,7 +3317,7 @@ are attempted on that null object.</p>
 
 <aside class="alert alert-info" role="alert">
   <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
-  The <code class="language-plaintext highlighter-rouge">?..</code> syntax requires a <a href="/guides/language/evolution#language-versioning">language version</a> of at least 2.12.</p>
+  The <code class="language-plaintext highlighter-rouge">?..</code> syntax requires a <a href="/guides/language/evolution#language-versioning">versión del lenguaje</a> of at least 2.12.</p>
 </aside>
 
 <p>The previous code is equivalent to the following:</p>
@@ -4242,7 +4254,7 @@ class Vector3d extends Vector2d {
 <aside class="alert alert-info" role="alert">
   <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
   Using super-initializer parameters 
-  requires a <a href="/guides/language/evolution#language-versioning">language version</a> of at least 2.17.
+  requires a <a href="/guides/language/evolution#language-versioning">versión del lenguaje</a> of at least 2.17.
   If you’re using an earlier language version,
   you must manually pass in all super constructor parameters.</p>
 </aside>
@@ -4857,7 +4869,7 @@ see the section on <a href="#classes">Classes</a>.</p>
 
 <aside class="alert alert-info" role="alert">
   <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
-  Enhanced enums require a <a href="/guides/language/evolution#language-versioning">language version</a> of at least 2.17.</p>
+  Enhanced enums require a <a href="/guides/language/evolution#language-versioning">versión del lenguaje</a> of at least 2.17.</p>
 </aside>
 
 <h4 id="using-enums">Using enums</h4>
@@ -5717,7 +5729,7 @@ ListMapper&lt;String&gt; m2 = {}; // Same thing but shorter and clearer.</pre></
 <aside class="alert alert-info" role="alert">
   <p><i class="fas fa-code-branch"></i> <strong>Version note:</strong>
   Before 2.13, typedefs were restricted to function types.
-  Using the new typedefs requires a <a href="/guides/language/evolution#language-versioning">language version</a> of at least 2.13.</p>
+  Using the new typedefs requires a <a href="/guides/language/evolution#language-versioning">versión del lenguaje</a> of at least 2.13.</p>
 </aside>
 
 <p>We recommend using <a href="/guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs">inline function types</a> instead of typedefs for functions,

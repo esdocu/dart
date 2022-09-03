@@ -1,81 +1,84 @@
 ---
 permalink: /community
-title: Community and support
-description: Communities, mailing lists, and bug databases for the Dart project.
+title: Comunidad y soporte
+description: Comunidades, listas de correo y bases de datos de errores para el proyecto Dart.
 group: https://groups.google.com/a/dartlang.org
 ---
 
-Track the Dart project, get help, and talk with other Dart developers.
+Realiza un seguimiento del proyecto Dart, obtén ayuda y 
+habla con otros desarrolladores de Dart.
 
-We pledge to maintain an open and welcoming environment.
-For details, see our [code of conduct](/code-of-conduct).
+Nos comprometemos a mantener un ambiente abierto y acogedor.
+Para obtener más información, consulta nuestro [código de conducta](/code-of-conduct).
 
 
-## Stay informed
+## Mantente informado
 
-[Dart announce]({{page.group}}/d/forum/announce)
-: Low traffic announcements of new releases, breaking changes,
-  and other important news. Recommended!
+[Anuncios de Dart]({{page.group}}/d/forum/announce)
+: Anuncios de poco tráfico de nuevos lanzamientos, cambios de última 
+  hora y otras noticias importantes. ¡Recomendado!
 
 [@dart_lang](https://twitter.com/dart_lang)
-: The official Twitter account.
+: La cuenta oficial de Twitter.
 
 [Dart blog](https://medium.com/dartlang)
-: The latest news and insights from a diverse group of Dart users.
+: Las últimas noticias e ideas de un grupo diverso de usuarios de Dart.
 
-[This Week in Dart](https://thisweekindart.dev/)
-: A community ran, weekly newsletter covering the Dart ecosystem.
+Las últimas noticias e ideas de un grupo diverso de usuarios de Dart.
 
-## Join the conversation
+[Esta semana en Dart](https://thisweekindart.dev/)
+: Una comunidad publica un boletín semanal que cubre el ecosistema de Dart.
 
-Get answers and connect with Dart developers.
+## Unirse a la conversación
 
-#### Communities
+Obtén respuestas y conéctate con los desarrolladores de Dart.
+
+#### Comunidades
 
 [StackOverflow](https://stackoverflow.com/tags/dart)
-: The best place for how-to questions.
+: El mejor lugar para preguntas prácticas.
 
 [Gitter](https://gitter.im/dart-lang/home)
-: Chat with Dart team and community members.
+: Chatea con el equipo de Dart y los miembros de la comunidad.
 
-[Dart on Reddit](https://www.reddit.com/r/dartlang)
-: The subreddit for all things related to Dart.
+[Dart en Reddit](https://www.reddit.com/r/dartlang)
+: El subreddit para todo lo relacionado con Dart.
 
-[The Unofficial Dart Community Discord](https://discord.gg/Qt6DgfAWWx)
-: Chat with and get help from other Dart developers.
+[La comunidad no oficial de Dart en Discord](https://discord.gg/Qt6DgfAWWx)
+: Chatea y obtén ayuda de otros desarrolladores de Dart.
 
 #### Google Groups
 
-[General discussions]({{page.group}}/d/forum/misc)
-: Discuss miscellaneous Dart topics.
+[Discusiones generales]({{page.group}}/d/forum/misc)
+: Discuta varios temas de Dart.
 
 [Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
-: Get help understanding the [Dart analyzer](/tools/dart-analyze).
+: Obtén ayuda para entender el [Dart analyzer](/tools/dart-analyze).
 
-## Contribute
+## Contribuir
 
-Dart is open source.
-Learn how to
-[contribute to the core SDK.](https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md)
+Dart es de código abierto.
+Obtén información sobre cómo 
+[contribuir al core del SDK.](https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md)
 
-[Dart GitHub repositories](https://github.com/dart-lang/)
-: Track new changes and contribute to various Dart projects.
+[Repositorios Dart en GitHub](https://github.com/dart-lang/)
+: Realiza un seguimiento de los nuevos cambios y contribuye a varios proyectos de Dart.
   * [Core SDK](https://github.com/dart-lang/sdk/)
     ([issue tracker](https://github.com/dart-lang/sdk/issues/))
-  * [The Dart Language](https://github.com/dart-lang/language)
+  * [El lenguaje Dart](https://github.com/dart-lang/language)
     ([issue tracker](https://github.com/dart-lang/language/issues))
-  * [This site](https://github.com/dart-lang/site-www/)
+  * [El sitio web](https://github.com/dart-lang/site-www/)
     ([issue tracker](https://github.com/dart-lang/site-www/issues/))
 
-[Dart reviews]({{page.group}}/d/forum/reviews)
-: High-traffic list of all core SDK code reviews.
+[Reviews de Dart]({{page.group}}/d/forum/reviews)
+: Lista de alto tráfico de todas las revisiones de código del core del SDK.
 
-## Additional community resources
+## Recursos comunitarios adicionales
 
-Our wonderful community has provided these resources.
+Nuestra maravillosa comunidad ha proporcionado estos recursos.
 
 * [Chinese version of this site (此网站的中文版)](https://dart.cn)
 * [Russian version of this site](https://dart-docs-ru.web.app/)
 
-Also see the [Flutter community page.]({{site.flutter}}/community)
+Consulta también la [página de la comunidad de Flutter]({{site.flutter}}/community)
 

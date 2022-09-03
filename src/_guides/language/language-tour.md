@@ -60,50 +60,60 @@ las aplicaciones de Dart:
     Para obtener más información, consulta [Comentarios](#comentarios).
 
 `void`
-:   A special type that indicates a value that's never used.
-    Functions like `printInteger()` and `main()` that don't explicitly return a value
-    have the `void` return type.
+:   Un tipo especial que indica un valor que nunca se usa.
+    Funciones como `printInteger()` y `main()` que no devuelven 
+    explícitamente un valor tienen el tipo de retorno `void`.
     
 `int`
-:   Another type, indicating an integer.
-    Some additional [built-in types](#built-in-types)
-    are `String`, `List`, and `bool`.
+:   Otro tipo, que indica un número entero.
+    Algunos [tipos integrados](#tipos-integrados) adicionales 
+    son `String`, `List` y `bool`.
 
 `42`
-:   A number literal. Number literals are a kind of compile-time constant.
+:   Un número literal. Los literales numéricos son una especie de 
+    constante de tiempo de compilación.
 
 `print()`
-:   A handy way to display output.
+:   Una forma práctica de mostrar una salida.
 
-`'...'` (or `"..."`)
-:   A string literal.
+`'...'` (o `"..."`)
+:   Un string literal.
 
-<code>$<em>variableName</em></code> (or <code>${<em>expression</em>}</code>)
-:   String interpolation: including a variable or expression’s string
-    equivalent inside of a string literal. For more information, see
-    [Strings](#strings).
+<code>$<em>variableName</em></code> (o <code>${<em>expression</em>}</code>)
+:   Interpolación de cadenas: incluye el valor de cadena de una variable 
+    o el resultado de una expresión dentro de un literal de cadena. 
+    Para obtener más información, consulta [Strings](#strings).
 
 `main()`
-:   The special, *required*, top-level function where app execution
-    starts. For more information, see
-    [The main() function](#the-main-function).
+:   La función especial, *requerida*, de nivel superior donde comienza la 
+    ejecución de la aplicación. 
+    Para obtener más información, consulta [La función main()](#la-funcion-main).
 
 `var`
-:   A way to declare a variable without specifying its type.
-    The type of this variable (`int`)
-    is determined by its initial value (`42`).
+:   Una forma de declarar una variable sin especificar su tipo.
+    El tipo de esta variable (`int`) está determinado por su valor inicial (`42`).
 
 
 {{site.alert.note}}
-  This site's code follows the conventions in the
-  [Dart style guide](/guides/language/effective-dart/style).
+  El código de este sitio sigue las convenciones de la
+  [Guía de estilo de Dart](/guides/language/effective-dart/style).
 {{site.alert.end}}
 
 
-## Important concepts
+## Conceptos importantes
 
-As you learn about the Dart language, keep these facts and concepts in
-mind:
+Durante tu aprendizaje sobre el lenguaje Dart, ten en cuenta estos conceptos:
+
+- Todo lo que puedes colocar en una variable es un *objeto*, y cada objeto 
+  es una instancia de una *clase*. Incluso los números, las funciones 
+  y `null` son objetos.
+  Con la excepción de `null` (si habilitas [null safety][ns]), 
+  todos los objetos heredan de la clase [`Object`][].
+
+  {{site.alert.version-note}}
+    [Null safety][ns] se introdujo en Dart 2.12.
+    El uso de null safety requiere una [versión de idioma][] de al menos 2.12.
+  {{site.alert.end}}
 
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
@@ -113,7 +123,7 @@ mind:
 
     {{site.alert.version-note}}
       [Null safety][ns] was introduced in Dart 2.12.
-      Using null safety requires a [language version][] of at least 2.12.
+      Using null safety requires a [versión del lenguaje][] of at least 2.12.
     {{site.alert.end}}
 
 -   Although Dart is strongly typed, type annotations are optional
@@ -2030,7 +2040,7 @@ assert((-value >>> 4) > 0); // Unsigned shift right
 
 {{site.alert.version-note}}
   The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
-  requires a [language version][] of at least 2.14.
+  requires a [versión del lenguaje][] of at least 2.14.
 {{site.alert.end}}
 
 
@@ -2132,7 +2142,7 @@ querySelector('#confirm') // Get an object.
 ```
 
 {{site.alert.version-note}}
-  The `?..` syntax requires a [language version][] of at least 2.12.
+  The `?..` syntax requires a [versión del lenguaje][] of at least 2.12.
 {{site.alert.end}}
 
 The previous code is equivalent to the following:
@@ -3075,7 +3085,7 @@ class Vector3d extends Vector2d {
 
 {{site.alert.version-note}}
   Using super-initializer parameters 
-  requires a [language version][] of at least 2.17.
+  requires a [versión del lenguaje][] of at least 2.17.
   If you're using an earlier language version,
   you must manually pass in all super constructor parameters.
 {{site.alert.end}}
@@ -3689,7 +3699,7 @@ To learn more about declaring enhanced enums,
 see the section on [Classes](#classes).
 
 {{site.alert.version-note}}
-  Enhanced enums require a [language version][] of at least 2.17.
+  Enhanced enums require a [versión del lenguaje][] of at least 2.17.
 {{site.alert.end}}
 
 #### Using enums
@@ -4598,7 +4608,7 @@ ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
 
 {{site.alert.version-note}}
   Before 2.13, typedefs were restricted to function types.
-  Using the new typedefs requires a [language version][] of at least 2.13.
+  Using the new typedefs requires a [versión del lenguaje][] of at least 2.13.
 {{site.alert.end}}
 
 We recommend using [inline function types][] instead of typedefs for functions,
@@ -4815,7 +4825,7 @@ To learn more about Dart's core libraries, see
 [`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [iteration]: /guides/libraries/library-tour#iteration
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
-[language version]: /guides/language/evolution#language-versioning
+[versión del lenguaje]: /guides/language/evolution#language-versioning
 [late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
 [`List`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
