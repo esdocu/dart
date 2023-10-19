@@ -7,8 +7,8 @@
   
   <!-- End Google Tag Manager -->
   
-  <meta name="description" content="Dart es un lenguaje optimizado para el cliente para aplicaciones rápidas en cualquier plataforma.">
-  <title>Lenguaje de programación Dart | Dart en Español</title>
+  <meta name="description" content="Una breve introducción a Dart.">
+  <title>Descripción general de Dart | Dart en Español</title>
 
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
@@ -20,13 +20,13 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@dart_lang">
-  <meta name="twitter:title" content="Lenguaje de programación Dart">
-  <meta name="twitter:description" content="Dart es un lenguaje optimizado para el cliente para aplicaciones rápidas en cualquier plataforma.">
+  <meta name="twitter:title" content="Descripción general de Dart">
+  <meta name="twitter:description" content="Una breve introducción a Dart.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Lenguaje de programación Dart">
-  <meta property="og:description" content="Dart es un lenguaje optimizado para el cliente para aplicaciones rápidas en cualquier plataforma.">
-  <meta property="og:url" content="https://dart-esdocu.com/">
+  <meta property="og:title" content="Descripción general de Dart">
+  <meta property="og:description" content="Una breve introducción a Dart.">
+  <meta property="og:url" content="https://dart-esdocu.com/overview.html">
 
   <meta property="og:image" content="https://dart.dev/assets/shared/dart-logo-for-shares.png?2">
 
@@ -51,14 +51,14 @@
   <script src="/assets/js/utilities.js?v=1697668321"></script>
   <script src="/assets/js/main.js?v=1697668321"></script>
 
-  <script defer="" src="/assets/dash/js/dartpad_picker_main.dart.js"></script>
+  <script defer="" src="https://dartpad.dev/inject_embed.dart.js"></script>
   <script>
 </script>
 
 
  <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5376430835440290" crossorigin="anonymous"></script></head>
 
-  <body class="homepage">
+  <body class="default show_banner">
     <section id="cookie-notice">
   <div class="container">
     <p>Google utiliza cookies para ofrecer sus servicios, personalizar anuncios y
@@ -83,7 +83,7 @@
   </a>
   <ul class="navbar">
     <li>
-      <a href="/overview" class="nav-link">Descripción general</a>
+      <a href="/overview" class="nav-link active">Descripción general</a>
     </li>
     <li class="mainnav__get-started">
       <a href="/guides" class="nav-link
@@ -130,7 +130,7 @@
   <div class="site-sidebar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="/overview" class="nav-link">Descripción general</a>
+        <a href="/overview" class="nav-link active">Descripción general</a>
       </li>
       <li class="nav-item">
         <a href="https://dart.dev/community" class="nav-link" target="_blank" title="Página todavía no traducida">Comunidad ⁽✎⁾</a>
@@ -652,373 +652,288 @@
 </div>
 
     <main id="page-content">
-      <!-- Hero animation -->
-<div class="d-none d-sm-none d-md-block">
-    <section class="dash-header">
-        <video autoplay="" loop="" muted="" playsinline="">
-            <source src="assets/dash/video/hotreload.webm" type="video/webm;codecs=&quot;vp8, vorbis&quot;">
-            <source src="assets/dash/video/hotreload.mp4" type="video/mp4;codecs=&quot;avc1.42E01E, mp4a.40.2&quot;">
-            <img src="assets/dash/2x/paint-your-ui.png">
-        </video>
-    </section>
+      
+
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contenidos
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#language">Dart: El lenguaje</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#libraries">Dart: Las bibliotecas</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#platform">Dart: Las plataformas</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#learning-dart">Aprendiendo Dart</a></li>
+</ul>
+  
 </div>
 
-<section class="dash-header d-sm-block d-md-none">
-    <img src="assets/dash/2x/paint-your-ui.png">
-</section>
 
-<!-- Dart tag-line -->
-<section class="dash-header-callout">
-    <div class="callout-title">
-        Dart es un lenguaje optimizado para el cliente para aplicaciones rápidas en cualquier plataforma
-    </div>
-    <div class="callout-button">
-        <button class="btn btn-link btn-icon" type="button" data-toggle="modal" data-target="#videoModal" data-video="5F-6n_2XWR8">
-            <i class="material-icons">play_circle_filled</i> Ver vídeo
-        </button>
-    </div>
+      <article>
+        <div class="content">
+          
 
-    <img class="made-by" src="assets/dash/2x/supported by google@2x.png" alt="Supported by Google">
-    <div class="callout-oss">
-        <p>Dart es gratuito y de código abierto
-            &nbsp;<a href="https://github.com/dart-lang/" title="Dart project GitHub organization" class="no-automatic-external">
-                <svg><use href="/assets/img/social/github.svg#github"></use></svg>
-            </a>
-        </p>
-    </div>
-
-</section>
-
-<!-- Dart pillars -->
-<section class="dash-dart-features">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-sm-12">
-            <div class="feature">
-                <div class="feature-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"></div>
-                <div class="feature-title">Optimizado<br>para UI</div>
-                <div class="feature-desc">Desarrolla con un lenguaje de programación especializado en las necesidades de creación de interfaces de usuario
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-            <div class="feature">
-                <div class="feature-icon"><img src="assets/dash/2x/client optimised light op1@2x.png"></div>
-                <div class="feature-title">Desarrollo<br>productivo</div>
-                <div class="feature-desc">Haz cambios de forma iterativa: usa la recarga en caliente para ver el resultado instantáneamente en tu aplicación en ejecución
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-12">
-                <div class="feature">
-                    <div class="feature-icon"><img src="assets/dash/2x/productive dev light op1@2x.png"></div>
-                    <div class="feature-title">Rápido en todas las<br>plataformas</div>
-                    <div class="feature-desc">Compila en código de máquina ARM y x64 para dispositivos móviles, computadoras de escritorio y backend. O compila en JavaScript para la web
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Dart pillar details, narrow design -->
-<div class="dart-dash-details container-fluid d-sm-block d-md-none" tabindex="-1">
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="gallerySix" src="assets/dash/svg/1-1 async await.svg">
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container">
-                <div class="content-icon">
-                    <img src="assets/dash/2x/multiplatform performance light op1@2x.png">
-                </div>
-                <div class="content-feature">Optimizado para UI</div>
-                <div class="content-desc" id="gallerySix">
-                    <ul class="selector">
-                        <li class="highlight" data-banner="assets/dash/svg/1-1 async await.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-Maduro y completo <a href="https://dart.dev/codelabs/async-await" target="_blank" title="Página todavía no traducida">async-await ⁽✎⁾</a> para interfaces de usuario que contienen código controlado por eventos, combinado con <a href="https://dart.dev/language/concurrency" target="_blank" title="Página todavía no traducida">concurrencia basada en aislamiento ⁽✎⁾</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/1-2 language optimized.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Un lenguaje de programación optimizado para crear interfaces de usuario con características como <a href="https://dart.dev/null-safety" target="_blank" title="Página todavía no traducida">null safety ⁽✎⁾</a>, el <a href="https://dart.dev/language/collections#spread-operators" target="_blank" title="Página todavía no traducida">operador de extensión ⁽✎⁾</a> para expandir colecciones y <a href="https://dart.dev/language/collections#control-flow-operators" target="_blank" title="Página todavía no traducida">if de colección ⁽✎⁾</a> para personalizar la interfaz de usuario para cada plataforma</div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/1-3 familiar syntax.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Un lenguaje de programación fácil de aprender, con una <a href="https://dart.dev/language" target="_blank" title="Página todavía no traducida">sintaxis familiar ⁽✎⁾</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryFive" src="assets/dash/svg/2-1 hot reload iterative changes.svg">
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container">
-                <div class="content-icon">
-                    <img src="assets/dash/2x/productive dev light op1@2x.png">
-                </div>
-                <div class="content-feature">Desarrollo Productivo</div>
-                <div class="content-desc" id="galleryFive">
-                    <ul class="selector">
-                        <li class="highlight" data-banner="assets/dash/svg/2-1 hot reload iterative changes.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Realiza cambios en tu código fuente de forma iterativa, usando <a href="https://flutter.dev/docs/development/tools/hot-reload" class="no-automatic-external">recarga en caliente</a> para ver instantáneamente el efecto en la aplicación en ejecución</div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/2-2 flexible type.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Escribe código usando un sistema de tipos flexible con análisis estático enriquecido y potentes <a href="https://dart.dev/tools/analysis" target="_blank" title="Página todavía no traducida">herramientas configurables ⁽✎⁾</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/2-3 runtime insight.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Haz <a href="https://flutter.dev/docs/development/tools/devtools/performance" class="no-automatic-external">profiling</a>, <a href="https://flutter.dev/docs/development/tools/devtools/logging" class="no-automatic-external">logging</a>,
-                                     y <a href="https://flutter.dev/docs/development/tools/devtools/debugger" class="no-automatic-external">debugging</a> con el editor de código de tu elección</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryFour dash-align-left" src="assets/dash/svg/3-1 - aot compile.svg">
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container">
-                <div class="content-icon">
-                    <img src="assets/dash/2x/client optimised light op1@2x.png">
-                </div>
-                <div class="content-feature">Rápido en todas las plataformas</div>
-                <div class="content-desc" id="galleryFour">
-                    <ul class="selector">
-                        <li class="highlight" data-banner="assets/dash/svg/3-1 - aot compile.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    <a href="/overview#native-platform">Compilación AOT</a> para aplicaciones de 
-                                    código de máquina nativo para <a href="https://github.com/timsneath/time">inicio instantáneo</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/3-2 target web.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Apunta a la web con <a href="/overview#web-platform">compiladores para JavaScript</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li data-banner="assets/dash/svg/3-3 backend code.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Ejecuta <a href="https://dart.dev/tutorials/server/httpserver" target="_blank" title="Página todavía no traducida">código backend ⁽✎⁾</a> para el uso de tu aplicación, escrito usando un único lenguaje de programación</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+          <div id="site-content-title">
+            <div id="page-github-links" class="btn-group" aria-label="Página de enlaces de GitHub" role="group">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/overview.md" class="btn no-automatic-external" title="Ver fuente de la página" target="_blank" rel="noopener">
+    <i class="material-icons">description</i>
+  </a>
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&amp;title=[PAGE ISSUE]: 'Dart overview'&amp;page-url=https://dart.dev/overview.html&amp;page-source=https://github.com/dart-lang/site-www/tree/main/src/overview.md" class="btn no-automatic-external" title="Informar un problema con esta página" target="_blank" rel="noopener">
+    <i class="material-icons">bug_report</i>
+  </a>
 </div>
 
-<!-- Dart pillar details, wide design -->
-<div class="dart-dash-details container-fluid d-none d-sm-none d-md-block">
-    <section class="row dash-row">
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container dash-align-right">
-                <div class="content-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"> </div>
-                <div class="content-feature">Optimizado para UI</div>
-                <div class="content-desc" id="galleryOne">
-                    <ul class="selector">
-                        <li class="highlight" tabindex="0" data-banner="assets/dash/svg/1-1 async await.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-Maduro y completo <a href="https://dart.dev/codelabs/async-await" target="_blank" title="Página todavía no traducida">async-await ⁽✎⁾</a> para interfaces de usuario que contienen código controlado por eventos, combinado con <a href="https://dart.dev/language/concurrency" target="_blank" title="Página todavía no traducida">concurrencia basada en aislamiento ⁽✎⁾</a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li tabindex="0" data-banner="assets/dash/svg/1-2 language optimized.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Un lenguaje de programación optimizado para crear interfaces de usuario con características como <a href="https://dart.dev/null-safety" target="_blank" title="Página todavía no traducida">null safety ⁽✎⁾</a>, el <a href="https://dart.dev/language/collections#spread-operators" target="_blank" title="Página todavía no traducida">operador de extensión ⁽✎⁾</a> para expandir colecciones y <a href="https://dart.dev/language/collections#control-flow-operators" target="_blank" title="Página todavía no traducida">if de colección ⁽✎⁾</a> para personalizar la interfaz de usuario para cada plataforma</div>
-                            </div>
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/1-3 familiar syntax.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Un lenguaje de programación fácil de aprender, con una <a href="https://dart.dev/language" target="_blank" title="Página todavía no traducida">sintaxis familiar ⁽✎⁾</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            
+            <h1>Descripción general de Dart</h1>
             </div>
-        </div>
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryOne dash-align-left" src="assets/dash/svg/1-1 async await.svg">
-        </div>
-    </section>
+          
 
-    <section class="row dash-row">
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryTwo dash-align-right" src="assets/dash/svg/2-1 hot reload iterative changes.svg">
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container dash-align-left">
-                <div class="content-icon"><img src="assets/dash/2x/productive dev light op1@2x.png"></div>
-                <div class="content-feature">Desarrollo productivo</div>
-                <div class="content-desc" id="galleryTwo">
-                    <ul class="selector">
-                        <li class="highlight" tabindex="0" data-banner="assets/dash/svg/2-1 hot reload iterative changes.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Realiza cambios en tu código fuente de forma iterativa, usando <a href="https://flutter.dev/docs/development/tools/hot-reload" class="no-automatic-external">recarga en caliente</a> para ver instantáneamente el efecto en la aplicación en ejecución</div>
-                            </div>
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/2-2 flexible type.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Escribe código usando un sistema de tipos flexible con análisis estático enriquecido y potentes <a href="https://dart.dev/tools/analysis" target="_blank" title="Página todavía no traducida">herramientas configurables ⁽✎⁾</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/2-3 runtime insight.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Haz <a href="https://flutter.dev/docs/development/tools/devtools/performance" class="no-automatic-external">profiling</a>, <a href="https://flutter.dev/docs/development/tools/devtools/logging" class="no-automatic-external">logging</a>,
-                                     y <a href="https://flutter.dev/docs/development/tools/devtools/debugger" class="no-automatic-external">debugging</a> con el editor de código de tu elección</div>
-                            </div>
 
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section class="row dash-row">
-        <div class="col-lg-5 col-md-6 col-sm-12 content-info">
-            <div class="content-container dash-align-right">
-                <div class="content-icon"><img src="assets/dash/2x/multiplatform performance light op1@2x.png"></div>
-                <div class="content-feature">Rápido en todas las plataformas</div>
-                <div class="content-desc" id="galleryThree">
-                    <ul class="selector">
-                        <li class="highlight" tabindex="0" data-banner="assets/dash/svg/3-1 - aot compile.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">
-                                    <a href="/overview#native-platform">Compilación AOT</a> para aplicaciones de 
-                                    código de máquina nativo para <a href="https://github.com/timsneath/time">inicio instantáneo</a>
-                                </div>
-                            </div>
 
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/3-2 target web.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Apunta a la web con <a href="/overview#web-platform">compiladores para JavaScript</a>
-                                </div>
-                            </div>
 
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/3-3 backend code.svg">
-                            <div>
-                                <div class="bullet-container">
-                                    <div class="animated-bullet"></div>
-                                </div>
-                                <div class="bullet-text">Ejecuta <a href="https://dart.dev/tutorials/server/httpserver" target="_blank" title="Página todavía no traducida">código backend ⁽✎⁾</a> para el uso de tu aplicación, escrito usando un único lenguaje de programación</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-7 col-md-6 col-sm-12 content-image">
-            <img class="galleryThree dash-align-left" src="assets/dash/svg/3-1 - aot compile.svg">
-        </div>
-    </section>
-    <section class="row dash-dartpad-row">
-        <div class="dash-dartpad">
-            <span></span>
-            <h2>Prueba Dart en tu navegador</h2>
-            <label for="dartpad-select" class="sr-only">Selecciona un ejemplo:</label>
-            <select id="dartpad-select"></select>
-            <div id="dartpad-host"></div>
-            <h3>¿Quieres más práctica? <a href="https://dart.dev/language" target="_blank" title="Página todavía no traducida">Aprende el lenguaje ⁽✎⁾</a>, explora las <a href="https://dart.dev/guides/libraries/library-tour" target="_blank" title="Página todavía no traducida">bibliotecas del core ⁽✎⁾</a> o <a href="https://dart.dev/tutorials/server/get-started" target="_blank" title="Página todavía no traducida">compila una aplicación de línea de comandos ⁽✎⁾</a>.</h3>
-        </div>
-    </section>
+
+
+<div id="site-toc--inline" class="site-toc ">
+  <header class="site-toc__title">
+    Contenidos
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#language">Dart: El lenguaje</a></li>
+<li class="toc-entry toc-h2"><a href="#libraries">Dart: Las bibliotecas</a></li>
+<li class="toc-entry toc-h2"><a href="#platform">Dart: Las plataformas</a></li>
+<li class="toc-entry toc-h2"><a href="#learning-dart">Aprendiendo Dart</a></li>
+</ul>
+  
 </div>
 
-<!-- Modal -->
-<div class="modal fade" data-video-modal="" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="embedded-video-wrapper">
-                    <div id="video-player"></div>
-<!--                    <iframe id="video-player-iframe" class="embedded-video-wrapper__frame" width="auto" height="auto" src="https://youtube.com/embed/5F-6n_2XWR8?cc_lang_pref=en&cc_load_policy=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
-                </div>
-            </div>
-        </div>
-    </div>
+
+          <p><img style="padding: 30px; float: right; width: 300px" src="/assets/img/logo_lockup_dart_horizontal.png" alt="Dart product logo"></p>
+
+<p>Dart es un lenguaje optimizado para el cliente para desarrollar aplicaciones rápidas en cualquier plataforma. Su objetivo es ofrecer el lenguaje de programación más productivo para el desarrollo multiplataforma, junto con una <a href="#platform">plataforma de ejecución flexible</a> para frameworks de aplicaciones.</p>
+
+<p>Los lenguajes se definen por su <em>envoltura técnica</em>: las elecciones realizadas durante el desarrollo que dan forma a las capacidades y fortalezas de un lenguaje. Dart está diseñado para una envoltura técnica que es particularmente adecuado para el desarrollo del cliente, priorizando tanto el desarrollo (recarga en caliente con estado en menos de un segundo) como las experiencias de producción de alta calidad en una amplia variedad de objetivos de compilación (web, dispositivos móviles y de escritorio).</p>
+
+<p>Dart también constituye la base de <a href="https://flutter.dev">Flutter</a>. Dart proporciona el lenguaje y los runtimes que impulsan las aplicaciones de Flutter, pero Dart también admite muchas tareas principales del desarrollador, como formatear, analizar y testing de código.</p>
+
+<h2 id="language">
+<a class="anchor" href="#language" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dart: El lenguaje</h2>
+
+<p>El lenguaje Dart es de tipado seguro; utiliza verificación de tipado estático para garantizar que el valor de una variable <em>siempre</em> coincida con el tipo estático de la variable. A veces, esto se conoce como sound typing. Aunque los tipos son obligatorios, las anotaciones de tipo son opcionales debido a la inferencia de tipos. El sistema de tipado de Dart también es flexible y permite el uso de un tipo <code class="language-plaintext highlighter-rouge">dynamic</code> combinado con comprobaciones en tiempo de ejecución, que pueden ser útiles durante la experimentación o para código que necesita ser especialmente dinámico.</p>
+
+<p>Dart tiene <a href="https://dart.dev/null-safety" target="_blank" title="Página todavía no traducida">null safety ⁽✎⁾</a> incorporado.
+Esto significa que los valores no pueden ser nulos a menos que tú digas que pueden serlo.
+Con un sólido null safety, Dart puede protegerte de
+excepciones null en tiempo de ejecución mediante análisis de código estático.
+A diferencia de muchos otros lenguajes null-safe,
+cuando Dart determina que una variable no admite valores null,
+esa variable nunca puede ser nula.
+Si inspeccionas tu código en ejecución en el depurador,
+verás que la no capacidad de nulidad se conserva en tiempo de ejecución; por lo tanto <em>permanece</em> null safety.</p>
+
+<p>El siguiente ejemplo de código muestra varias características del lenguaje Dart, incluidas bibliotecas, llamadas asíncronas, tipos que aceptan valores null y no null, sintaxis de flechas, generadores, streams y getters. Para obtener más información sobre el lenguaje, realiza el <a href="https://dart.dev/language" target="_blank" title="Página todavía no traducida">tour del lenguaje Dart ⁽✎⁾</a>.</p>
+
+<div class="code-excerpt">
+<div class="code-excerpt__code"><pre><code class="dart:run-dartpad:ga_id-overview prettyprint lang-dart">import 'dart:math' show Random;
+
+void main() async {
+  print('Compute π using the Monte Carlo method.');
+  await for (final estimate in computePi().take(100)) {
+    print('π ≅ $estimate');
+  }
+}
+
+/// Generates a stream of increasingly accurate estimates of π.
+Stream&lt;double&gt; computePi({int batch = 100000}) async* {
+  var total = 0; // Inferred to be of type int
+  var count = 0;
+  while (true) {
+    final points = generateRandom().take(batch);
+    final inside = points.where((p) =&gt; p.isInsideUnitCircle);
+
+    total += batch;
+    count += inside.length;
+    final ratio = count / total;
+
+    // Area of a circle is A = π⋅r², therefore π = A/r².
+    // So, when given random points with x ∈ &lt;0,1&gt;,
+    // y ∈ &lt;0,1&gt;, the ratio of those inside a unit circle
+    // should approach π / 4. Therefore, the value of π
+    // should be:
+    yield ratio * 4;
+  }
+}
+
+Iterable&lt;Point&gt; generateRandom([int? seed]) sync* {
+  final random = Random(seed);
+  while (true) {
+    yield Point(random.nextDouble(), random.nextDouble());
+  }
+}
+
+class Point {
+  final double x;
+  final double y;
+
+  const Point(this.x, this.y);
+
+  bool get isInsideUnitCircle =&gt; x * x + y * y &lt;= 1;
+}</code></pre></div>
 </div>
 
+<aside class="alert alert-info" role="alert">
+  <p><i class="material-icons" aria-hidden="true">info</i>
+  Este ejemplo se ejecuta en un <a href="https://dart.dev/tools/dartpad" target="_blank" title="Página todavía no traducida">DartPad ⁽✎⁾</a>. También puedes 
+  <a href="https://dartpad.dev/bc63d212c3252e44058ff76f34ef5730" target="_blank" rel="noopener">abrir este ejemplo en su propia ventana</a>.</p>
+</aside>
+
+<h2 id="libraries">
+<a class="anchor" href="#libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dart: Las bibliotecas</h2>
+
+<p>Dart tiene <a href="https://dart.dev/guides/libraries" target="_blank" title="Página todavía no traducida">un amplio conjunto de bibliotecas del core ⁽✎⁾</a>, que proporcionan elementos esenciales para muchas tareas de programación cotidianas:</p>
+
+<ul>
+  <li>Tipos integrados, colecciones y otras funciones del core para cada programa Dart (<code class="language-plaintext highlighter-rouge">dart:core</code>)</li>
+  <li>Tipos enriquecidos de colecciones, como colas, listas enlazadas, mapas hash y árboles binarios (<code class="language-plaintext highlighter-rouge">dart:collection</code>)</li>
+  <li>Codificadores y decodificadores para convertir entre diferentes representaciones de datos, incluidos JSON y UTF-8 (<code class="language-plaintext highlighter-rouge">dart:convert</code>)</li>
+  <li>Constantes y funciones matemáticas, y generación de números aleatorios (<code class="language-plaintext highlighter-rouge">dart:math</code>)</li>
+  <li>Soporte para archivos, sockets, HTTP y otras E/S para aplicaciones no web (<code class="language-plaintext highlighter-rouge">dart:io</code>)</li>
+  <li>Soporte para programación asincrónica, con clases como <code class="language-plaintext highlighter-rouge">Future</code> y <code class="language-plaintext highlighter-rouge">Stream</code> (<code class="language-plaintext highlighter-rouge">dart:async</code>)</li>
+  <li>Listas que manejan eficientemente datos de tamaño fijo (por ejemplo, enteros de 8 bytes sin signo) y tipos numéricos SIMD (<code class="language-plaintext highlighter-rouge">dart:typed_data</code>)</li>
+  <li>Interfaces de funciones externas para interoperabilidad con otro código que presenta una interfaz estilo C (<code class="language-plaintext highlighter-rouge">dart:ffi</code>)</li>
+  <li>Programación concurrente usando <em>aislamientos</em>: workers independientes que son similares a los hilos pero no comparten memoria y se comunican solo a través de mensajes (<code class="language-plaintext highlighter-rouge">dart:isolate</code>)</li>
+  <li>Elementos HTML y otros recursos para aplicaciones basadas en web que necesitan interactuar con el navegador y el Modelo de objetos de Documento (DOM) (<code class="language-plaintext highlighter-rouge">dart:html</code>)</li>
+</ul>
+
+<p>Más allá de las bibliotecas del core, muchas API se proporcionan a través de un conjunto completo de paquetes. El equipo de Dart publica muchos paquetes complementarios útiles, como estos:</p>
+
+<ul>
+  <li><a href="https://pub.dev/packages/characters">characters</a></li>
+  <li><a href="https://pub.dev/packages/intl">intl</a></li>
+  <li><a href="https://pub.dev/packages/http">http</a></li>
+  <li><a href="https://pub.dev/packages/crypto">crypto</a></li>
+  <li><a href="https://pub.dev/packages/markdown">markdown</a></li>
+</ul>
+
+<p>Además, los autores externos y la comunidad en general publican miles de paquetes, con soporte para características como estas:</p>
+
+<ul>
+  <li><a href="https://pub.dev/packages/xml">XML</a></li>
+  <li><a href="https://pub.dev/packages/win32">Integración con Windows</a></li>
+  <li><a href="https://pub.dev/packages/sqflite_common">SQLite</a></li>
+  <li><a href="https://pub.dev/packages/archive">compresión</a></li>
+</ul>
+
+<p>Para ver una serie de ejemplos prácticos que presentan las bibliotecas principales de Dart, realiza el <a href="https://dart.dev/guides/libraries/library-tour" target="_blank" title="Página todavía no traducida">tour por la biblioteca ⁽✎⁾</a>. Para encontrar API adicionales, consulta la
+<a href="https://dart.dev/guides/libraries/useful-libraries" target="_blank" title="Página todavía no traducida">página de paquetes utilizados habitualmente ⁽✎⁾</a>.</p>
+
+<h2 id="platform">
+<a class="anchor" href="#platform" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dart: Las plataformas</h2>
+
+<p>La tecnología de compilación de Dart te permite ejecutar código de diferentes maneras:</p>
+
+<ul>
+  <li>
+    <p><strong>Plataforma nativa</strong>: para aplicaciones dirigidas a dispositivos móviles y de escritorio, Dart incluye tanto una máquina virtual Dart con compilación just-in-time (JIT) como una versión de compilador ahead-of-time (AOT) para producir código de máquina.</p>
+  </li>
+  <li>
+    <p><strong>Plataforma web</strong>: para aplicaciones orientadas a la web, Dart puede compilar con fines de desarrollo o producción. Su compilador web traduce Dart a JavaScript.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/img/Dart-platforms.svg" width="800" alt="An illustration of the targets supported by Dart"></p>
+
+<p>El <a href="https://flutter.dev">framework Flutter</a> es un popular conjunto de herramientas de interfaz de usuario multiplataforma que funciona con la plataforma Dart y que proporciona herramientas y bibliotecas de UI para crear experiencias de UI que se ejecutan en iOS, Android, macOS, Windows, Linux y la web.</p>
+
+<h4 id="native-platform">Dart Nativo (código máquina JIT y AOT)</h4>
+
+<p>Durante el desarrollo, un ciclo de desarrollo rápido es fundamental para la iteración. Dart VM ofrece un compilador just-in-time (JIT) con recompilación incremental (que permite la recarga en caliente), colecciones de métricas en vivo (impulsando <a href="https://dart.dev/tools/dart-devtools" target="_blank" title="Página todavía no traducida">DevTools ⁽✎⁾</a>) y soporte completo de depuración.</p>
+
+<p>Cuando las aplicaciones están listas para implementarse en producción, ya sea que las estés publicando en una tienda de aplicaciones o implementándolas en un backend de producción, el compilador ahead-of-time de Dart (AOT) puede compilar en ARM nativo o código de máquina x64. Tu aplicación compilada con AOT se inicia con un tiempo de inicio breve y constante.</p>
+
+<p>El código compilado por AOT se ejecuta dentro de un runtime eficiente de Dart que aplica el sistema de tipado de Dart y administra la memoria mediante una rápida asignación de objetos y un
+<a href="https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30">recolector de basura generacional</a>.</p>
+
+<p>Más información:</p>
+<ul>
+  <li><a href="https://dart.dev/tutorials/server/get-started" target="_blank" title="Página todavía no traducida">Comenzar: aplicaciones de servidor y de línea de comandos ⁽✎⁾</a></li>
+  <li><a href="https://dart.dev/tools/dart-tool" target="_blank" title="Página todavía no traducida"><code class="language-plaintext highlighter-rouge">dart</code> tool para ejecutar con JIT o AOT compilando en código máquina ⁽✎⁾</a></li>
+  <li><a href="https://dart.dev/tutorials/server/cmdline" target="_blank" title="Página todavía no traducida">Escribe aplicaciones de línea de comandos ⁽✎⁾</a></li>
+  <li><a href="https://dart.dev/tutorials/server/httpserver" target="_blank" title="Página todavía no traducida">Escribe servidores HTTP ⁽✎⁾</a></li>
+</ul>
+
+<h4 id="web-platform">Dart Web (JavaScript dev &amp; prod)</h4>
+
+<p>Dart Web permite ejecutar código Dart en plataformas web con tecnología JavaScript. Con Dart Web, compilas código Dart en código JavaScript, que a su vez se ejecuta en un navegador—por ejemplo, <a href="https://v8.dev/">V8</a> dentro de
+<a href="https://www.google.com/chrome/">Chrome</a>.</p>
+
+<p>Dart web contiene dos modos de compilación:</p>
+
+<ul>
+  <li>Un compilador de desarrollo incremental que permite un ciclo de desarrollo rápido</li>
+  <li>Un compilador de producción optimizado que compila código Dart en JavaScript rápido, compacto y desplegable. Estas eficiencias provienen de técnicas como la eliminación de códigos muertos.</li>
+</ul>
+
+<p>Más información:</p>
+<ul>
+  <li><a href="https://dart.dev/tutorials/web/get-started" target="_blank" title="Página todavía no traducida">Comenzar: aplicaciones web ⁽✎⁾</a></li>
+  <li><a href="https://dart.dev/tools/dart-compile#js" target="_blank" title="Página todavía no traducida"><code class="language-plaintext highlighter-rouge">dart compile js</code></a></li>
+  <li><a href="https://dart.dev/tools/webdev" target="_blank" title="Página todavía no traducida"><code class="language-plaintext highlighter-rouge">webdev</code> herramienta ⁽✎⁾</a></li>
+  <li><a href="https://dart.dev/web/deployment" target="_blank" title="Página todavía no traducida">Consejos de implementación web ⁽✎⁾</a></li>
+</ul>
+
+<h4 id="runtime">El runtime de Dart</h4>
+
+<p>Independientemente de la plataforma que utilices o de cómo compiles tu código, la ejecución del código requiere un runtime de Dart. Este runtime es responsable de las siguientes tareas críticas:</p>
+
+<ul>
+  <li>
+    <p>Administrar la memoria: Dart usa un modelo de memoria administrada, donde un recolector de basura (GC) recupera la memoria no utilizada.</p>
+  </li>
+  <li>
+    <p>Aplicar el sistema de tipado de Dart: aunque la mayoría de las comprobaciones de tipos en Dart son estáticas (tiempo de compilación), algunas comprobaciones de tipos son dinámicas (tiempo de ejecución). Por ejemplo, el runtime de Dart aplica comprobaciones dinámicas por
+<a href="https://dart.dev/language/operators#type-test-operators" target="_blank" title="Página todavía no traducida">operadores de cast y comprobaciones de tipos ⁽✎⁾</a>.</p>
+  </li>
+  <li>
+    <p>Administración de <a href="https://dart.dev/language/concurrency" target="_blank" title="Página todavía no traducida">aislamientos ⁽✎⁾</a>: el runtime de Dart controla el aislamiento principal (donde normalmente se ejecuta el código) y cualquier otro aislamiento que la aplicación crea.</p>
+  </li>
+</ul>
+
+<p>En plataformas nativas, el runtime de Dart se incluye automáticamente dentro de ejecutables autónomos y es parte de la VM de Dart proporcionado por el comando <a href="https://dart.dev/tools/dart-run" target="_blank" title="Página todavía no traducida"><code class="language-plaintext highlighter-rouge">dart run</code></a>.</p>
+
+<h2 id="learning-dart">
+<a class="anchor" href="#learning-dart" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aprendiendo Dart</h2>
+
+<p>Tienes muchas opciones para aprender Dart. Aquí hay algunas que recomendamos:</p>
+
+<ul>
+  <li>
+<a href="https://dartpad.dev/">Explora Dart en el navegador</a> a través de DartPad, un entorno de ejecución basado en web para código Dart.</li>
+  <li>
+<a href="https://dart.dev/language" target="_blank" title="Página todavía no traducida">Haz un tour por el lenguaje Dart ⁽✎⁾</a>, que te muestra cómo usar cada característica principal de Dart.</li>
+  <li>
+<a href="https://dart.dev/tutorials/server/cmdline" target="_blank" title="Página todavía no traducida">Completa un tutorial de Dart ⁽✎⁾</a> que cubre los conceptos básicos del uso de Dart para compilar para la línea de comandos.</li>
+  <li>
+<a href="https://www.udemy.com/course/complete-dart-guide/?couponCode=NOV-20">Trabaja a través de una extensa capacitación en línea</a>
+de expertos en Dart.</li>
+  <li>
+<a href="https://api.dart.dev">Explora la documentación de la API</a> que describe las bibliotecas del core de Dart.</li>
+  <li>
+<a href="https://dart.dev/resources/books" target="_blank" title="Página todavía no traducida">Lee un libro sobre programación con Dart ⁽✎⁾</a>.</li>
+</ul>
+
+
+          
+
+        </div>
+      </article>
     </main>
     <footer id="page-footer">
   <div class="footer-section footer-main">
@@ -1054,6 +969,7 @@ Maduro y completo <a href="https://dart.dev/codelabs/async-await" target="_blank
     </div>
   </div>
 </footer>
+
 
   
 
