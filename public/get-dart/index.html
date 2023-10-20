@@ -7,8 +7,8 @@
   
   <!-- End Google Tag Manager -->
   
-  <meta name="description" content="Aprende a usar el lenguaje y las bibliotecas de Dart.">
-  <title>Documentación de Dart | Dart en Español</title>
+  <meta name="description" content="Obtén las bibliotecas y herramientas de línea de comandos que necesitas para desarrollar aplicaciones web, de línea de comandos y de servidor con Dart.">
+  <title>Obtén el SDK de Dart | Dart en Español</title>
 
   <!-- Favicon / Touch Icons -->
   <link rel="icon" sizes="64x64" href="/assets/shared/dart/icon/64.png">
@@ -20,13 +20,13 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@dart_lang">
-  <meta name="twitter:title" content="Documentación de Dart">
-  <meta name="twitter:description" content="Aprende a usar el lenguaje y las bibliotecas de Dart.">
+  <meta name="twitter:title" content="Obtén el SDK de Dart">
+  <meta name="twitter:description" content="Obtén las bibliotecas y herramientas de línea de comandos que necesitas para desarrollar aplicaciones web, de línea de comandos y de servidor con Dart.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Documentación de Dart">
-  <meta property="og:description" content="Aprende a usar el lenguaje y las bibliotecas de Dart.">
-  <meta property="og:url" content="https://dart-esdocu.com/guides/">
+  <meta property="og:title" content="Obtén el SDK de Dart">
+  <meta property="og:description" content="Obtén las bibliotecas y herramientas de línea de comandos que necesitas para desarrollar aplicaciones web, de línea de comandos y de servidor con Dart.">
+  <meta property="og:url" content="https://dart-esdocu.com/get-dart/">
 
   <meta property="og:image" content="https://dart.dev/assets/shared/dart-logo-for-shares.png?2">
 
@@ -51,6 +51,7 @@
   <script src="/assets/js/utilities.js?v=1697668321"></script>
   <script src="/assets/js/main.js?v=1697668321"></script>
 
+  <script defer="" src="/assets/js/get-dart/install.js"></script>
   <script>
 </script>
 
@@ -86,7 +87,7 @@
     </li>
     <li class="mainnav__get-started">
       <a href="/guides" class="nav-link
-         active">
+        ">
         <span>Docs</span>
       </a>
     </li>
@@ -97,7 +98,7 @@
       <a href="/#try-dart" class="nav-link">Prueba Dart</a>
     </li>
     <li>
-      <a href="/get-dart" class="nav-link">Consigue Dart</a>
+      <a href="/get-dart" class="nav-link active">Consigue Dart</a>
     </li>
     <li class="searchfield">
       <form action="/search" class="site-header__search form-inline" id="cse-search-box">
@@ -138,10 +139,10 @@
         <a href="https://dartpad.dev" class="nav-link">Prueba Dart</a>
       </li>
       <li class="nav-item">
-        <a href="/get-dart" class="nav-link">Consigue Dart</a>
+        <a href="/get-dart" class="nav-link active">Consigue Dart</a>
       </li>
       <li class="nav-item">
-        <a href="/guides" class="nav-link active">Docs</a>
+        <a href="/guides" class="nav-link">Docs</a>
       </li>
     </ul>
 
@@ -653,61 +654,306 @@
     <main id="page-content">
       
 
+
+
+
+
+
+
+<div id="site-toc--side" class="site-toc ">
+  <header class="site-toc__title">
+    Contenidos
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#install">Instalando el SDK de Dart</a></li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#system-requirements">Requisitos del sistema</a>
+<ul class="nav">
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#windows">Windows</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#linux">Linux</a></li>
+<li class="toc-entry nav-item toc-h3"><a class="nav-link" href="#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toc-entry nav-item toc-h2"><a class="nav-link" href="#release-channels">Acerca de los canales de lanzamiento y las cadenas de versión.</a></li>
+</ul>
+  
+</div>
+
+
       <article>
         <div class="content">
           
 
           <div id="site-content-title">
             <div id="page-github-links" class="btn-group" aria-label="Página de enlaces de GitHub" role="group">
-  <a href="https://github.com/dart-lang/site-www/tree/main/src/guides/index.md" class="btn no-automatic-external" title="Ver fuente de la página" target="_blank" rel="noopener">
+  <a href="https://github.com/dart-lang/site-www/tree/main/src/get-dart/index.md" class="btn no-automatic-external" title="Ver fuente de la página" target="_blank" rel="noopener">
     <i class="material-icons">description</i>
   </a>
-  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&amp;title=[PAGE ISSUE]: 'Dart documentation'&amp;page-url=https://dart.dev/guides/&amp;page-source=https://github.com/dart-lang/site-www/tree/main/src/guides/index.md" class="btn no-automatic-external" title="Informar un problema con esta página" target="_blank" rel="noopener">
+  <a href="https://github.com/dart-lang/site-www/issues/new?template=1_page_issue.yml&amp;title=[PAGE ISSUE]: 'Get the Dart SDK'&amp;page-url=https://dart.dev/get-dart/&amp;page-source=https://github.com/dart-lang/site-www/tree/main/src/get-dart/index.md" class="btn no-automatic-external" title="Informar un problema con esta página" target="_blank" rel="noopener">
     <i class="material-icons">bug_report</i>
   </a>
 </div>
 
             
-            <h1>Documentación de Dart</h1>
+            <h1>Obtén el SDK de Dart</h1>
             </div>
           
 
-          <p>¡Bienvenido a la documentación de Dart! Para obtener una lista de cambios en este sitio (nuevas páginas, nuevas pautas y más), consulta la <a href="https://dart.dev/guides/whats-new" target="_blank" title="Página todavía no traducida">Página de novedades ❲↗⦘</a>.</p>
 
-<p>Estas son algunas de las páginas más visitadas de este sitio:</p>
 
-<div class="card-grid">
 
+
+
+
+<div id="site-toc--inline" class="site-toc ">
+  <header class="site-toc__title">
+    Contenidos
+    
+  </header>
+  <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#install">Instalando el SDK de Dart</a></li>
+<li class="toc-entry toc-h2"><a href="#system-requirements">Requisitos del sistema</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#windows">Windows</a></li>
+<li class="toc-entry toc-h3"><a href="#linux">Linux</a></li>
+<li class="toc-entry toc-h3"><a href="#macos">macOS</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#release-channels">Acerca de los canales de lanzamiento y las cadenas de versión.</a></li>
+</ul>
   
-  <div class="card">
-    <h3><a href="https://dart.dev/language" target="_blank" title="Página todavía no traducida">Tour del lenguaje ❲↗⦘</a></h3>
-    <p>Una breve introducción basada en ejemplos al lenguaje Dart.</p>
-  </div>
-
-  
-  <div class="card">
-    <h3><a href="https://dart.dev/effective-dart" target="_blank" title="Página todavía no traducida">Dart efectivo ❲↗⦘</a></h3>
-    <p>Mejores prácticas para crear código Dart consistente, mantenible y eficiente.</p>
-  </div>
-
-  
-  <div class="card">
-    <h3><a href="https://dart.dev/guides/libraries/library-tour" target="_blank" title="Página todavía no traducida">Tour por la biblioteca ❲↗⦘</a></h3>
-    <p>Una introducción basada en ejemplos a las funciones principales de las bibliotecas del core del SDK de Dart.</p>
-  </div>
-
-  
-  <div class="card">
-    <h3><a href="https://dart.dev/tools/sdk" target="_blank" title="Página todavía no traducida">Dart SDK ❲↗⦘</a></h3>
-    <p>Qué hay en el SDK y cómo instalarlo.</p>
-  </div>
-
-  
-  <div class="card">
-    <h3><a href="https://dart.dev/codelabs/async-await" target="_blank" title="Página todavía no traducida">Futures, async, await ❲↗⦘</a></h3>
-    <p>Cómo escribir código Dart asíncrono que use futures y las palabras clave async y await.</p>
-  </div>
 </div>
+
+
+          <p>Esta página describe cómo descargar el SDK de Dart. El SDK de Dart tiene las bibliotecas y herramientas de línea de comandos que necesitas para desarrollar aplicaciones web de línea de comandos, de servidor y que no sean de Flutter. Para obtener más información, consulta la <a href="https://dart.dev/tools/sdk" target="_blank" title="Página todavía no traducida">descripción general del SDK de Dart ❲↗⦘</a>.</p>
+
+<h2 id="install">
+<a class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalando el SDK de Dart</h2>
+
+<p>Como muestran las siguientes instrucciones, puedes usar un administrador de paquetes para instalar y actualizar fácilmente un SDK de Dart del canal stable. Como alternativa, puedes <a href="https://github.com/dart-lang/sdk/wiki/Building">compilar el SDK desde el código fuente</a>, usar una <a href="https://hub.docker.com/_/dart">imagen Docker de Dart</a>, o instalarlo desde <a href="#release-channels">cualquier canal de lanzamiento</a> descargando el <a href="https://dart.dev/get-dart/archive" target="_blank" title="Página todavía no traducida">SDK como un archivo zip ❲↗⦘</a>.</p>
+
+<p><em>Nota</em>: El SDK de Flutter incluye el SDK de Dart completo y tiene la interfaz de línea de comandos <a href="https://dart.dev/tools/dart-tool" target="_blank" title="Página todavía no traducida"><code class="language-plaintext highlighter-rouge">dart</code></a> en su carpeta <code class="language-plaintext highlighter-rouge">bin</code>.</p>
+
+<aside class="alert alert-warning" role="alert">
+  <p><i class="material-icons" aria-hidden="true">report_problem</i>
+  Las herramientas de Dart pueden enviar métricas de uso e informes de fallos a Google. Al descargar Dart SDK, aceptas los
+<a href="https://dart.dev/ttps://policies.google.com/terms" target="_blank" title="Página todavía no traducida">Términos de servicio de Google. ❲↗⦘</a>
+Nota: La <a href="https://policies.google.com/privacy">Política de privacidad de Google</a>
+describe cómo se manejan los datos en este servicio.</p>
+
+  <p>Para controlar el envío de métricas, usa en la herramienta <a href="https://dart.dev/tools/dart-tool" target="_blank" title="Página todavía no traducida"><code class="language-plaintext highlighter-rouge">dart</code> las siguientes opciones ❲↗⦘</a>:</p>
+
+  <ul>
+    <li>
+<code class="language-plaintext highlighter-rouge">--enable-analytics</code>: Permite analíticas anónimas.</li>
+    <li>
+<code class="language-plaintext highlighter-rouge">--disable-analytics</code>: Desactiva las analíticas anónimas.</li>
+  </ul>
+</aside>
+
+<ul class="tabs__top-bar">
+  <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
+  <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
+  <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
+</ul>
+<div id="tab-sdk-install-windows" class="tabs__content current">
+  <p>Puedes instalar el SDK de Dart usando <a href="https://chocolatey.org">Chocolatey.</a></p>
+
+  <aside class="alert alert-warning" role="alert">
+    <p><i class="material-icons" aria-hidden="true">error</i> <strong>Importante:</strong>
+  Estos comandos requieren derechos de administrador. A continuación se muestra una forma de abrir una ventana de comandos del sistema que tiene derechos de administrador:</p>
+
+    <ol>
+      <li>Presiona <kbd>Windows+R</kbd> para abrir la ventana <strong>Ejecutar</strong>.</li>
+      <li>Escribe <code class="language-plaintext highlighter-rouge">cmd</code> en el cuadro.</li>
+      <li>Presiona <kbd>Ctrl+Shift+Enter</kbd>.</li>
+    </ol>
+  </aside>
+
+  <p>Para instalar el SDK de Dart:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">C:\&gt;</span><span class="w"> </span>choco <span class="nb">install </span>dart-sdk
+</code></pre></div>  </div>
+
+  <p>Para actualizar el SDK de Dart:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">C:\&gt;</span><span class="w"> </span>choco upgrade dart-sdk
+</code></pre></div>  </div>
+
+  <p>De forma predeterminada, el SDK se instala en <code class="language-plaintext highlighter-rouge">C:\tools\dart-sdk</code>. Puedes cambiar esa ubicación configurando la variable de entorno <a href="https://stackoverflow.com/questions/19752533/how-do-i-set-chocolatey-to-install-applications-onto-another-drive/68314437#68314437"><code class="language-plaintext highlighter-rouge">ChocolateyToolsLocation</code></a> para cambiar el directorio de instalación.</p>
+
+  <p>Si no puedes usar los ejecutables del SDK de Dart, agrega la ubicación del SDK a tu PATH:</p>
+
+  <ol>
+    <li>En el cuadro de búsqueda de Windows, escribe <code class="language-plaintext highlighter-rouge">env</code>.</li>
+    <li>Haz clic en <strong>Editar las variables de entorno del sistema</strong>.</li>
+    <li>Haz clic en <strong>Variables de entorno…</strong>.</li>
+    <li>En la sección de variables de usuario, selecciona <strong>Path</strong> y haz clic en <strong>Editar…</strong>.</li>
+    <li>Haz clic en <strong>Nuevo</strong> e ingresa la ruta al directorio <code class="language-plaintext highlighter-rouge">dart-sdk</code>.</li>
+    <li>En cada ventana que acabas de abrir, haz clic en <strong>Aplicar</strong> o en <strong>Aceptar</strong> para cerrarla y aplicar el cambio de ruta.</li>
+  </ol>
+
+</div>
+<div id="tab-sdk-install-linux" class="tabs__content">
+  <p>Si estás usando Debian/Ubuntu en AMD64 (Intel de 64 bits), puedes elegir una de las siguientes opciones, las cuales pueden actualizar el SDK automáticamente cuando se lanzan nuevas versiones.</p>
+
+  <ul>
+    <li><a href="#install-using-apt-get">Instalar usando apt-get</a></li>
+    <li><a href="#install-a-debian-package">Instalar un paquete Debian</a></li>
+  </ul>
+
+  <h4 id="install-using-apt-get">Instalar usando apt-get</h4>
+
+  <p>Realiza la siguiente <strong>configuración de única vez</strong>:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt-get update
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>apt-transport-https
+<span class="gp">$</span><span class="w"> </span>wget <span class="nt">-qO-</span> https://dl-ssl.google.com/linux/linux_signing_key.pub | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /usr/share/keyrings/dart.gpg
+<span class="gp">$</span><span class="w"> </span><span class="nb">echo</span> <span class="s1">'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main'</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/dart_stable.list
+</code></pre></div>  </div>
+
+  <p>Luego instala el SDK de Dart:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt-get update
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>dart
+</code></pre></div>  </div>
+
+  <h4 id="install-a-debian-package">Instalar un paquete Debian</h4>
+
+  <p>Alternativamente, descarga el Dart SDK <a href="#" class="debian-link-stable">como un paquete Debian</a>
+en el formato de paquete <code class="language-plaintext highlighter-rouge">.deb</code>.</p>
+
+  <h4 id="modify-path-for-access-to-all-dart-binaries">Modifica PATH para acceder a todos los binarios de Dart</h4>
+
+  <p>Después de instalar el SDK, <strong>agrega su directorio <code class="language-plaintext highlighter-rouge">bin</code> a tu directorio <code class="language-plaintext highlighter-rouge">PATH</code></strong>. Por ejemplo, utiliza el siguiente comando para cambiar <code class="language-plaintext highlighter-rouge">PATH</code> en tu sesión de terminal activa:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PATH</span><span class="s2">:/usr/lib/dart/bin"</span>
+</code></pre></div>  </div>
+
+  <p>Para cambiar la PATH para futuras sesiones de terminal, usa un comando como este:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">echo</span> <span class="s1">'export PATH="$PATH:/usr/lib/dart/bin"'</span> <span class="o">&gt;&gt;</span> ~/.profile
+</code></pre></div>  </div>
+
+</div>
+<div id="tab-sdk-install-mac" class="tabs__content">
+  <p><a href="https://brew.sh">Instala Homebrew,</a>
+y luego ejecuta los siguientes comandos:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>brew tap dart-lang/dart
+<span class="gp">$</span><span class="w"> </span>brew <span class="nb">install </span>dart
+</code></pre></div>  </div>
+
+  <aside class="alert alert-warning" role="alert">
+    <p><i class="material-icons" aria-hidden="true">error</i> <strong>Importante:</strong>
+  Asegúrate de que el <strong>directorio <code class="language-plaintext highlighter-rouge">bin</code> de Homebrew está en tu <code class="language-plaintext highlighter-rouge">PATH</code></strong>. Configurar la ruta correctamente facilita el uso de los comandos del Dart SDK, como <code class="language-plaintext highlighter-rouge">dart run</code> y <code class="language-plaintext highlighter-rouge">dart format</code>. Para obtener ayuda para configurar tu ruta, consulta las <a href="https://docs.brew.sh/FAQ">Preguntas frecuentes sobre Homebrew.</a></p>
+  </aside>
+
+  <p>Para actualizar cuando esté disponible una nueva versión de Dart:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>brew upgrade dart
+</code></pre></div>  </div>
+
+  <p>Para cambiar entre versiones de Dart instaladas localmente, primero instala la versión a la que deseas cambiar si aún no lo has hecho. Por ejemplo, para instalar Dart 2.12:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>brew <span class="nb">install </span>dart@2.12
+</code></pre></div>  </div>
+
+  <p>Luego, para cambiar entre versiones, desvincula la versión actual y vincula la versión deseada.</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>brew <span class="nb">unlink </span>dart@&lt;old&gt; <span class="o">&amp;&amp;</span> brew <span class="nb">unlink </span>dart@&lt;new&gt; <span class="o">&amp;&amp;</span> brew <span class="nb">link </span>dart@&lt;new&gt;
+</code></pre></div>  </div>
+
+  <p>Para ver qué versiones de Dart has instalado:</p>
+
+  <div class="language-terminal highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span>brew info dart
+</code></pre></div>  </div>
+
+</div>
+
+<h2 id="system-requirements">
+<a class="anchor" href="#system-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requisitos del sistema</h2>
+
+<p>Dart SDK es compatible con Windows, Linux y macOS.</p>
+
+<h3 id="windows">
+<a class="anchor" href="#windows" aria-hidden="true"><span class="octicon octicon-link"></span></a>Windows</h3>
+
+<ul>
+  <li>
+<strong>Versiones compatibles:</strong> Windows 10 y 11.</li>
+  <li>
+<strong>Arquitecturas compatibles:</strong> x64, IA32, ARM64.<br>
+La compatibilidad con ARM64 está en versión preliminar y está disponible solo en los canales dev y beta.</li>
+</ul>
+
+<h3 id="linux">
+<a class="anchor" href="#linux" aria-hidden="true"><span class="octicon octicon-link"></span></a>Linux</h3>
+
+<ul>
+  <li>
+<strong>Versiones soportadas:</strong> <a href="https://www.debian.org/releases">Debian stable</a> y <a href="https://wiki.ubuntu.com/Releases">Ubuntu LTS</a> bajo soporte estándar.</li>
+  <li>
+<strong>Arquitecturas compatibles:</strong> x64, IA32, ARM64, ARM, RISC-V (RV64GC).<br>
+La compatibilidad con RISC-V está en versión preliminar y está disponible solo en los canales dev y beta.</li>
+</ul>
+
+<h3 id="macos">
+<a class="anchor" href="#macos" aria-hidden="true"><span class="octicon octicon-link"></span></a>macOS</h3>
+
+<ul>
+  <li>
+<strong>Versiones compatibles:</strong> Las tres últimas versiones principales. Dart admite las siguientes versiones de macOS a partir de noviembre de 2022:
+    <ul>
+      <li>macOS 11 (Big Sur)</li>
+      <li>macOS 12 (Monterey)</li>
+      <li>macOS 13 (Ventura)</li>
+    </ul>
+  </li>
+  <li>
+<strong>Arquitecturas soportadas:</strong> x64, ARM64.</li>
+</ul>
+
+<h2 id="release-channels">
+<a class="anchor" href="#release-channels" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acerca de los canales de lanzamiento y las cadenas de versión.</h2>
+
+<p>Dart SDK tiene tres canales de lanzamiento:</p>
+
+<ul>
+  <li>
+    <p><strong>Stable</strong> channel: <strong>versiones estables</strong>, actualizado aproximadamente cada tres meses; actualmente <code class="language-plaintext build-rev-stable highlighter-rouge">[calculating]</code>.</p>
+
+    <p>Las versiones estables son adecuadas para uso en producción.</p>
+  </li>
+  <li>
+    <p><strong>Beta channel</strong>: <strong>lanzamientos de previsualización</strong>, generalmente actualizados cada mes; actualmente <code class="language-plaintext build-rev-beta highlighter-rouge">[calculating]</code>.</p>
+
+    <p>Las compilaciones del canal beta son compilaciones de vista previa para el canal stable. Recomendamos probar, pero no lanzar, tus aplicaciones en versión beta para obtener una vista previa de nuevas funciones o probar la compatibilidad con versiones futuras.</p>
+  </li>
+  <li>
+    <p><strong>Dev channel</strong>: <strong>pre-lanzamientos</strong>, generalmente se actualiza dos veces por semana; actualmente <code class="language-plaintext build-rev-dev highlighter-rouge">[calculating]</code>.</p>
+
+    <p>Los lanzamientos del canal dev son los más actualizados con los últimos cambios, pueden estar rotos, no tienen soporte y pueden contener cambios importantes no examinados.</p>
+  </li>
+</ul>
+
+<p><strong>Stable</strong>, las versiones de este canal del SDK de Dart tienen cadenas de versión <code class="language-plaintext highlighter-rouge">x.y.z</code> como <code class="language-plaintext highlighter-rouge">1.24.3</code> y <code class="language-plaintext highlighter-rouge">2.1.0</code>. Consisten en números enteros separados por puntos, sin guiones ni letras, donde <code class="language-plaintext highlighter-rouge">x</code> es la versión principal, <code class="language-plaintext highlighter-rouge">y</code> es la versión menor y <code class="language-plaintext highlighter-rouge">z</code> es la versión para parches.</p>
+
+<p><strong>Beta</strong> y <strong>dev</strong>, las versiones de estos canales del SDK de Dart (versiones no estables) tienen cadenas de versión <code class="language-plaintext highlighter-rouge">x.y.z-a.b.&lt;beta|dev&gt;</code> como <code class="language-plaintext highlighter-rouge">2.8.0-20.11.beta</code>. La parte antes del guión sigue el esquema de la versión stable, <code class="language-plaintext highlighter-rouge">a</code> y <code class="language-plaintext highlighter-rouge">b</code> después del guión son las versiones preliminares y de parche preliminar, y <code class="language-plaintext highlighter-rouge">beta</code> o <code class="language-plaintext highlighter-rouge">dev</code> es el canal.</p>
+
+<p>Puedes obtener versiones del canal stable usando las <a href="#install">instrucciones anteriores</a>, o puedes obtener versiones de los canales stable, beta o dev usando <a href="https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get">un administrador de paquetes</a> o una <a href="https://hub.docker.com/_/dart">imagen Docker de Dart</a>, o <a href="https://dart.dev/get-dart/archive" target="_blank" title="Página todavía no traducida">descargando el SDK como un archivo zip ❲↗⦘</a>.</p>
+
 
           
 
